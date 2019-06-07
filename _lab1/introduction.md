@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 
+title: Lab 1
 permalink: /lab1/
 ---
 

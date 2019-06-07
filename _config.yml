@@ -10,3 +10,17 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
+
+include:
+  - _lab1
+  - _lab2
+  - _lab3
+  - _lab4
+
+# If you want to link only specific pages in your header, uncomment
+# this and add the path to the pages in order as they should show up
+header_pages:
+  - _lab1/introduction.md
+  - _lab2/lab2.md
+  - _lab3/lab3.md
+  - _lab4/lab4.md

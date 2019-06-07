@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 
+title: Lab 4
 permalink: /lab4/
 ---
 
