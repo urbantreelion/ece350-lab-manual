@@ -23,6 +23,8 @@ The lab component of this course consists of four laboratories:
 
 > NOTE: You are encouraged to work at your own pace, using the scheduled lab period as a time to get assistance from a TA or the course instructor.
 
+{% include button.html url="/_lab1/" title="Lab 1" %}
+
 ## Revision history
 
 Version | Date | Changelog

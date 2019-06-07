@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: labitem
 title: Tutorial 1
 permalink: /lab1/tutorial1
 ---
