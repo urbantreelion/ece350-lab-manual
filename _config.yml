@@ -1,1 +1,12 @@
-theme: jekyll-theme-leap-day
+title: ECE350 lab manual 
+description: >- # this means to ignore newlines until "baseurl:"
+  Lab manual for the ECE 350 course at UVic.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+github_username:  mistic-lab
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed

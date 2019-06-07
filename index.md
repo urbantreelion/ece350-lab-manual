@@ -1,37 +1,53 @@
-## Welcome to GitHub Pages
+---
+# Feel free to add content and custom Front Matter to this file.
+# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
-You can use the [editor on GitHub](https://github.com/mistic-lab/ece350-lab-manual/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+layout: home
+---
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+# Communications Theory and Systems I
 
-### Markdown
+## Revision history
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+**1.0 / 08 Mar 2013**
 
-```markdown
-Syntax highlighted code block
+- Updated for GNU Radio 3.6.3.
 
-# Header 1
-## Header 2
-### Header 3
+**1.1 / 27 Jun 2013**
 
-- Bulleted
-- List
+- Updated for GNU Radio 3.6.5. The category structure was revised quite a bit from earlier versions so the text has been updated to reflect that.
 
-1. Numbered
-2. List
+**1.2 / 4 Jul 2013**
 
-**Bold** and _Italic_ and `Code` text
+- Updated for GNU Radio 3.7.0. The category structure was revised yet again, text updated.
 
-[Link](url) and ![Image](src)
-```
+**2.0 / 1 Sept 2014**
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+- Updated for 2014 deleting Softrock, retaining 4 labs only.
 
-### Jekyll Themes
+**3.0 / 1 Jan 2017**
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/mistic-lab/ece350-lab-manual/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+- Updated text references to 2016 edition, clarified lab procedures and reformatted for readability.
 
-### Support or Contact
+**4.0 / 5 Jun 2019**
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+- Major rebuild. Site has moved from UVic local SVN repo to github. Docbook compiled with Apache Ant and Webhelp is now Markdown and Jekyll.
+
+## Introduction
+
+This lab is meant to be a supplement to your ELEC350 class. It will provide you with a way to explore the concepts and techniques discussed in class in a more hands on way. In order to do this, we will be using [GNU RadioCompanion](http://gnuradio.org/redmine/projects/gnuradio/wiki/GNURadioCompanion),a graphical tool used to create and execute signal processing flowgraphs for Software Defined Radio. This is a very useful tool, not only for demonstrating existing communication methods, but also for experimenting and developing new methods, both in the academic and professional worlds. For more information on Software Defined Radio, have a look at this[Wikipedia](https://en.wikipedia.org/wiki/Software-defined_radio) page, or speak to your professor or TA.
+
+The lab component of this course consists of several components:
+
+- Lab 1. GNU Radio Tutorials.
+- Lab 2. [USRP](http://en.wikipedia.org/wiki/Universal_Software_Radio_Peripheral) Tutorials and FM Receiver.
+- Lab 3. Finding frame synchronization on the [FLEX](<http://en.wikipedia.org/wiki/FLEX_(protocol)>) pager network using the USRP and GNU Radio.
+- Lab 4. Pulse shaping and PSK
+- Optional activity
+  - Pass the amateur radio basic and advanced exams (contact Dr. Driessen)
+  - Decoding off-air signals not covered in the other lab activities.
+  - The deliverables are described at the beginning of each section.
+
+**PLEASE NOTE:** You are encouraged to work at your own pace, using the
+scheduled lab period as a time to get assistance from a TA or the
+course instructor.
