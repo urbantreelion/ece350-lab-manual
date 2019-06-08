@@ -1,7 +1,7 @@
 title: ECE350 lab manual 
 description: >- # this means to ignore newlines until "baseurl:"
   Lab manual for the ECE 350 course at UVic.
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/ece350-lab-manual" # the subpath of your site, e.g. /blog
 url: "https://mistic-lab.github.io/ece350-lab-manual/" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  mistic-lab
 
