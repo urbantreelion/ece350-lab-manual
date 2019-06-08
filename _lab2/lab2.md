@@ -210,3 +210,5 @@ USRP transmitter.
 
 - What is the minimum and maximum signal power output from the USRP? The USRP output power level can be set via the dialog box obtained by double‐clicking on the USRP sink in the flowgraph. Measure the power using both the oscilloscope and spectrum analyzer and verify they are the same.
   >Note: Recall from your circuit theory that the output power is relative to the load impedance. On the spectrum analyzer, the input is 50Ω, which matches the expected impedance of a typical antenna. The input to the scope on the other hand is high impedance, effectively open circuit, to prevent damage to the internal circuits. To compare measurement on the scope to that of the spectrum analyzer, the line from the USRP transmitter should be terminated with a 50Ω terminator. Alternatively, some circuit theory can be applied to determine the equivalent power output measured across an open circuit and a 50Ω load.
+
+[**Continue to Lab 3**](../_lab3/lab3.md)

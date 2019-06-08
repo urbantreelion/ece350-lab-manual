@@ -185,3 +185,5 @@ keep the average output at a particular level.
 - Insert the *AGC* block (found under *Level Controls*) between the *Low Pass Filter* and the *Complex to Mag* block. The *AGC* will adjust the gain so that the sample values are always in a suitable range for the audio hardware. Leave the parameters at their default values.
 
 - You can now remove the *Multiply Const* and volume slider. Test the receiver again. Adjust the volume to a comfortable level using the computer's volume control on the first station you hear. Now tune up and down the band and notice that you no longer need to adjust the volume, but the noise level increases for weaker stations. The radio functions the same as a hardware radio.
+
+[**Begin Tutorial 4**](tutorial4.md)

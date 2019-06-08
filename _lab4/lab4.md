@@ -79,3 +79,5 @@ as the frequency offset is changed from zero.
 Optional: repeat the above changes using the Complex QPSK flowgraph.
 
 Optional modifications: add a noise source, receiver filter and bit error rate counter
+
+**Congratulations, you've completed the lab portion of ECE 350!**

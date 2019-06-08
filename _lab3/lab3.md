@@ -104,3 +104,5 @@ A data file, [fsk.dat](./data/fsk.dat), was recorded at a sample rate of 48 kHz 
 - The demodulated two-tone signal should look similar to the one in [figure\_title](#fsk2level).
 
 - The demodulated eight-tone signal should look similar to the one in [figure\_title](#fsk8level).
+
+[**Continue to Lab 4**](../_lab4/lab4.md)
