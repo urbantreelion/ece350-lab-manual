@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: labitem
 title: Tutorial 1
 permalink: /lab1/tutorial1
 ---
@@ -155,3 +155,5 @@ the flowgraph and then execute it.
 ## Conclusions
 
 In this tutorial, you have learned several of the basic concepts in using GRC. Make a brief list of these concepts. When you are comfortable with this material, feel free to move on to tutorial 2.
+
+[**Begin Tutorial 2**](tutorial2.md)

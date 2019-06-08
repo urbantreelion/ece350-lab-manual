@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: labitem
 title: Tutorial 4
 permalink: /lab1/tutorial4
 ---
@@ -167,3 +167,5 @@ and listen to live Morse code and SSB signals in the frequency range
 24.9-25.0 MHz, 27-29 MHz, 50.0-50.2 MHz. These frequencies will
 propagate over long distances via the ionosphere for some (not all) of
 the time. Other frequencies are 144.0-144.3 MHz and 145.8-146.0 MHz.
+
+[**Continue to Lab 2**](../_lab2/lab2.md)

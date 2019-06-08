@@ -1,10 +1,9 @@
 ---
-layout: default
-title: Lab 1
+layout: labitem
+title: Lab 1 #Used for header nav
+firstHeading: Lab 1 - GNU Radio Tutorials
 permalink: /lab1/
 ---
-
-# Lab 1 - GNU Radio Tutorials
 
 The following tutorials were adapted from [Dr. Sharlene Katz\' SDRProject](http://www.csun.edu/~skatz/katzpage/sdr_project/sdrproject.html) website and updated for GNU Radio 3.7. They are designed to get you familiar with various aspects of the GNU Radio Companion. You will also learn some basic tuning and demodulation techniques.
 
@@ -51,3 +50,5 @@ Other tutorials are also available, see for example
 - block diagram of SSB receiver showing mathematical representation of signals at all points
   
 - There are a number of questions included within the text. Written answers to these questions are not required, but an effort should be made to think about and answer these questions as they are encountered.
+
+[**Begin Tutorial 1**](tutorial1.md)
