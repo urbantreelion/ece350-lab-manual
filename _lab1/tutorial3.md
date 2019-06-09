@@ -29,7 +29,7 @@ permalink: /lab1/tutorial3
   - [different_waveforms.grc](data/different_waveforms.grc)
  Carry out the steps in the [AM Transmitter procedures](data/AM_procedures_TX.pdf)
 
-- Start GRC as was done in the previous tutorials. If GRC is already open, open the .grc files by selecting File->Open, or clicking on the Open logo, ![grc-open-icon](images/open_logo.png)
+- Start GRC as was done in the previous tutorials. If GRC is already open, open the .grc files by selecting File->Open, or clicking on the Open logo, ![grc-open-icon](figures/grc-open-icon.png).
 
 - If you are unsure of the functionality of any of the blocks in the linked tutorial, please consult the [Documentation](http://www.ece.uvic.ca/~ece350/grc_doc/) , or ask your TA.
 
@@ -73,14 +73,26 @@ permalink: /lab1/tutorial3
 
 #### Playing a Data File
 
-- Construct the flow graph shown in [figure_title](#am_data_file) consisting of a [File Source](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s07s03.html), *Throttle*, and *WX GUI FFT Sink*. Set the sample rate in the variable block to 256000. This is the rate at which the saved data was sampled.
+- Construct the flow graph shown below consisting of a [File Source](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s07s03.html), *Throttle*, and *WX GUI FFT Sink*. Set the sample rate in the variable block to 256000. This is the rate at which the saved data was sampled.
 
-- Double-click on the *File Source* block. Click on the ellipsis (...) next to the *File* entry box. Locate the am_usrp710.dat file that you saved in the previous step. The path to your file will appear as shown in [figure_title](#file_source_dialog). Set the *Output Type* to *Complex*. The use of complex data to describe and process waveforms in SDR will be discussed in the next tutorial. Set *Repeat* to *Yes*. This will cause the data to repeat so that you have a continuously playing signal.
+    ![Figure 1.20](./figures/am_data_file.png)<br>
+    __*Figure 1.20: Flow graph to play a file to an FFT sink.*__
 
-- Save and execute the flow graph. You should observe an FFT display similar to the one shown in [figure_title](#am_fft). You may need to click on *Autoscale* button to scale the data as shown. Note the following:
-  - This data was recorded with a USRP set to 710KHz. Thus, the signal you see at the center (indicated as 0 KHz) is actually at 710 KHz. Similarly, the signal at 80 KHz is actually at 710KHz + 80KHz = 790KHz.
-  - The display spans a frequency range from just below -120KHz to just above 120KHz. This exact span is 256KHz, which corresponds to the sample rate that the data was recorded at.
+
+- Double-click on the *File Source* block. Click on the ellipsis (...) next to the *File* entry box. Locate the `am_usrp710.dat` file that you saved in the previous step. The path to your file will appear in the block properties. Set the *Output Type* to *Complex*. The use of complex data to describe and process waveforms in SDR will be discussed in the next tutorial. Set *Repeat* to *Yes*. This will cause the data to repeat so that you have a continuously playing signal.
+
+    ![Figure 1.21](./figures/file_source_dialog.png)<br>
+    __*Figure 1.21: File source properties dialog.*__
+
+
+- Save and execute the flow graph. You should observe an FFT display similar to the one shown below. You may need to click on *Autoscale* button to scale the output. Note the following:
+  - This data was recorded with a USRP set to 710 kHz. Thus, the signal you see at the center (indicated as 0 kHz) is actually at 710 kHz. Similarly, the signal at 80 kHz is actually at 710 kHz + 80 kHz = 790 kHz.
+  - The display spans a frequency range from just below -120 kHz to just above 120 kHz. This exact span is 256 kHz, which corresponds to the sample rate that the data was recorded at.
   - The peaks that you observe on this display correspond to the carriers for AM broadcast signals. You should also be able to observe the sidebands for the stronger waveforms.
+
+    ![Figure 1.22](./figures/am_fft.png)<br>
+    __*Figure 1.22: GUI chooser properties dialog.*__
+
 
 #### Frequency Display Resolution
 
@@ -92,13 +104,21 @@ original data, we can resample it to either increase or decrease the
 sample rate. We will decrease the sample rate by using decimation.
 Modify the flow graph as follows:
 
-- Add a *Variable* block (under *Variables* category). Set the ID to resamp_factor and the Value to 4 as shown in [figure_title](#resamp_factor).
+- Add a *Variable* block (under *Variables* category). Set the ID to resamp_factor and the Value to 4.
+
+    ![Figure 1.23](./figures/resamp_factor.png)<br>
+    __*Figure 1.23: Variable properties dialog.*__
+
 
 - Add the *Rational Resampler* block from the *Filters* menu as shown below. Set its decimation factor to resamp_factor. It will use the value of the variable set in the previous step (4) to decimate the incoming data. That means that it will divide the incoming data rate by the decimation factor. In this example, the incoming 256K samp/sec data will be converted down to 256K/4 = 64K samp/sec.
 
 - Note that the *Throttle* and *FFT Sink* now need their sample rates changed to correspond to this new rate. Change the sample rate in both of these blocks to samp_rate/resamp_factor. Now we can change the decimation factor in the *Variable* block and it will be reflected in each of the other blocks automatically.
 
-- Your flow graph should now appear as shown in [figure_title](#fft_decim_graph).
+- Your flow graph should now appear as shown below.
+
+    ![Figure 1.24](./figures/fft_decim_graph.png)<br>
+    __*Figure 1.24: Flow graph with file input and decimated FFT sink output.*__
+
 
 - Execute the new flow graph. You should now observe a frequency span of only 64 kHz (-32 kHz to +32 kHz). What actual frequency range does this correspond to?
 
@@ -116,7 +136,10 @@ the station at 710 kHz has been moved to 0 kHz (in the USRP) we will use
 a low pass filter. The station bandwidth is 10 kHz, so we will use a low
 pass filter that cuts off at 5 kHz.
 
-- Insert the [Low Pass Filter](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s12s01.html) (from the *Filters* menu) between the [Rational Resampler](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s12s07.html) and the *Throttle.*Set the parameters as shown in [figure_title](#low_pass_dialog).
+- Insert the [Low Pass Filter](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s12s01.html) (from the *Filters* menu) between the [Rational Resampler](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s12s07.html) and the *Throttle*. Set the parameters as shown.
+
+    ![Figure 1.25](./figures/low_pass_dialog.png)<br>
+    __*Figure 1.25: Low pass filter properties dialog.*__
 
 - Execute the flow graph. You should see that only the station between +/- 5 kHz remains.
 
@@ -130,7 +153,8 @@ of complex signal representation will be dealt with in depth in the
 future.
 
 - Insert the [Complex to Mag](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s11s06.html) block between the *Low Pass Filter* and the *Throttle*.
-  - Note that the titles of some of the blocks are now red and the Execute Flow Graph icon is dimmed. This indicates an error. Prior to adding this block, all of the block inputs and outputs were complex values. However, the output of the *Complex to Mag* block is *Float* (a real number). Thus, any blocks following this block should be Type: Float. **Modify the** *Throttle* **and** *WX GUI FFT Sink* **accordingly**.
+
+  > Note: The titles of some of the blocks are now red and the Execute Flow Graph icon is dimmed. This indicates an error. Prior to adding this block, all of the block inputs and outputs were complex values. However, the output of the *Complex to Mag* block is *Float* (a real number). Thus, any blocks following this block should be Type: Float. **Modify the *Throttle* and *WX GUI FFT Sink* accordingly**.
 
 - Execute the flow graph. You should now observe the spectrum of the baseband signal in the *FFT Sink*. Note that since the input data type to the *FFT Sink* is Float, only the positive frequency spectrum is displayed.
 
@@ -147,7 +171,10 @@ it is in fact receiving the baseband signal.
 
 - Since the output of the *Complex to Mag* is always positive, there will be a DC offset on the audio signal. The signal going to the audio hardware should not have any DC offset. Place a [DC Blocker](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s12s05.html) (in the *Filters* category) between the *Complex to Mag* block and the *Rational Resampler* added in the previous step.
 
-- Place a *WX GUI Scope Sink* at the output of the *Rational Resampler* (in addition to the *Audio Sink*). Change its Type to Float and set its sample rate to 48000. The flow graph should be similar to the one shown in [figure_title](#am_receiver_no_tuning_no_volume).
+- Place a *WX GUI Scope Sink* at the output of the *Rational Resampler* (in addition to the *Audio Sink*). Change its Type to Float and set its sample rate to 48000. The flow graph should be similar to the one shown below.
+
+    ![Figure 1.26](./figures/am_receiver_no_tuning_no_volume.png)<br>
+    __*Figure 1.26: Flow graph with file source with a "cleaner" audio output.*__
 
 - Execute the flow graph. The *WX GUI Scope Sink* should open and display the output waveform. However, you may not yet hear the audio from your speaker or it may be very distorted. This is due to the fact that the values of the samples going in to the *Audio Sink* block are outside the range expected by the *Audio Sink*. The *Audio Sink* requires that the sample values are between -1.0 and 1.0 in order to play them back through the audio hardware.
 
@@ -155,9 +182,16 @@ it is in fact receiving the baseband signal.
 
 - Insert a [Multiply Const](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s08s05.html) block from the *Math Operators* category between the *DC Blocker* and the *Rational Resampler*. Set the IO Type of the block to Float.
 
-- Add a *WX GUI Slider* block. Set the parameters as shown in [figure_title](#am_volume).
+- Add a *WX GUI Slider* block. Set the parameters as shown.
 
-- Set the constant in the *Multiply Const* block to "volume" so that the slider controls it. The final flow graph is shown in [figure_title](#am_receiver_no_tuning).
+    ![Figure 1.27](./figures/am_volume.png)<br>
+    __*Figure 1.27: GUI slider properties dialog.*__
+
+
+- Set the constant in the *Multiply Const* block to "volume" so that the slider controls it. The final flow graph is shown.
+
+    ![Figure 1.28](./figures/am_receiver_no_tuning.png)<br>
+    __*Figure 1.28: Flow graph with a GUI volume control to resample and play audio.*__
 
 - Execute the flow graph. You should now hear the demodulated AM signal. Stop the flowgraph.
 
@@ -167,11 +201,14 @@ it is in fact receiving the baseband signal.
 
 - Review the [section 3.2.2 theory of tuning to a radio station](data/35015-PSK-FSK-12.pdf).
 
-- Place an *FFT Sink* at the output of the *File Source*, leaving the rest of the flow graph unchanged as shown in [figure_title](#am_receiver_fixed_tuning).
+- Place an *FFT Sink* at the output of the *File Source*, leaving the rest of the flow graph unchanged.
 
-- Execute the flow graph and observe the location of the other stations in the spectrum. Note that there is a fairly strong signal at 80 KHz (really 710 + 80 = 790 KHz).
+- Execute the flow graph and observe the location of the other stations in the spectrum. Note that there is a fairly strong signal at 80 kHz (really 710 + 80 = 790 kHz).
 
-- In order to receive this signal we need to shift it down to zero frequency so that it will pass through the low pass filter. One way to accomplish this is to multiply it by a sinusoid. Modify the flow graph as shown below. Add a *Signal Source* and set its parameters to output a cosine at a frequency of -80000. This negative frequency will shift the entire spectrum to the left by 80KHz. Use a *Multiply* block and move the *FFT Sink* to observe its output. Test this receiver.
+- In order to receive this signal we need to shift it down to zero frequency so that it will pass through the low pass filter. One way to accomplish this is to multiply it by a sinusoid. Modify the flow graph as shown below. Add a *Signal Source* and set its parameters to output a cosine at a frequency of -80000. This negative frequency will shift the entire spectrum to the left by 80 kHz. Use a *Multiply* block and move the *FFT Sink* to observe its output. Test this receiver.
+
+    ![Figure 1.29](./figures/am_receiver_fixed_tuning.png)<br>
+    __*Figure 1.29: Flow graph to play audio and with an FFT sink on the input.*__
 
 - Add another *WX GUI Slider* so that you can adjust the frequency with a slider. Set the minimum to (-samp_rate/2) and the maximum to (samp_rate/2). Test your flow graph and demonstrate that it works. You may need to adjust your volume slider for each station. This is because the stations are at varying distances away from the receiver and have different transmitted power. (Remember the link equation?)
 

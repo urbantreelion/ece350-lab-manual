@@ -12,14 +12,15 @@ This lab is meant to be a supplement to your ECE350 class. It will provide you w
 
 The lab component of this course consists of four laboratories:
 
-- Lab 1. GNU Radio Tutorials.
-- Lab 2. [USRP](http://en.wikipedia.org/wiki/Universal_Software_Radio_Peripheral) Tutorials and FM Receiver.
+- Lab 1. GNU Radio tutorials.
+- Lab 2. [USRP](http://en.wikipedia.org/wiki/Universal_Software_Radio_Peripheral) tutorials and FM receiver.
 - Lab 3. Finding frame synchronization on the [FLEX](<http://en.wikipedia.org/wiki/FLEX_(protocol)>) pager network using the USRP and GNU Radio.
-- Lab 4. Pulse shaping and PSK
-- Optional activity
-  - Pass the amateur radio basic and advanced exams (contact Dr. Driessen)
+- Lab 4. Pulse shaping and PSK.
+- Optional activity:
+  - Pass the amateur radio basic and advanced exams (contact Dr. Driessen).
   - Decoding off-air signals not covered in the other lab activities.
-  - The deliverables are described at the beginning of each section.
+
+The deliverables are described at the beginning of each section.
 
 > NOTE: You are encouraged to work at your own pace, using the scheduled lab period as a time to get assistance from a TA or the course instructor.
 

@@ -5,7 +5,7 @@ firstHeading: Lab 1 - GNU Radio Tutorials
 permalink: /lab1/
 ---
 
-The following tutorials were adapted from [Dr. Sharlene Katz\' SDRProject](http://www.csun.edu/~skatz/katzpage/sdr_project/sdrproject.html) website and updated for GNU Radio 3.7. They are designed to get you familiar with various aspects of the GNU Radio Companion. You will also learn some basic tuning and demodulation techniques.
+The following tutorials were adapted from [Dr. Sharlene Katz' SDRProject](http://www.csun.edu/~skatz/katzpage/sdr_project/sdrproject.html) website and updated for GNU Radio 3.7. They are designed to get you familiar with various aspects of the GNU Radio Companion. You will also learn some basic tuning and demodulation techniques.
 
 In addition to providing you with a great introduction to GNU Radio Companion, this material can also be used as a reference for future labs.
 

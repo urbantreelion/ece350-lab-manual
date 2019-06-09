@@ -20,11 +20,17 @@ permalink: /lab1/tutorial2
 
 - Launch GRC as done in the previous tutorial. If GRC is already open, simply create a new flowgraph by selecting File->New.
 
-- Construct the flow graph shown in [figure_title](#tutorial2_fft_sink). Note that the sample rate is set to 48000 in this example.
+- Construct the flow graph shown. Note that the sample rate is set to 48000 in this example.
+
+    ![Figure 1.16](./figures/tutorial2_fft_sink.png)<br>
+    __*Figure 1.16: Simple flow graph with two inputs and two outputs.*__
 
 - Execute the flow graph. You should hear the composite tone and see the FFT sink display of the spectrum. Experiment with the FFT size in the FFT sink. It should be a power of two. Note that as you increase the FFT size the resolution of the display increases. Reset the FFT size to 1024 when you are done.
 
-- Add a *WX GUI Slider* (from the *GUI Widgets->WX* category) to the flow graph. Double-click on the block and set the parameters as shown in [figure_title](#slider_properties).
+- Add a *WX GUI Slider* (from the *GUI Widgets->WX* category) to the flow graph. Double-click on the block and set the parameters as shown.
+
+    ![Figure 1.17](./figures/slider_properties.png)<br>
+    __*Figure 1.17: GUI slider properties dialog.*__
 
 - The ID box is the name of the variable that will be used to assign control. The Label box is optional. If filled, it will be used as a label for the controller in the output display.
 
@@ -34,13 +40,19 @@ permalink: /lab1/tutorial2
 
 ## Working with Text Boxes
 
-- Add a *WX GUI Text Box* to the flow graph (*GUI Widgets->WX* category). Set the parameters as shown in [figure_title](#textbox_properties).
+- Add a *WX GUI Text Box* to the flow graph (*GUI Widgets->WX* category). Set the parameters shown below.
+
+    ![Figure 1.18](./figures/textbox_properties.png)<br>
+    __*Figure 1.18: GUI textbox properties dialog.*__
 
 - Double-click on the bottom Signal Source and replace the Amplitude (0.5) with the variable, level2. Execute the flow graph. Note that a text box will now appear in the display. The default value of 0.5 will be entered. Change the value to 0.1 followed by Enter. The volume of the 800 Hz tone will decrease and this will be reflected on the spectrum plot. Do not vary the level above 1.0.
 
 ## Working with Choosers
 
-- Add a *WX GUI Chooser* block to the flow graph. This block will add either a drop down menu, radio buttons or a button. Input the parameters as shown in [figure_title](#chooser_properties).
+- Add a *WX GUI Chooser* block to the flow graph. This block will add either a drop down menu, radio buttons or a button. Input the below parameters.
+
+    ![Figure 1.19](./figures/chooser_properties.png)<br>
+    __*Figure 1.19: GUI chooser properties dialog.*__
 
 - Change the Frequency of the top Signal Source (1 kHz) to freq1. Execute the flow graph and change the frequency of the top Signal Source using the radio buttons. Experiment with the Drop Down menu and the Button to see how they work.
 

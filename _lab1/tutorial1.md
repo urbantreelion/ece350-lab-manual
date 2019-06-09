@@ -17,26 +17,35 @@ permalink: /lab1/tutorial1
 
 ## Launching GNU Radio Companion
 
-Launch GNU Radio companion by selecting Applications->Programming->GRC
-as shown in [figure_title](#GRC_Location).
+Launch GNU Radio companion by selecting Applications->Programming->GRC.
 
-An untitled GRC window similar to [figure_title](#blank_flowgraph)
-should open.
+ ![Figure 1.1](./figures/GRC_Location.png)<br>
+ __*Figure 1.1: Finding Gnu Radio Companion on CentOS.*__
+
+
+An untitled GRC window should open.
+
+ ![Figure 1.2](./figures/blank_flowgraph.png)<br>
+ __*Figure 1.2: Blank Gnu Radio Companion flowgraph.*__
 
 ## Configuring the Flowgraph
 
 The *Options* block sets some general parameters for the flow graph.
 Double-click on the *Options* block. You should now see a properties
-dialog similar to [figure_title](#options_properties).
+dialog.
+
+ ![Figure 1.3](./figures/options_properties.png)<br>
+ __*Figure 1.3: Options block properties dialog.*__
+
+Adjust the parameters for this tutorial:
 
 - Leave the ID as "top_block".
 
 - Enter "Tutorial 1" as the title.
 
-- Enter your name as the Author.
+- Enter your name as the author.
 
-- Set Generate Options to WX GUI.
- Note: This setting controls the way that GUIs are generated for flow graph output. Many of the output plots used in these labs will not be available if this option is set to the default QT GUI
+- Set Generate Options to QT GUI.
 
 - Set Run to Autostart, and Realtime Scheduling to Off.
 
@@ -60,18 +69,32 @@ such as *filter* and *source* to see what comes up.
 
 - Open the *Waveform Generators* category and double-click on the [Signal Source](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s02s01.html). Note that a *Signal Source* block will now appear in the main window.
 
-- Double-click on the *Signal Source* block and the properties dialog will open. Adjust the settings to match those as shown in [figure_title](#signal_source_properties) and close the dialog.
- This *Signal Source* is now set to output a real-valued 1 kHz sinusoid with a peak amplitude of 0.5.
+- Double-click on the *Signal Source* block and the properties dialog will open. Adjust the settings to match those as shown and close the dialog. This *Signal Source* is now set to output a real-valued 1 kHz sinusoid with a peak amplitude of 0.5.
+
+  ![Figure 1.4](./figures/signal_source_properties.png)<br>
+ __*Figure 1.4: Signal source properties.*__
 
 - In the flowgraph, the *Signal Source* block will have an orange output tab, representing a float (real) data type. If the block settings is chosen as complex instead of float, then the output tab will be blue. In order to view this wave we need one of the graphical sinks. Expand the *Instrumentation* category and then the *WX* subcategory.
 
-- Double-click on the *WX GUI Scope Sink*. It should appear in the main window. Double-click on the block and change the *Type* to *Float*. Leave the other Parameters at their default values as shown in [figure_title](#scope_sink_properties). Click *OK* to close the properties dialog.
+- Double-click on the *WX GUI Scope Sink*. It should appear in the main window. Double-click on the block and change the *Type* to *Float*. Leave the other Parameters at their default values as shown. Click *OK* to close the properties dialog.
 
-- In order to connect these two blocks, click once on the *out* port of the *Signal Source*, and then once on the *in* port of the *Scope Sink*. The flow graph in [figure_title](#signal_source_scope_sink_only) should be displayed.
+    ![Figure 1.5](./figures/scope_sink_properties.png)<br>
+    __*Figure 1.5: Scope sink properties.*__
 
-- The problem with this flowgraph is that although the sample rate is set to 32000, there is no block which enforces this sample rate. Therefore, the flowgraph will consume as much of the computer's resources as it possibly can which can cause the GRC software to lock up. To fix this problem, disconnect the *Signal Source* from the *WX GUI Scope Sink* by clicking on the arrow and pressing the Delete key. Expand the *Misc* category and double-click on the [Throttle](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s03s07.html). Connect this block between the *Signal Source* and the *WX GUI Scope Sink* as shown in [figure_title](#scope_source_scope_sink) (click once on the out port of one block and the in port of the next block).
 
-- Note that the input and output arrowheads will change to red. This indicates a problem with the flowgraph, in this case, the data types do not match. To fix the problem, double-click the *Throttle* and change the *Type* to *Float*.
+- In order to connect these two blocks, click once on the *out* port of the *Signal Source*, and then once on the *in* port of the *Scope Sink*. The below flowgraph should be displayed.
+
+    ![Figure 1.6](./figures/signal_source_scope_sink_only.png)<br>
+    __*Figure 1.6: Scope sink flowgraph.*__
+
+
+- The problem with this flowgraph is that although the sample rate is set to 32000, there is no block which enforces this sample rate. Therefore, the flowgraph will consume as much of the computer's resources as it possibly can which can cause the GRC software to lock up. To fix this problem, disconnect the *Signal Source* from the *WX GUI Scope Sink* by clicking on the arrow and pressing the Delete key. Expand the *Misc* category and double-click on the [Throttle](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s03s07.html). Connect this block between the *Signal Source* and the *WX GUI Scope Sink* (click once on the out port of one block and the in port of the next block).
+
+    > Note: The input and output arrowheads will change to red. This indicates a problem with the flowgraph, in this case, the data types do not match. To fix the problem, double-click the *Throttle* and change the *Type* to *Float*.
+
+    ![Figure 1.7](./figures/signal_source_scope_sink.png)<br>
+    __*Figure 1.7: Scope sink flowgraph with a throttle block.*__
+
 
 ## Executing the Flowgraph
 
@@ -86,7 +109,10 @@ the flowgraph and then execute it.
 
 ## Working with the Scope Sink
 
-- Change the *Channel Options / Marker* setting to *Dot Large*. As shown in [figure_title](#scope_sink_dot_large), you can now see the actual sample values. Recall that the *Variable* block set the sampling rate to 32000 samples/second or 32 samples/ms. Note that there are in fact 32 samples within one cycle of the wave.
+- Change the *Channel Options / Marker* setting to *Dot Large*. As shown, you can now see the actual sample values. Recall that the *Variable* block set the sampling rate to 32000 samples/second or 32 samples/ms. Note that there are in fact 32 samples within one cycle of the wave.
+
+    ![Figure 1.8](./figures/scope_sink_dot_large.png)<br>
+    __*Figure 1.8: Sample values shown on the scope.*__
 
 - Close the scope and reduce the sample rate to 10000 by double-clicking on the *Variable* block and entering 10e3 in the *Value* box. Note that you can use this exponential notation anywhere that GNURadio requires a number.
 
@@ -98,7 +124,7 @@ the flowgraph and then execute it.
 
 - Close the scope and change the sample rate back to 32000. Add a *WX GUI FFT Sink* (under *Instrumentation->WX*) to your window. Change the Type to Float and leave the remaining parameters at their default values.
 
-- Connect this to the output of the *Signal Source* by clicking on the *out* port of the *Throttle* and then the *in* port of the *WX GUI FFT Sink*. Generate and execute the flow graph. You should observe the scope as before along with an FFT plot correctly showing the frequency of the input at 1KHz. Close the output windows.
+- Connect this to the output of the *Signal Source* by clicking on the *out* port of the *Throttle* and then the *in* port of the *WX GUI FFT Sink*. Generate and execute the flow graph. You should observe the scope as before along with an FFT plot correctly showing the frequency of the input at 1 kHz. Close the output windows.
 
 - Explore other graphical sinks (*WX GUI Number Sink*, *WX GUI Waterfall Sink*, and *WX GUI Histo Sink*) to see how they display the *Signal Source*
   - The number sink is typically used to monitor slowly-changing signals such as the RMS input level. In this example, the sine wave changes too fast for the numbers to keep up.
@@ -109,6 +135,9 @@ the flowgraph and then execute it.
 
 - Create the flow graph shown in [figure_title](#signal_source_fft_sink_audio_sink).
 
+    ![Figure 1.9](./figures/signal_source_fft_sink_audio_sink.png)<br>
+    __*Figure 1.9: Audio flow graph.*__
+
 - The *Audio Sink* is found in the *Audio* category. The [Audio Sink](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s05s03.html) block directs the signal to the audio card of your computer. Note that the sample rate is set to 48000, a sample rate that is usually, but not always supported by computer audio hardware. 44100 is supported by every sound card. Other commonly-supported rates are 8000, 11025 and 22050. Some audio hardware may support higher rates such as 88200 and 96000. Also note that there is no *Throttle* block. This is because the audio hardware enforces the desired sample rate by only accepting samples at this rate.
   
     > It is worth noting that sample rates, especially related to audio output are a common source of frustration in these labs so it is worth spending some time to ensure the concepts are understood here. More information about how GNU Radio communicates with the computer's audio hardware can be found [here](http://gnuradio.org/redmine/projects/gnuradio/wiki/ALSAPulseAudio#Solution)
@@ -117,22 +146,32 @@ the flowgraph and then execute it.
 
 ## Math Operations
 
-- Construct the flow graph in [figure_title](#add_sinusoids). Set the sample rate to 32000. The two Signal Sources should have frequencies of 1000 and 800, respectively. The [Add](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s08s01.html) block is found in the *Math Operators* category.
+- Construct the below flow graph. Set the sample rate to 32000. The two Signal Sources should have frequencies of 1000 and 800, respectively. The [Add](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s08s01.html) block is found in the *Math Operators* category.
+
+    ![Figure 1.10](./figures/add_sinusoids.png)<br>
+    __*Figure 1.10: Flow graph to add sinusoidal inputs.*__
 
 - Generate and execute the flow graph. On the Scope plot you should observe a waveform corresponding to the sum of two sinusoids. On the FFT plot you should see components at both 800 and 1000 Hz. Unfortunately, the FFT plot does not provide enough resolution to clearly see the two distinct components. Note that the maximum frequency displayed on this plot is 16 kHz. This is one-half of the 32 kHz sample rate. In order to obtain better resolution, we can lower the sample rate. Try lowering the sample rate to 10 kHz. Recall that for an FFT, the frequency resolution *f0=fs/N* where *fs* is the sample rate and *N* is the FFT block size. Thus for fixed value of *N*, *f0* goes down as *fs* goes down.
 
 - Replace the *Add* block with a [Multiply](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s08s04.html) block. What output do you expect from the product of two sinusoids? Confirm your result on the Scope and FFT displays.
 
-- Take note of the other math operations under the *Math Operators* category and experiment with a few to see if the result is as expected.
+    > Note: The other math operations under the *Math Operators* category and experiment with a few to see if the result is as expected.
 
 ## Filters
 
-- Modify the flow graph to include a [Low Pass Filter](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s12s01.html) block as shown in [figure_title](#lowpass_filter). This block is found in the *Filters* category and is the first Low Pass Filter listed.
+- Modify the flow graph to include a [Low Pass Filter](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s12s01.html) block as shown. This block is found in the *Filters* category and is the first Low Pass Filter listed.
 
-- Recall that the Multiply block outputs a 200 Hz and a 1.8 kHz sinusoid. We want to create a filter that will pass the 200 Hz and block the 1.8 kHz component. This can be done with a low pass filter, whose frequency response is shown in [figure_title](#transition_band). Double-click the block to open the properties dialog. Set the low pass filter to have a cutoff frequency of 1 kHz and a transition width of 200 Hz.
+    ![Figure 1.11](./figures/lowpass_filter.png)<br>
+    __*Figure 1.11: Flow graph to filter out one of two input sources.*__
+
+
+- Recall that the Multiply block outputs a 200 Hz and a 1.8 kHz sinusoid. We want to create a filter that will pass the 200 Hz and block the 1.8 kHz component. This can be done with a low pass filter, whose frequency response is shown below. Double-click the block to open the properties dialog. Set the low pass filter to have a cutoff frequency of 1 kHz and a transition width of 200 Hz.
  Select the *FIR Type* to be *Float->Float (Decimating)*.
 
-- Generate and execute the flow graph. You should observe that only the 200 Hz component passes through the filter and the 1.8 KHz component is attenuated. How many dB down is the 1.8. KHz wave compared to the 200 Hz wave? Experiment with the High Pass Filter.
+    ![Figure 1.12](./figures/transition_band.gif)<br>
+    __*Figure 1.12: Sample values shown on the scope.*__
+
+- Generate and execute the flow graph. You should observe that only the 200 Hz component passes through the filter and the 1.8 kHz component is attenuated. How many dB down is the 1.8. kHz wave compared to the 200 Hz wave? Experiment with the High Pass Filter.
 
 - Using the same flow graph, change the sample rate variable to 20000. Change the Decimation in the Low Pass Filter to 2. Decimation decreases the number of samples that are processed. A decimation factor of two means that the output of the filter will have a sample rate equal to one-half of the input sample rate, or in this case only 10000 samples/sec. This is a sufficient sample rate for the frequencies that we are dealing with. Generate and execute the flow graph. What frequency do you observe on the FFT? Measure it precisely by letting the cursor hover over the peak of the observed component.,
 
@@ -142,9 +181,19 @@ the flowgraph and then execute it.
 
 - Open a file browser by going to Places->Home Folder as shown in [figure_title](#home_folder).
 
+    ![Figure 1.13](./figures/home_folder.png)<br>
+    __*Figure 1.13: Accessing home folder on CentOS.*__
+
 - Browse to the directory that contains the GRC file that you have been working on. If you are unsure as to where this is, the path to this file is shown in the bottom portion of the GRC window. In addition to saving a ".grc" file with your flow graph, note that there is also a file titled "top_block.py", as shown in [figure_title](#python_code). This is the Python file that is generated by GRC. It is this file that is being run when you execute the flow graph.
 
-- Double-click on this file. You will be given the option to Run or Display this file (see [figure_title](#python_code_run)).
+    ![Figure 1.14](./figures/python_code.png)<br>
+    __*Figure 1.14: Flow graph executable file.*__
+
+- Double-click on this file. You will be given the option to Run or Display this file.
+
+    ![Figure 1.15](./figures/python_code_run.png)<br>
+    __*Figure 1.15: Dialog to execute or view Gnu Radio Companion flow graph,*__
+
 
 - Select Display. You can modify this file and run it from the terminal window. This allows you to use features that are not included in GRC. Keep in mind that every time you run your flow graph in GRC, it will overwrite the Python script that is generated. So, if you make changes directly in the Python script that you want to keep, save it under another name.
 

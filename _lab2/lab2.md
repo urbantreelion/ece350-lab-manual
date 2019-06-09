@@ -12,7 +12,10 @@ For detailed information on the usage of the USRP, you can find the data sheet a
 
 [USRP N210](https://www.ettus.com/product/details/UN210-KIT)
 
-Refer to the block diagram in [figure_title](#USRP) to understand the receive path of the USRP as it is set up in the lab. The USRPs in the lab have the WBX daughtercard installed which feature a programmable attenuator, programmable local oscillator and analog I/Q mixer. The WBX daughterboard is an analog front end for the GNU Radio software. It consists of a local oscillator implemented as a wideband frequency synthesizer, thus allowing the USRP to receive signals in the range from 50 MHz to 2.2 GHz. The WBX Daughterboard performs complex downconversion of a 100 MHz slice of spectrum in the 50-2200 MHz range down to -50 to +50 MHz range for processing by the USRP motherboard.
+Refer to the below block diagram to understand the receive path of the USRP as it is set up in the lab. The USRPs in the lab have the WBX daughtercard installed which feature a programmable attenuator, programmable local oscillator and analog I/Q mixer. The WBX daughterboard is an analog front end for the GNU Radio software. It consists of a local oscillator implemented as a wideband frequency synthesizer, thus allowing the USRP to receive signals in the range from 50 MHz to 2.2 GHz. The WBX Daughterboard performs complex downconversion of a 100 MHz slice of spectrum in the 50-2200 MHz range down to -50 to +50 MHz range for processing by the USRP motherboard.
+
+![Figure 2.1](./figures/USRP.png)<br>
+__*Figure 2.1: USRP block diagram.*__
 
 The main function of the USRP motherboard board is to act as a [Digital Downconverter (DDC)](http://en.wikipedia.org/wiki/Digital_down_converter). The motherboard implements a digital I/Q mixer, sample rate converter and lowpass filter. The samples are then sent to the host PC over a gigabit ethernet link.
 
@@ -20,27 +23,20 @@ We will first learn about FM waveform generation and reception in software simul
 
 ## Deliverables
 
-FM flowgraphs
+1. FM flowgraphs
+    - GRC files of FM transmitter and receiver showing FM transmitted waveforms, spectra and FM receiver output.
 
-- GRC files of FM transmitter and receiver showing FM transmitted waveforms, spectra and FM receiver output.
+2. USRP with FM
+    - Observations on practical FM receiver operation using live off-air signals
+    - bit rate of FSK signal at 142.17 MHz
+    - Estimate of URSP receiver dynamic range with FM signals
 
-USRP with FM
+3. USRP with general IQ signals
 
-- Observations on practical FM receiver operation using live off-air signals
-
-- bit rate of FSK signal at 142.17 MHz
-
-- Estimate of URSP receiver dynamic range with FM signals
-
-USRP with general IQ signals
-
-- Estimate of the USRP receiver noise figure.
-
-- IQ receiver measured frequency offset
-
-- Observations of I and Q at different signal levels and effect of dynamic range
-
-- USRP spectrum, minimum and maximum output power
+    - Estimate of the USRP receiver noise figure.
+    - IQ receiver measured frequency offset
+    - Observations of I and Q at different signal levels and effect of dynamic range
+    - USRP spectrum, minimum and maximum output power
 
 ## Setup
 
@@ -53,6 +49,9 @@ antenna on the ELW roof. The Tx output can be connected to the
 oscilloscope and spectrum analyzer.
 
 - Verify that the USRP at your station is connected as shown in [figure_title](#usrp_connect).
+
+  ![Figure 2.2](./figures/usrp_connect.png)<br>
+  __*Figure 2.2: USRP front panel.*__
 
 ## FM Signal waveforms
 
@@ -69,8 +68,8 @@ will learn:
 
 ### FM flowgraphs
 
-In this section we build flowgraphs to transmit and receive FM signals
-that are simulation-only and do not (yet) use the USRP.
+In this first section we build flowgraphs to transmit and receive FM signals
+that are simulation-only and do not (yet) use the USRP (that will come later in this lab!).
 
 - Review the theory on [section 5 FM Signals](data/35015-PSK-FSK-12.pdf)
 
@@ -80,7 +79,7 @@ that are simulation-only and do not (yet) use the USRP.
 
 - Carry out the steps in the [FM Tutorial](data/FM_procedures.pdf)
 
-- Start GRC as was done in the previous tutorials. If GRC is already open, open the .grc files by selecting File->Open, or clicking on the Open logo, ![grc-open-icon](images/open_logo.png)
+- Start GRC as was done in Lab 1.
 
 ## FM Receivers
 
@@ -89,7 +88,7 @@ that are simulation-only and do not (yet) use the USRP.
 In this section, we consider a practical FM receiver that can receive
 real off-air FM signals using the USRP.
 
-- Open the GRC patch [wfm_rx.grc](data/wfm_rx.grc).
+- Open [this GRC flowgraph](data/wfm_rx.grc).
 
 - Observe the flowgraph comprising various blocks and interconnections, as well as predefined variable blocks not connected to anything.
   - Blocks with blue connection points signify complex signals (I and Q), and orange connection points signify real floating point signals.
@@ -100,9 +99,9 @@ real off-air FM signals using the USRP.
   - What new blocks are added and what is their function?
   - Which blocks are identical or perform similar functions?
 
-- Execute the flowgraph by first clicking the Generate button followed by the Execute button. The screen shows an FM receiver with a spectrum analyzer display and several sliders. The radio is tuned to 98.1 MHz (an FM station in Seattle), the RF gain is set to 7 and the AF gain is set to 300m. The radio can be tuned using the sliders or the keyboard arrow keys.
+- Execute the flowgraph by first clicking the Generate button followed by the Execute button. The screen shows an FM receiver with a spectrum analyzer display and several sliders. The radio is tuned to 98.1 MHz (an FM station in Seattle), the RF gain is set to 7 and the AF gain is set to 300 m. The radio can be tuned using the sliders or the keyboard arrow keys.
 
-- Notice the noise level is around ‐100 dBm and the signal peak level is 20‐40 dB higher than that. Notice the spectrum analyzer covers a bandwidth of 250 KHz corresponding to the half the sampling rate set for the USRP source block in the flowgraph.
+- Notice the noise level is around ‐100 dBm and the signal peak level is 20‐40 dB higher than that. Notice the spectrum analyzer covers a bandwidth of 250 kHz corresponding to the half the sampling rate set for the USRP source block in the flowgraph.
 
 ### FM data receiver
 
@@ -110,9 +109,12 @@ real off-air FM signals using the USRP.
 
 - Use the USRP to tune to the 2-level FSK signal at 142.17 MHz. This signal is the control channel for the [CREST public safety radio system](http://www.crest.ca/).
 
-- Observe the demodulator output on the scope. The filter bandwidth and decimation rate may require adjustment, since the bandwidth of this CREST signal is about 25 KHz compared to 200 KHz for FM broadcast signals.
+- Observe the demodulator output on the scope. The filter bandwidth and decimation rate may require adjustment, since the bandwidth of this CREST signal is about 25 kHz compared to 200 KHz for FM broadcast signals.
 
-- Check the persistence box on the scope and reduce the alpha to minimum. You will observe a so-called [eye diagram](http://en.wikipedia.org/wiki/Eye_pattern) of the data, as shown in [figure_title](#eye_diagram). The eye diagram shows the number of milliseconds per bit. Find the bit rate (the number of bits per second).
+- Check the persistence box on the scope and reduce the alpha to minimum. You will observe a so-called [eye diagram](http://en.wikipedia.org/wiki/Eye_pattern) of the data, as shown below. The eye diagram shows the number of milliseconds per bit. Find the bit rate (the number of bits per second).
+
+  ![Figure 2.3](./figures/eye_diagram.png)<br>
+  __*Figure 2.3: Eye diagram of the data shown in a Gnu Radio Companion scope sink.*__
 
 ### Dynamic Range with FM
 
@@ -120,9 +122,9 @@ real off-air FM signals using the USRP.
 
 - Retune the USRP to the FM broadcast station at 98.1 MHz.
 
-- Increase the RF gain from 7dB to 20dB or more.
+- Increase the RF gain from 7 dB to 20 dB or more.
   - Notice that the signal level increases and then suddenly both noise and signal jump up and the audio changes to a different program. What is happening is that a strong signal somewhere within the 40 MHz bandwidth of the USRP's receiver is clipping the 14 bit A/D converter in the USRP. The 14 bit A/D converter has a dynamic range of about 84 dB (14 bits times 6 dB per bit), so a signal above about ‐100 dBm + 84 dB = ‐16 dBm will clip the converter. With the RF gain set to around 20 dB, the receiver becomes non‐linear and the audio from the strong signal is cross‐modulating on top of the signal at 98.1 MHz.
-  - Cross‐modulation can be shown to occur by modelling the non‐linear receiver as having the output: ![cross-mod-eqn](images/eqn_cross_modulation.png) (ignore higher order terms), where s(t) is the sum of the strong and the weak signal.
+  - Cross‐modulation can be shown to occur by modelling the non‐linear receiver as having the output: ![cross-mod-eqn](figures/eqn_cross_modulation.png) (ignore higher order terms), where s(t) is the sum of the strong and the weak signal.
   - Reduce the RF gain and notice that the original signal is restored. Next, we will look for this strong signal.
 
 - Tune the FM receiver to 101.9 MHz (the local UVic radio station CFUV). Notice that the signal level is much higher (close to ‐30 dBm). Now increase the RF gain to at least 20 dB and observe the signal level can be increased to above ‐16 dBm, however, the audio is not changed. This signal at 101.9 MHz was causing the clipping.
@@ -187,18 +189,13 @@ real off-air FM signals using the USRP.
 
 ## Carrier Wave Transmitter
 
-In this section, we test the transmit functions of the USRP that we can
-use later when building a communications system. We will observe the
-transmitted spectrum, minimum and maximum power level in dBm (dB
-relative to one milliwatt). You will use both the osciloscope and the
-spectrum analyzer at your bench to view and measure the output from the
-USRP transmitter.
+In this section, we test the transmit functions of the USRP that we can use later when building a communications system. We will observe the transmitted spectrum, minimum and maximum power level in dBm (dB relative to one milliwatt). You will use both the osciloscope and the spectrum analyzer at your bench to view and measure the output from the USRP transmitter.
 
-- Review the theory on [section 1.4 Spectrum Analyzers](./data/35015-PSK-FSK-12.pdf). For more detailed information, you may also wish to review [Spectrum Analyzer Basics](./data/5965-7920E.pdf) and [The Basics of Spectrum Analyzers](./data/spec_analyzer.pdf). The concepts presented here will be applicable to any spectrum analyzer you may use in your career.
+- Review the theory in [section 1.4 Spectrum Analyzers](./data/35015-PSK-FSK-12.pdf). For more detailed information, you may also wish to review [Spectrum Analyzer Basics](./data/5965-7920E.pdf) and [The Basics of Spectrum Analyzers](./data/spec_analyzer.pdf). The concepts presented here will be applicable to any spectrum analyzer you may use in your career.
 
-- Open the GRC patch [tx_carrier.grc](data/tx_carrier.grc).
+- Open [this GRC file](data/tx_carrier.grc).
 
-- Observe that the USRP sink center frequency is set to 50MHz. This block represents the USRP transmitter hardware.
+- Observe that the USRP sink center frequency is set to 50 MHz. This block represents the USRP transmitter hardware.
 
 - Observe that the sine and cosine signal sources are configured for 10 kHz.
 
@@ -209,6 +206,7 @@ USRP transmitter.
 - What do you observe on the spectrum analyzer display with Q(t) = 0? Try the other two options for Q(t). What do you observe on the spectrum analyzer?
 
 - What is the minimum and maximum signal power output from the USRP? The USRP output power level can be set via the dialog box obtained by double‐clicking on the USRP sink in the flowgraph. Measure the power using both the oscilloscope and spectrum analyzer and verify they are the same.
+
   >Note: Recall from your circuit theory that the output power is relative to the load impedance. On the spectrum analyzer, the input is 50Ω, which matches the expected impedance of a typical antenna. The input to the scope on the other hand is high impedance, effectively open circuit, to prevent damage to the internal circuits. To compare measurement on the scope to that of the spectrum analyzer, the line from the USRP transmitter should be terminated with a 50Ω terminator. Alternatively, some circuit theory can be applied to determine the equivalent power output measured across an open circuit and a 50Ω load.
 
 [**Continue to Lab 3**](../_lab3/lab3.md)

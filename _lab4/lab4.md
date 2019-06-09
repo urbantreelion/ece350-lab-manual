@@ -18,12 +18,9 @@ permalink: /lab4/
 
 ## Testing a PSK system
 
-In this section, we modify a complete PSK transmitter-receiver system
-assuming a perfect channel and perfect synchronization (timing).
+In this section, we modify a complete PSK transmitter-receiver system assuming a perfect channel and perfect synchronization (timing).
 
-Start by reviewing the theory in the text chapters 6 (pulse shaping) and
-7 (PSK) and the GRC patches therein. The following GRC patches
-(flowgraphs) will help you understand how BPSK and QPSK are generated:
+Start by reviewing the theory in the text chapters 6 (pulse shaping) and 7 (PSK) and the GRC patches therein. The following GRC patches (flowgraphs) will help you understand how BPSK and QPSK are generated:
 
 - Real BPSK: [bpsk_txrx_real.grc](./data/bpsk_txrx_real.grc)
 
@@ -33,10 +30,9 @@ Start by reviewing the theory in the text chapters 6 (pulse shaping) and
 
 - Complex QPSK: [qpsk_txrx_complex.grc](./data/qpsk_txrx_complex.grc)
 
-Observe that for each of these 4 flowgraphs, the signal source is a square wave (not an impulse train) representing a 1010... data pattern represented at the given sample rate. What is the bit rate and the symbol rate in each case? How many samples per symbol? Observe how the signal constellation rotates when the frequency offset is not equal to zero.
+Observe that for each of these 4 flowgraphs, the signal source is a square wave (not an impulse train) representing a `1010...` data pattern represented at the given sample rate. What is the bit rate and the symbol rate in each case? How many samples per symbol? Observe how the signal constellation rotates when the frequency offset is not equal to zero.
 
-We now modify the Complex BPSK flowgraph to use a random data pattern
-and a non-square pulse shape.
+We now modify the Complex BPSK flowgraph to use a random data pattern and a non-square pulse shape.
 
 - Replace the signal source with a random data pattern generated using a generalized linear feedback shift register (*GLFSR source*).
 
