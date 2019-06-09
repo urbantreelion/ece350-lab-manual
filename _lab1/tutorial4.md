@@ -38,7 +38,7 @@ permalink: /lab1/tutorial4
 
 - The [Hilbert](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s12s06.html) block is found in the *Filters* category. This block outputs both the real input signal and the Hilbert transform of the input signal as a complex signal. Leave the number of taps at its default setting of 64. Since the output of this block is complex, the second *Scope Sink* must be set to accept complex inputs.
 
-- Execute the flow graph. Two scope plots should open. One should contain the square wave output from the *Signal Source* only. The other should include both the original square wave and its Hilbert Transform. Do you understand why the Hilbert transform of a square wave looks this way?
+- Execute the flow graph. Two scope plots should open. One should contain the square wave output from the *Signal Source* only. The other should include both the original square wave and its Hilbert Transform. **Do you understand why the Hilbert transform of a square wave looks this way?**
 
 - As shown in the above figure, the *Signal Source* can be set to output a complex signal and display both the I and Q components. Modify the flow graph as shown below.
 
@@ -47,7 +47,7 @@ permalink: /lab1/tutorial4
 
 - Set the *Signal Source* to output a complex waveform. Make sure the *Throttle* and *Scope Sink* are also set to complex.
 
-- Execute the flow graph. Is the complex waveform displayed here the same as the one obtained from the Hilbert transform? Your answer should be NO. This is incorrect. GRC is NOT displaying the correct Q component of a complex square wave. The Hilbert transform did output the proper waveform.
+- Execute the flow graph. **Is the complex waveform displayed here the same as the one obtained from the Hilbert transform?** Your answer should be NO. This is incorrect. GRC is NOT displaying the correct Q component of a complex square wave. The Hilbert transform did output the proper waveform.
 
 ### Complex Multiplication
 
@@ -58,7 +58,7 @@ permalink: /lab1/tutorial4
 
 - Execute the flow graph and confirm this result. Note that the FFT plot only shows the positive frequency spectrum when it is set to Type: Float. We know that for real inputs the negative frequency components are the same as positive frequency components.
 
-- Change ALL of the blocks to Type: Complex and execute the flow graph again. You should now observe a single output at 11 kHz. This is the original 10 kHz signal shifted by the 1 kHz signal. If we want to shift in the negative direction a frequency of -1000 can be used. Try this. From this example we see two of the primary advantages of using analytic signals. A signal can be shifted (sum) without creating an additional difference signal. Also, note that there are NO negative frequency components. Why is this?
+- Change ALL of the blocks to Type: Complex and execute the flow graph again. You should now observe a single output at 11 kHz. This is the original 10 kHz signal shifted by the 1 kHz signal. If we want to shift in the negative direction a frequency of -1000 can be used. Try this. From this example we see two of the primary advantages of using analytic signals. A signal can be shifted (sum) without creating an additional difference signal. Also, note that there are NO negative frequency components. **Why is this?**
 
 ## Single Sideband (SSB) Signals
 
@@ -99,7 +99,7 @@ operations.
 
 - Insert [Frequency Xlating FIR Filter](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s12s08.html) block between the *File Source* and the *Throttle*.
 
-- Complete the properties window as shown in [figure_title](#tutorial4_freq_xlating_properties). The center frequency of 51500 will shift the entire spectrum down by 51500 Hz.
+- Complete the properties window as shown below. The center frequency of 51500 will shift the entire spectrum down by 51500 Hz.
   > Note: The function indicated in the *Taps* parameter generates the taps for a low pass filter with a gain of 1 (in the pass band), a sampling rate equal to samp_rate (256 kHz), a cutoff frequency of 2 kHz and a transition width of 100 Hz.
 
   ![Figure 1.37](./figures/tutorial4_freq_xlating_properties.png)<br>
@@ -107,7 +107,7 @@ operations.
 
 - Execute the flow graph. You will see that your signal has now moved down to the origin and is the only signal present.
 
-- Now that we have located the signal of interest, there is no reason that we need to be concerned with so much of the adjacent spectrum. We can reduce the range of frequencies that are being processed by reducing the sample rate (decimation). Re-open the *Frequency Xlating FIR Filter* block and change the *Decimation* parameter to 8. This will reduce the sample rate to 256000/8 = 32000. Change the sample rate of the *Throttle* and *FFT Sink* to this new rate. What frequency range to you expect the FFT to display now?
+- Now that we have located the signal of interest, there is no reason that we need to be concerned with so much of the adjacent spectrum. We can reduce the range of frequencies that are being processed by reducing the sample rate (decimation). Re-open the *Frequency Xlating FIR Filter* block and change the *Decimation* parameter to 8. This will reduce the sample rate to 256000/8 = 32000. Change the sample rate of the *Throttle* and *FFT Sink* to this new rate. **What frequency range to you expect the FFT to display now?**
 
 - Execute the flow graph again to see if you are correct. You should now observe an expanded version of your signal. Select *Autoscale* on the FFT Plot so that the peaks of the signal are observed. Notice that after a while, the signal level will be reduced for a few seconds. That occurs when the station stops transmitting.
 
@@ -184,7 +184,7 @@ signal and output its real (re) and imaginary (im) parts separately.
 
 - A data file taken using a software receiver with a wire antenna about 6 meters above the ground is found [here](./data/SDRSharp_20130919_004154Z_14053kHz_IQ.wav).
   - Change the Wav File Source to read this file, and test your receiver using this file.
-  - The file contains mostly Morse code signals, no voice signals. Replace the fixed offset of 1500 Hz with a variable and control it with a WX GUI Slider. What happens when the slider is moved and why?
+  - The file contains mostly Morse code signals, no voice signals. Replace the fixed offset of 1500 Hz with a variable and control it with a WX GUI Slider. **What happens when the slider is moved and why?**
   - Replace the fixed bandwidth of the firdes module with a variable and control it with a Slider. For receiving Morse code signals, a bandwidth of 50-200 Hz is best.
 
 Save this flowgraph. You can modify it for use with the RTL-SDR receiver
