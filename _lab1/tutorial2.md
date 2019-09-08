@@ -2,19 +2,16 @@
 layout: labitem
 title: Tutorial 2
 permalink: /lab1/tutorial2
+firstHeading: Tutorial 2 - Variables and Controls
 ---
 
-# Tutorial 2 - Variables and Controls
+## Objectives
 
-> ## Objectives
->
-> This tutorial illustrates some of the features available in GNU Radio Companion when using WX GUI, such as sliders and other variable input options. It is valuable to keep in mind while working through this material that the visual flow graph is just a wrapper for the underlying python code, and that the choosers and sliders represent variables in the code.
->
-> In this tutorial you will learn how to:
->
->- add GUI controls such as sliders and radio buttons to your flowgraph.
->
->- use variables to connect controls to different flowgraph parameters.
+This tutorial illustrates some of the features available in GNU Radio Companion when using WX GUI, such as sliders and other variable input options. It is valuable to keep in mind while working through this material that the visual flow graph is just a wrapper for the underlying python code, and that the choosers and sliders represent variables in the code.
+
+In this tutorial you will learn how to:
+- add GUI controls such as sliders and radio buttons to your flowgraph.
+- use variables to connect controls to different flowgraph parameters.
 
 ## Working with Sliders
 

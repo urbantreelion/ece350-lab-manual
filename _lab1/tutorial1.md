@@ -2,18 +2,20 @@
 layout: labitem
 title: Tutorial 1
 permalink: /lab1/tutorial1
+firstHeading: Tutorial 1 - Using GNU Radio Companion
 ---
 
-# Tutorial 1 - Using GNU Radio Companion
+## Objectives
 
-> ## Objectives
->
-> GNU Radio Companion (GRC) is a graphical user interface that allows you to build GNU Radio flowgraphs. It is an excellent way to learn the basics of GNU Radio. This is the first in a series of tutorials that will introduce you to the use of GRC. In this tutorial you will learn how to:
->
->- launch the GNU Radio Companion (GRC) software.
->- create and execute a GRC flowgraph.
->- use basic blocks such as signal sources and graphical sinks.
->- use the computer's audio hardware with GRC.
+
+GNU Radio Companion (GRC) is a graphical user interface that allows you to build GNU Radio flowgraphs. It is an excellent way to learn the basics of GNU Radio. This is the first in a series of tutorials that will introduce you to the use of GRC.
+
+In this tutorial you will learn how to:
+
+- launch the GNU Radio Companion (GRC) software.
+- create and execute a GRC flowgraph.
+- use basic blocks such as signal sources and graphical sinks.
+- use the computer's audio hardware with GRC.
 
 ## Launching GNU Radio Companion
 

@@ -2,19 +2,16 @@
 layout: labitem
 title: Tutorial 4
 permalink: /lab1/tutorial4
+firstHeading: Tutorial 4 - Complex signals and Receiving SSB
 ---
 
-# Tutorial 4: Complex Signals and Receiving SSB
+## Objectives
 
->## Objectives
->
->This tutorial is a guide to receiving SSB signals. It will also illustrate some of the properties of complex (analytic) signals and show why we use them in communications systems. In this tutorial you will:
->
->- Use the discrete Hilbert transform to create a complex signal from a real signal.
->
->- Use a frequency-translating filter to perform filtering and tuning in one step.
->
->- Construct an SSB demodulator using Weaver's Method.
+This tutorial is a guide to receiving SSB signals. It will also illustrate some of the properties of complex (analytic) signals and show why we use them in communications systems. In this tutorial you will:
+
+- Use the discrete Hilbert transform to create a complex signal from a real signal.
+- Use a frequency-translating filter to perform filtering and tuning in one step.
+- Construct an SSB demodulator using Weaver's Method.
 
 ## Complex/Analytic Signals
 

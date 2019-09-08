@@ -2,23 +2,19 @@
 layout: labitem
 title: Tutorial 3
 permalink: /lab1/tutorial3
+firstHeading: Tutorial 3 - Understanding and receiving AM waveforms
 ---
-
-# Tutorial 3 - Understanding and receiving AM waveforms
 
 ## Part 3A: AM signal waveforms
 
-> ### Objectives (3A)
->
-> This tutorial is a guide to AM signal waveforms. In this tutorial you will learn:
->
->- Theory and equations of AM signals and the complex mixer
->
->- How to construct an AM transmitter flowgraph to generate an AM waveform with a sinusoidal message and observe the waveform and spectrum
->
->- Construction of AM transmitter flowgraphs with square wave and pseudo-random data messages
->
->- AM receivers are covered in the next Tutorial 3B
+### Objectives (3A)
+
+This tutorial is a guide to AM signal waveforms. In this tutorial you will learn:
+
+- Theory and equations of AM signals and the complex mixer
+- How to construct an AM transmitter flowgraph to generate an AM waveform with a sinusoidal message and observe the waveform and spectrum
+- Construction of AM transmitter flowgraphs with square wave and pseudo-random data messages
+- AM receivers are covered in the next Tutorial 3B
 
 ### AM flowgraphs
 
