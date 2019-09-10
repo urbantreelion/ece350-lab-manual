@@ -33,23 +33,20 @@ This tutorial is a guide to AM signal waveforms. In this tutorial you will learn
   - For an AM signal as written in the text section 2.1 page 35, what is the acceptable range of the parameter k_a so that the message can be recovered perfectly in the receiver?
   - Sketch the spectrum of an AM signal with a message signal that is the sum of two cosine waves. Repeat for a message signal that is the product of two cosine waves.
   - What is the cutoff frequency of the low pass filter used in a synchronous AM receiver (where the received signal is multiplied with the carrier waveform and lowpass filtered).
-  - Consider a signal with sampling rate of 256KHz. We use rational resampler block with decimation factor of 3 and interpolation factor of 4. What would be the new sampling rate of the signal?
+  - Consider a signal with sampling rate of 256 kHz. We use rational resampler block with decimation factor of 3 and interpolation factor of 4. What would be the new sampling rate of the signal?
 
 ## Part 3B: Receiving AM signals
 
->### Objectives (3B)
->
->This tutorial is a guide to building a practical AM receiver for receiving real AM signals. In section 2.5.2 you will learn how to demodulate an AM signal using only real signals. A data file with one AM signal, which was generated using the flowgraphs in section 3A, will be used.
->
->In section 2.5.2, a data file will be used that contains several seconds of recorded signals from the AM broadcast band. In this section you will learn how to:
->
->- use a pre-recorded file as the input to your flowgraph.
->
->- tune to a specific (desired) AM signal on a given carrier frequency.
->
->- filter out the undesired signals using other (different) carrier frequencies.
->
->- demodulate the desired AM signal using complex signals.
+### Objectives (3B)
+
+This tutorial is a guide to building a practical AM receiver for receiving real AM signals. In section 2.5.2 you will learn how to demodulate an AM signal using only real signals. A data file with one AM signal, which was generated using the flowgraphs in section 3A, will be used.
+
+In section 2.5.2, a data file will be used that contains several seconds of recorded signals from the AM broadcast band. In this section you will learn how to:
+
+- use a pre-recorded file as the input to your flowgraph
+- tune to a specific (desired) AM signal on a given carrier frequency
+- filter out the undesired signals using other (different) carrier frequencies
+- demodulate the desired AM signal using complex signals
 
 ### Real signals, basic AM receiver
 
