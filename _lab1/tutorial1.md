@@ -19,13 +19,12 @@ In this tutorial you will learn how to:
 
 ## Launching GNU Radio Companion
 
-Launch GNU Radio companion by selecting Applications->Programming->GRC.
+Launch GNU Radio companion by selecting the three little colored dots in the bottom left hand side of the screen and searching for "gnuradio".
 
  ![Figure 1.1](./figures/GRC_Location.png)<br>
  __*Figure 1.1: Finding Gnu Radio Companion on CentOS.*__
 
-
-An untitled GRC window should open.
+Double-click and an untitled GRC window should open.
 
  ![Figure 1.2](./figures/blank_flowgraph.png)<br>
  __*Figure 1.2: Blank Gnu Radio Companion flowgraph.*__
@@ -42,32 +41,19 @@ dialog.
 Adjust the parameters for this tutorial:
 
 - Leave the ID as "top_block".
-
 - Enter "Tutorial 1" as the title.
-
 - Enter your name as the author.
-
 - Set Generate Options to QT GUI.
-
 - Set Run to Autostart, and Realtime Scheduling to Off.
-
 - Click OK to close the properties dialog.
-
-- The other block in the flowgraph is a [variable](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s04s01.html) block that sets the sample rate. Click on this block to see the variable name and value. The variable block will be discussed later in the tutorial.
+  
+The other block in the flowgraph is a [variable](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s04s01.html) block that sets the sample rate. Click on this block to see the variable name and value. The variable block will be discussed later in the tutorial.
 
 ## Adding Blocks to the Flowgraph
 
-On the right side of the window is a list of the blocks that are
-available. By expanding any of the categories (click on triangle to the
-left) you can see the blocks available. Explore each of the categories
-so that you have an idea of what blocks are available.
+On the right side of the window is a list of the blocks that are available. By expanding any of the categories (click on triangle to the left) you can see the blocks available. Explore each of the categories so that you have an idea of what blocks are available.
 
-You can also click on the magnifying glass in the upper right side of
-the window and simply type a search term (e.g. *receiver*) to search all
-categories. A small text window will appear above the list of blocks in
-which your search term will be entered. This will filter the list
-leaving only blocks with *receiver* in their name. Try a few searches
-such as *filter* and *source* to see what comes up.
+You can also click on the magnifying glass (or binoculars, on some operating systems) in the upper right side of the window and simply type a search term (e.g. *receiver*) to search all categories. A small text window will appear above the list of blocks in which your search term will be entered. This will filter the list leaving only blocks with *receiver* in their name. Try a few searches such as *filter* and *source* to see what comes up.
 
 - Open the *Waveform Generators* category and double-click on the [Signal Source](https://wiki.gnuradio.org/index.php/Signal_Source). Note that a *Signal Source* block will now appear in the main window.
 
@@ -107,11 +93,11 @@ such as *filter* and *source* to see what comes up.
 In order to observe the operation of this simple system we must generate
 the flowgraph and then execute it.
 
-- Click first on the ![grc-generate-icon](figures/generate.png) icon (or press F5) to generate the flowgraph.
+- Click first on whichever of ![grc-generate-icon](figures/generate.png) or ![grc-generate-icon-2](figures/generate2.png) icons are available to you (or press F5) to generate the flowgraph.
 
 - If the flowgraph has not yet been saved, a file dialog will appear when you click this button. Name this file *tutorial1.grc* and save it to a folder on your home drive. The generation stage converts your flowgraph into executable Python code.
 
-- Click the ![grc-execute-icon](figures/execute.png) icon (or press F6) to execute the flowgraph. The execution stage runs the Python code that was generated in the previous step. A scope plot should open displaying several cycles of the sinusoid. Confirm that the frequency and amplitude match the value that you expect. What is the period of one cycle of the sine wave, and thus what is the frequency? Experiment with the controls on the scope plot.
+- Click whichever of ![grc-execute-icon](figures/execute.png) or ![grc-execute-icon-2](figures/execute2.png) icons are available to you (or press F6) to execute the flowgraph. The execution stage runs the Python code that was generated in the previous step. A scope plot should open displaying several cycles of the sinusoid. Confirm that the frequency and amplitude match the value that you expect. What is the period of one cycle of the sine wave, and thus what is the frequency? Experiment with the controls on the scope plot.
 
 ## Working with the Scope Sink
 
@@ -185,22 +171,19 @@ the flowgraph and then execute it.
 
 ## Running Generated Python Code
 
-- Open a file browser by going to Places->Home Folder as shown below.
+- Open a file browser by clicking on the three little dots in the bottom left of the screen as shown below, and selecting "File Manager".
 
     ![Figure 1.13](./figures/home_folder.png)<br>
     __*Figure 1.13: Accessing home folder on CentOS.*__
 
-- Browse to the directory that contains the GRC file that you have been working on. If you are unsure as to where this is, the path to this file is shown in the bottom portion of the GRC window. In addition to saving a ".grc" file with your flow graph, note that there is also a file titled "top_block.py", as shown below. This is the Python file that is generated by GRC. It is this file that is being run when you execute the flow graph.
+- Browse to the directory that contains the GRC file that you have been working on. If you are unsure as to where this is, the path to this file is shown in the bottom portion of the GRC window. In addition to saving a `.grc` file with your flow graph, note that there is also a file titled `top_block.py`, as shown below. This is the Python file that is generated by GRC. It is this file that is being run when you execute the flow graph.
 
     ![Figure 1.14](./figures/python_code.png)<br>
     __*Figure 1.14: Flow graph executable file.*__
 
-- Double-click on this file. You will be given the option to Run or Display this file.
+- Double-click on this file. It will execute the program contained in the flow graph. If you want to edit the flow graph, you can double-click on the `.grc` file and it will launch GNU Radio companion.
 
-    ![Figure 1.15](./figures/python_code_run.png)<br>
-    __*Figure 1.15: Dialog to execute or view Gnu Radio Companion flow graph,*__
-
-- Select Display. You can modify this file and run it from the terminal window. This allows you to use features that are not included in GRC. Keep in mind that every time you run your flow graph in GRC, it will overwrite the Python script that is generated. So, if you make changes directly in the Python script that you want to keep, save it under another name.
+- You can also directly modify `top_block.py` in your preferred editor and run it from a terminal window like any other python script. This allows you to use features that are not included in GRC. Keep in mind that every time you run your flow graph in GRC, it will overwrite the Python script that is generated. So, if you make changes directly in the Python script that you want to keep, save it under another name.
 
 - To learn more about writing flowgraphs directly in Python, see this [code example](https://wiki.gnuradio.org/index.php/TutorialsWritePythonApplications).
 
