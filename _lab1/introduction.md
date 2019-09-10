@@ -12,29 +12,21 @@ In addition to providing you with a great introduction to GNU Radio Companion, t
 As you work through the material, try to keep these following questions in mind:
 
 - What do the different colors of input and output terminals represent?
-
 - How is the computer's audio input/output hardware represented in GRC?
-  
 - What is the Throttle block for? When should it be used?
-  
 - How are block parameters linked to GUI controls?
-  
 - How is an AM signal demodulated into an audio signal?
-  
 - How is an SSB signal demodulated into an audio signal?
-  
 - What methods are used to tune to a desired signal?
 
-To understand how these demodulation techniques work, please review the theory of [AM and SSB signals](./data/Theory_AM_SSB.pdf).
+<!-- #TODO -->
+To understand how these demodulation techniques work, please review the theory of [AM and SSB signals](./data/REPLACE_Theory_SM_SSB.pdf).
 
 Other tutorials are also available, see for example
 
-- [Video tutorials](http://www.ettus.com/kb/detail/software-defined-radio-usrp-and-gnu-radio-tutorial-set)
-
+- [Video tutorials](https://www.youtube.com/playlist?list=PL618122BD66C8B3C4)
 - [Python and 5 GRC labs](http://files.ettus.com/tutorials/)
-
-- [gnuradio.org tutorials](http://gnuradio.org/redmine/projects/gnuradio/wiki/Tutorials)
-
+- [gnuradio.org tutorials](https://wiki.gnuradio.org/index.php/Tutorials)
 - [Gnuradio and RTL-SDR USB stick](http://www.rtl-sdr.com/tutorial-creating-fm-receiver-gnuradio-rtl-sdr/?PageSpeed=noscript)
 
 ---
@@ -42,16 +34,12 @@ Other tutorials are also available, see for example
 ## Deliverables
 
 - GRC file of AM transmitter and receiver as described in Tutorial 3A.
-  
 - GRC file of AM receiver with AGC as described in Tutorial 3B.
-  
 - Block diagram of AM receiver showing mathematical representation of signals at all points.
-  
 - GRC file of SSB receiver using Weaver\'s method as described in Tutorial 4.
-  
 - block diagram of SSB receiver showing mathematical representation of signals at all points
-  
-- There are a number of questions included within the text. Written answers to these questions are not required, but an effort should be made to think about and answer these questions as they are encountered.
+
+>There are a number of questions included within the text. Written answers to these questions are not required, but an effort should be made to think about and answer these questions as they are encountered.
 
 ---
 

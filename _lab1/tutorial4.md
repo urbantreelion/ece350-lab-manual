@@ -15,7 +15,7 @@ This tutorial is a guide to receiving SSB signals. It will also illustrate some 
 
 ## Complex/Analytic Signals
 
-- Review the [sections 2.3 and 3.4 theory of analytic signals and SSB receivers](data/35015-PSK-FSK-12.pdf).
+- Review the [theory of analytic signals and SSB receivers](../_docs/pdriessen_textbook.pdf) (sections 2.3 and 3.4).
 
 ### Hilbert Transforms
 

@@ -12,7 +12,9 @@ layout: home
 ## Introduction
 
 
-This lab is meant to be a supplement to your ECE350 class. It will provide you with a way to explore the concepts and techniques discussed in class in a more hands on way. In order to do this, we will be using [GNU Radio Companion](http://gnuradio.org/redmine/projects/gnuradio/wiki/GNURadioCompanion), a graphical tool used to create and execute signal processing flowgraphs for Software Defined Radio. This is a very useful tool not only for demonstrating existing communication methods, but also for experimenting and developing new methods. It is heavily used both in the academic and professional worlds. For more information on Software Defined Radio, have a look at [this Wikipedia page](https://en.wikipedia.org/wiki/Software-defined_radio), or speak to your professor or TA.
+This lab is meant to be a supplement to your ECE350 class. It will provide you with a way to explore the concepts and techniques discussed in class in a more hands on way. In order to do this, we will be using [GNU Radio Companion](https://wiki.gnuradio.org/index.php/GNURadioCompanion), a graphical tool used to create and execute signal processing flowgraphs for Software Defined Radio. This is a very useful tool not only for demonstrating existing communication methods, but also for experimenting and developing new methods. It is heavily used both in the academic and professional worlds. For more information on Software Defined Radio, have a look at [this Wikipedia page](https://en.wikipedia.org/wiki/Software-defined_radio), or speak to your professor or TA.
+
+This lab manual will regularly refer to the course textbook, available for free [here](./_docs/pdriessen_textbook.pdf).
 
 ### Deliverables
 
@@ -36,11 +38,12 @@ The deliverables are described at the beginning of each section.
 
 ## Revision history
 
-Version | Date | Changelog
-------- | ---- | ---------
-**3.0** | 5 Jun 2019 | - Major rebuild. Site has moved from a UVic local SVN repo to Github.<br> - It used to be compiled using Docbook with Apache Ant and Webhelp, it is now running on Github Pages using Jekyll.<br> - All of the lab components have been turned into markdown documents.
-**2.1** | 1 Jan 2017 | - Updated text references to 2016 edition, clarified lab procedures and reformatted for readability.
-**2.0** | 1 Sept 2014 | - Updated for 2014 deleting Softrock, retaining 4 labs only.
-**1.2** | 4 Jul 2013 | - Updated for GNU Radio 3.7.0. The category structure was revised yet again, text updated.
-**1.1** | 27 Jun 2013 | - Updated for GNU Radio 3.6.5. The category structure was revised quite a bit from earlier versions so the text has been updated to reflect that.
-**1.0** | 08 Mar 2013 | - Updated for GNU Radio 3.6.3.
+Version | Date | Author | Changelog
+------- | ---- | ------ | ---------
+**3.1** | ongoing | nsbruce | - Rebuilding lab instructions to reflect GR update from WX to QT.<br> - Restructuring labs 1 and 2.
+**3.0** | 5 Jun 2019 | nbruce | - Major rebuild. Site has moved from a UVic local SVN repo to Github.<br> - It used to be compiled using Docbook with Apache Ant and Webhelp, it is now running on Github Pages using Jekyll.<br> - All of the lab components have been turned into markdown documents.
+**2.1** | 1 Jan 2017 | pkremler | - Updated text references to 2016 edition, clarified lab procedures and reformatted for readability.
+**2.0** | 1 Sept 2014 | sharrison |- Updated for 2014 deleting Softrock, retaining 4 labs only.
+**1.2** | 4 Jul 2013 | sharrison | - Updated for GNU Radio 3.7.0. The category structure was revised yet again, text updated.
+**1.1** | 27 Jun 2013 | sharrison | - Updated for GNU Radio 3.6.5. The category structure was revised quite a bit from earlier versions so the text has been updated to reflect that.
+**1.0** | 08 Mar 2013 | sharrison | - Updated for GNU Radio 3.6.3.

@@ -18,7 +18,7 @@ This tutorial is a guide to AM signal waveforms. In this tutorial you will learn
 
 ### AM flowgraphs
 
-- Review the theory in the [AM transmitter theory](./data/35015-PSK-FSK-12.pdf) section 2.1.
+- Review AM transmitter theory in the [textbook](../_docs/pdriessen_textbook.pdf) (section 2.1).
 
 - Using the following GRC files as a starting point:
   - [AM_TX.grc](data/AM_TX.grc)
@@ -57,7 +57,7 @@ In section 2.5.2, a data file will be used that contains several seconds of reco
 
 ### Complex signals, receiver with channel selection (tuning)
 
-- Review the [theory of AM receivers using complex signals](data/35015-PSK-FSK-12.pdf) section 3.2.
+- Review the [theory of AM receivers using complex signals](../_docs/pdriessen_textbook.pdf) (section 3.2).
 
 - Click on the link below to download the data file used in this section. Save it in a location that you can access later. This file was created using a USRP receiver.
   - [am_usrp710.dat](data/am_usrp710.dat)
@@ -192,7 +192,7 @@ it is in fact receiving the baseband signal.
 
 #### Tuning to a desired station (channel)
 
-- Review the [section 3.2.2 theory of tuning to a radio station](data/35015-PSK-FSK-12.pdf).
+- Review the [theory of tuning to a radio station](../_docs/pdriessen_textbook.pdf) (section 3.2.2).
 
 - Place an *FFT Sink* at the output of the *File Source*, leaving the rest of the flow graph unchanged.
 

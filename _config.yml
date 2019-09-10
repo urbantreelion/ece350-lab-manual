@@ -16,6 +16,7 @@ include:
   - _lab2
   - _lab3
   - _lab4
+  - _docs
 
 # If you want to link only specific pages in your header, uncomment
 # this and add the path to the pages in order as they should show up

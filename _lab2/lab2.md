@@ -69,7 +69,7 @@ will learn:
 In this first section we build flowgraphs to transmit and receive FM signals
 that are simulation-only and do not (yet) use the USRP (that will come later in this lab!).
 
-- Review the theory on [section 5 FM Signals](data/35015-PSK-FSK-12.pdf)
+- Review the theory of [FM Signals](../_docs/pdriessen_textbook.pdf) (section 5).
 
 - Using the following GRC files as a starting point:
   - [FM_Transmitter.grc](data/FM_Transmitter.grc)
@@ -133,7 +133,7 @@ real off-air FM signals using the USRP.
 
 ### I/Q Receiver output
 
-- Review [sections 1.2 and 1.3 IQ theory](data/35015-PSK-FSK-12.pdf)
+- Review [IQ theory](../_docs/pdriessen_textbook.pdf) (sections 1.2 and 1.3).
 
 - Open the GRC patch [ra5.grc](data/ra5.grc). This flowgraph implements the mathematics on the last page of the IQ theory document.
   - The USRP source does IQ downconversion on the WBX daughtercard and outputs the complex signals I(t) + jQ(t).
@@ -189,7 +189,7 @@ real off-air FM signals using the USRP.
 
 In this section, we test the transmit functions of the USRP that we can use later when building a communications system. We will observe the transmitted spectrum, minimum and maximum power level in dBm (dB relative to one milliwatt). You will use both the osciloscope and the spectrum analyzer at your bench to view and measure the output from the USRP transmitter.
 
-- Review the theory in [section 1.4 Spectrum Analyzers](./data/35015-PSK-FSK-12.pdf). For more detailed information, you may also wish to review [Spectrum Analyzer Basics](./data/5965-7920E.pdf) and [The Basics of Spectrum Analyzers](./data/spec_analyzer.pdf). The concepts presented here will be applicable to any spectrum analyzer you may use in your career.
+- Review the theory of [spectrum analyzers](../_docs/pdriessen_textbook.pdf) (section 1.4). For more detailed information, you may also wish to review [Spectrum Analyzer Basics](./data/5965-7920E.pdf) and [The Basics of Spectrum Analyzers](./data/spec_analyzer.pdf). The concepts presented here will be applicable to any spectrum analyzer you may use in your career.
 
 - Open [this GRC file](data/tx_carrier.grc).
 
