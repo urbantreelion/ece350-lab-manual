@@ -25,9 +25,9 @@ This tutorial is a guide to AM signal waveforms. In this tutorial you will learn
   - [different_waveforms.grc](data/different_waveforms.grc)
  Carry out the steps in the [AM Transmitter procedures](data/AM_procedures_TX.pdf)
 
-- Start GRC as was done in the previous tutorials. If GRC is already open, open the .grc files by selecting File->Open, or clicking on the Open logo, ![grc-open-icon](figures/grc-open-icon.png).
+- Start GRC as was done in the previous tutorials. If GRC is already open, open the `.grc` files by selecting *File->Open*, or clicking on the Open logo, ![grc-open-icon](figures/grc-open-icon.png).
 
-- If you are unsure of the functionality of any of the blocks in the linked tutorial, please consult the [Documentation](http://www.ece.uvic.ca/~ece350/grc_doc/) , or ask your TA.
+- If you are unsure of the functionality of any of the blocks in the linked tutorial, please consult the [Documentation](https://wiki.gnuradio.org/index.php/Category:Block_Docs), or ask your TA.
 
 - Questions to be answered during the lab
   - For an AM signal as written in the text section 2.1 page 35, what is the acceptable range of the parameter k_a so that the message can be recovered perfectly in the receiver?
