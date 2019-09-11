@@ -2,7 +2,7 @@
 layout: labitem
 title: Tutorial 4
 permalink: /lab1/tutorial4
-firstHeading: Tutorial 3 - Receiving AM waveforms
+firstHeading: Tutorial 4 - Receiving AM waveforms
 ---
 
 ## Objectives
@@ -18,9 +18,9 @@ Another data file will be used that contains several seconds of recorded signals
 
 ---
 
-## Deliverables
+## Tutorial 4 Deliverables
 
-- GRC file of AM receiver with AGC as described in Tutorial 4.
+- GRC file of AM receiver with AGC as described below.
 
 ---
 

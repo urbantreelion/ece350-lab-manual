@@ -15,25 +15,19 @@ This tutorial is a guide to AM signal waveforms. In this tutorial you will learn
 
 ---
 
-## Deliverables
+## Tutorial 3 Deliverables
 
-- GRC files of AM transmitter and waveform builder.
-
----
+- GRC files of AM transmitter and waveform builder. You will be stepped through building them.
+- There are 2 questions scattered throughout the lab. They are clearly indicated as follows:
+  <!-- - #TODO -->
+  - each question requires approximately 1 line of writing, and all address concepts, not details. Answer the questions and submit a single page containing the answers to your TA at the end of the lab.
 
 ## Building an AM transmitter
 
 - Review AM transmitter theory in the [textbook](../_docs/pdriessen_textbook.pdf) (section 2.1).
 
 - If you are unsure of the functionality of any of the blocks in this tutorial, please consult the [Documentation](https://wiki.gnuradio.org/index.php/Category:Block_Docs), or ask your TA.
-  
-<!-- #TODO WHY? -->
-- Using the following GRC files as a starting point:
-  
-  - [AM_TX.grc](data/AM_TX.grc)
-  - [different_waveforms.grc](data/different_waveforms.grc)
 
-<!-- #TODO Or start a new one? -->
 - Start GRC as was done in the previous tutorials. If GRC is already open, open the `.grc` files by selecting *File->Open*, or clicking on the Open logo, ![tutorial3_grc-open-icon.png](figures/tutorial3_grc-open-icon.png).
 
 - Build the following flowgraph using *Signal Source*, *Throttle*, *Multiply Const*, and *Add Const* blocks. It would be wise to have the different GUI sinks in different window tabs as done in the last tutorial.
@@ -41,7 +35,13 @@ This tutorial is a guide to AM signal waveforms. In this tutorial you will learn
     ![tutorial3_AM_TX_basic.png](./figures/tutorial3_AM_TX_basic.png)<br>
     __*AM modulation flow graph*__
 
+  - This flowgraph will be one of your deliverables. Save it as `AM_modulator.grc` and in the *Options* block, set the following parameters as follows.
+
+    ![tutorial3_modulator_options.png](./figures/tutorial3_modulator_options.png)<br>
+    __*Flowgraph options parameters for submission*__
+
 - You can read the *QT GUI Range* widget parameters right off of the flowgraph, and note that the sample rate is 200 kHz. You cannot however, tell when variables are in use without opening the blocks.
+
   - The two blocks using the *QT GUI Range* variables are the *Signal Source* and the *Multiply Const*. Use the following two figures as references.
   - Set the *Add Const* constant to 1.
   - You can name and organize the GUI sinks/scopes as you please. Don't forget to set *Config->Control Panel* to True in the GUI sinks to allow interactivity.
@@ -52,7 +52,7 @@ This tutorial is a guide to AM signal waveforms. In this tutorial you will learn
     ![tutorial3_mult_const_properties.png](./figures/tutorial3_mult_const_properties.png)<br>
     __*Multiple const properties properties*__
 
-> Realize that this flowgraph is the graphical form of the modulation waveform, __1+k_a * m(t)__, where __m(t)__ is the *Signal Source* block, 1 is the *Add Const* block, and __k_a__ is the *Multiply Const* block.
+  >Note that this flowgraph is the graphical form of the modulation waveform, __1+k_a * m(t)__, where __m(t)__ is the *Signal Source* block, 1 is the *Add Const* block, and __k_a__ is the *Multiply Const* block.
 
 - When executed, the three plots should look like the following:
 
@@ -65,7 +65,16 @@ This tutorial is a guide to AM signal waveforms. In this tutorial you will learn
     ![tutorial3_basic_modulated_scope.png](./figures/tutorial3_basic_modulated_scope.png)<br>
     __*Modulation signal in time domain*__
 
+---
+
+#### Deliverable Question 1
+
+Why is the spectrum symmetrical about 0 Hz?
+
+---
+
 - Now multiply the modulation waveform with the carrier signal to obtain the AM modulated waveform. Note the added *QT GUI Range* widget for _fc_.
+
   - Set the carrier signal source block frequency to _fc_.
   - In the *QT GUI Range* widget for the _fc_ variable, set the maximum value as *samp_rate/2*
   - In the *QT GUI Time Sink*:
@@ -75,18 +84,17 @@ This tutorial is a guide to AM signal waveforms. In this tutorial you will learn
     ![tutorial3_AM_TX_carrier.png](./figures/tutorial3_AM_TX_carrier.png)<br>
     __*Flowgraph of AM modulation with a carrier*__
 
-  > In GNU Radio Companion, greyed out boxes are "disabled". You can do this by right clicking on a block and selecting "Disable", or just pressing the "d" key on your keyboard. They greyed out File Sink will be used later.
-  <!-- #TODO is is used later? -->
+  >In GNU Radio Companion, greyed out boxes are "disabled". You can do this by right clicking on a block and selecting "Disable", or just pressing the "d" key on your keyboard. They greyed out File Sink will be used later.
 
 - Explore the executed flowgraph. How does changing _fc_, _ka_, and _fm_ change the band pass time signal? How do they change the bandpass spectrum? The following figures show the default values.
-  >When there are two inputs to a GUI Sink, they are drawn as different colors. You can click on their legend entries to hide and show each one.
+
+  >When there are two inputs to a GUI Sink, they are plotted as different colors. You can click on their legend entries to hide and show each one.
 
     ![tutorial3_modulated_carrier_scope.png](./figures/tutorial3_modulated_carrier_scope.png)<br>
     __*Modulated carrier and modulation waveform*__
 
     ![tutorial3_modulated_carrier_fft.png](./figures/tutorial3_modulated_carrier_fft.png)<br>
     __*Modulated carrier spectrum*__
-
 
 ## Building an AM transmitter for general messages
 
@@ -106,12 +114,18 @@ Until now, we have only used a sinusoidal message. In this section, we will crea
     ![tutorial3_square_signal_to_file.png](./figures/tutorial3_square_signal_to_file.png)<br>
     __*Square waveform generator*__
 
+  - This flowgraph will be your second deliverable. Save it as `waveform_builder.grc`, and in the *Options* block, set the following:
+
+    - **Title:** Waveform builder
+    - **Author:** V00xxxxxx, V00yyyyyy (where all of your student numbers are included)
+
 - You can save the generated waveform using a *File Sink* block. Choose a destination to save the file at, and name the file `square_waveform.dat`.
 
     ![tutorial3_file_sink.png](./figures/tutorial3_file_sink.png)<br>
     __*File Sink properties*__
 
 - Execute the flowgraph and after a few seconds kill it. Check that the `.dat` file now exists.
+
   >A way to regulate the duration a flowgraph runs for is to use the [*Head* block](https://wiki.gnuradio.org/index.php/Head) to limit the number of samples that flow either from the input or into the *File Sink*.  
   
 - Go back to your AM Modulator flowgraph and change the *Signal Source* block with a *File Source* block. Select `square_waveform.dat` as the source file and execute the flowgraph.
@@ -124,7 +138,8 @@ Until now, we have only used a sinusoidal message. In this section, we will crea
 
 ### Two sine waves with selectable frequencies
 
-- Update the signals-to-file-sink flowgraph as below, where two sinusoidal signals with frequencies _f1_ and _f2_ are mixed together to create a two-tone signal with *(f1-f2)* and *(f1+f2)* tones.
+- Update the `waveform-builder.grc` flowgraph as below, where two sinusoidal signals with frequencies _f1_ and _f2_ are mixed together to create a two-tone signal with *(f1-f2)* and *(f1+f2)* tones.
+
   - Update the *Signal Source* blocks to use the new variables, _f1_ and _f2_.
   - Save the output file as `two_sines_waveform.dat`
 
@@ -141,7 +156,7 @@ Until now, we have only used a sinusoidal message. In this section, we will crea
 
 ### Pseudo Random Binary Sequence (PRBS) with time domain raised cosine pulse shape over 6 symbols
 
-- Once again edit the signals-to-file flowgraph to the following. In it, a message signal is created from a sequence of random binary bits which is converted to a sequence of pulses shaped using a raised cosine pulse shaping filter.
+- Once again edit the `waveform-builder.grc` flowgraph to the following. In it, a message signal is created from a sequence of random binary bits which is converted to a sequence of pulses shaped using a raised cosine pulse shaping filter.
 
     ![tutorial3_PRBS_raise_cos_flowgraph.png](./figures/tutorial3_PRBS_raise_cos_flowgraph.png)<br>
     __*PRBS with a root raised cosine shape saved to a `.dat` file*__
@@ -162,7 +177,8 @@ Until now, we have only used a sinusoidal message. In this section, we will crea
 
 ### PRBS with square pulse shape over 6 symbols
 
-- Edit the signal-to-file flowgraph and change the *Root Raised Cosine Filter* block to a *Interpolating FIR Filter* block, where all 8 of the taps are set to 1. This will make the pulse shape a square.
+- Edit the `waveform-builder.grc` flowgraph and change the *Root Raised Cosine Filter* block to a *Interpolating FIR Filter* block, where all 8 of the taps are set to 1. This will make the pulse shape a square.
+
   > When a block is yellow in GRC it is in "bypass mode" where the samples pass through the block untouched. This can be done by right-clicking on the block and selecting "bypass" or by pressing "b" on your keyboard.
 
     ![tutorial3_PRBS_square_flowgraph.png](./figures/tutorial3_PRBS_square_flowgraph.png)<br>
@@ -176,24 +192,22 @@ Until now, we have only used a sinusoidal message. In this section, we will crea
     ![tutorial3_modulated_prbs_square_fft.png](./figures/tutorial3_modulated_prbs_square_fft.png)<br>
     __*Modulated carrier spectrum for a PRBS with square shape AM signal*__
 
-<!-- #TODO -->
-## Questions
+---
+#### Deliverable Question 2
 
-To be answered during the lab:
-
-- For an AM signal as written in the text section 2.1 page 35, what is the acceptable range of the parameter k_a so that the message can be recovered perfectly in the receiver?
-- Sketch the spectrum of an AM signal with a message signal that is the sum of two cosine waves. Repeat for a message signal that is the product of two cosine waves.
-- What is the cutoff frequency of the low pass filter used in a synchronous AM receiver (where the received signal is multiplied with the carrier waveform and lowpass filtered).
-- Consider a signal with sampling rate of 256 kHz. We use rational resampler block with decimation factor of 3 and interpolation factor of 4. What would be the new sampling rate of the signal?
+Why are the peaks of the modulated signal (shown above in red) not all the same value (a theoretical value of 2)?
 
 ---
 
-## Deliverables (from tutorial 3)
+## Deliverables
 
-- GRC files of both the signal-to-file flowgraph and the AM modulation flowgraph.
-- Do not attach the `top_block.py` or `.dat` files.
+From this tutorial, keep the following files to submit to your TA after the next (and final) tutorial:
 
-<!-- #TODO -->
+- `waveform-builder.grc`
+- `AM_modulator.grc`.
+- The answers to [Question 1](#deliverable-question-1) and [Question 2](#deliverable-question-2.)
+
+**Do not attach the `top_block.py` or `.dat` files.**
 
 ---
 
