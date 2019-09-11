@@ -32,8 +32,8 @@ Other tutorials are also available, see for example
 
 ## Deliverables
 
-- GRC file of AM transmitter and receiver as described in Tutorial 3A.
-- GRC file of AM receiver with AGC as described in Tutorial 3B.
+- GRC file of AM transmitter and receiver as described in Tutorial 3.
+- GRC file of AM receiver with AGC as described in Tutorial 4.
 - Block diagram of AM receiver showing mathematical representation of signals at all points.
 
 >There are a number of questions included within the text. Written answers to these questions are not required, but an effort should be made to think about and answer these questions as they are encountered.
