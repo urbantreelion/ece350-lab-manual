@@ -1,40 +1,9 @@
 ---
 layout: labitem
-title: Lab 2
-permalink: /lab2/
+title: Tutorial 2
+permalink: /lab2/tutorial2
+firstHeading: Tutorial 2 - FM, IQ, and using a USRP
 ---
-
-# Lab 2  - FM, IQ and USRP Tutorial
-
-In this section you will use the Universal Software Radio Peripherial (USRP) for both receiving and transmitting signals. The USRP is a I/Q receiver with wide bandwidth (100 MHz sampling rate), programmable center frequency, programmable gain and choice of sample rates.
-
-For detailed information on the usage of the USRP, you can find the data sheet and user manual as well as the range of compatible daughterboards at the [Ettus website for the USRP N210](https://www.ettus.com/product/details/UN210-KIT).
-
-Refer to the below block diagram to understand the receive path of the USRP as it is set up in the lab. The USRPs in the lab have the WBX daughtercard installed which feature a programmable attenuator, programmable local oscillator and analog I/Q mixer. The WBX daughterboard is an analog front end for the GNU Radio software. It consists of a local oscillator implemented as a wideband frequency synthesizer, thus allowing the USRP to receive signals in the range from 50 MHz to 2.2 GHz. The WBX Daughterboard performs complex downconversion of a 100 MHz slice of spectrum in the 50-2200 MHz range down to -50 to +50 MHz range for processing by the USRP motherboard.
-
-![Figure 2.1](./figures/USRP.png)<br>
-__*Figure 2.1: USRP block diagram.*__
-
-The main function of the USRP motherboard board is to act as a [Digital Downconverter (DDC)](http://en.wikipedia.org/wiki/Digital_down_converter). The motherboard implements a digital I/Q mixer, sample rate converter and lowpass filter. The samples are then sent to the host PC over a gigabit ethernet link.
-
-We will first learn about FM waveform generation and reception in software simulation-only without the URSP, then FM receiver implemented with the USRP, general IQ receiver implemented with the USRP, and finally the USRP transmit function.
-
-## Deliverables
-
-1. FM flowgraphs
-    - GRC files of FM transmitter and receiver showing FM transmitted waveforms, spectra and FM receiver output.
-
-2. USRP with FM
-    - Observations on practical FM receiver operation using live off-air signals
-    - bit rate of FSK signal at 142.17 MHz
-    - Estimate of URSP receiver dynamic range with FM signals
-
-3. USRP with general IQ signals
-
-    - Estimate of the USRP receiver noise figure.
-    - IQ receiver measured frequency offset
-    - Observations of I and Q at different signal levels and effect of dynamic range
-    - USRP spectrum, minimum and maximum output power
 
 ## Setup
 
@@ -48,8 +17,8 @@ oscilloscope and spectrum analyzer.
 
 - Verify that the USRP at your station is connected as shown in [figure_title](#usrp_connect).
 
-  ![Figure 2.2](./figures/usrp_connect.png)<br>
-  __*Figure 2.2: USRP front panel.*__
+  ![Figure 2.12](./figures/usrp_connect.png)<br>
+  __*Figure 2.12: USRP front panel.*__
 
 ## FM Signal waveforms
 
@@ -111,8 +80,8 @@ real off-air FM signals using the USRP.
 
 - Check the persistence box on the scope and reduce the alpha to minimum. You will observe a so-called [eye diagram](http://en.wikipedia.org/wiki/Eye_pattern) of the data, as shown below. The eye diagram shows the number of milliseconds per bit. Find the bit rate (the number of bits per second).
 
-  ![Figure 2.3](./figures/eye_diagram.png)<br>
-  __*Figure 2.3: Eye diagram of the data shown in a Gnu Radio Companion scope sink.*__
+  ![Figure 2.13](./figures/eye_diagram.png)<br>
+  __*Figure 2.13: Eye diagram of the data shown in a Gnu Radio Companion scope sink.*__
 
 ### Dynamic Range with FM
 
@@ -206,5 +175,7 @@ In this section, we test the transmit functions of the USRP that we can use late
 - What is the minimum and maximum signal power output from the USRP? The USRP output power level can be set via the dialog box obtained by double‐clicking on the USRP sink in the flowgraph. Measure the power using both the oscilloscope and spectrum analyzer and verify they are the same.
 
   >Note: Recall from your circuit theory that the output power is relative to the load impedance. On the spectrum analyzer, the input is 50Ω, which matches the expected impedance of a typical antenna. The input to the scope on the other hand is high impedance, effectively open circuit, to prevent damage to the internal circuits. To compare measurement on the scope to that of the spectrum analyzer, the line from the USRP transmitter should be terminated with a 50Ω terminator. Alternatively, some circuit theory can be applied to determine the equivalent power output measured across an open circuit and a 50Ω load.
+
+--
 
 [**Continue to Lab 3**](../_lab3/lab3.md)

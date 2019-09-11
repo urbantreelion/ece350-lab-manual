@@ -16,11 +16,10 @@ As you work through the material, try to keep these following questions in mind:
 - What is the Throttle block for? When should it be used?
 - How are block parameters linked to GUI controls?
 - How is an AM signal demodulated into an audio signal?
-- How is an SSB signal demodulated into an audio signal?
 - What methods are used to tune to a desired signal?
 
 <!-- #TODO -->
-To understand how these demodulation techniques work, please review the theory of [AM and SSB signals](./data/REPLACE_Theory_SM_SSB.pdf).
+To understand how demodulation techniques work, please review the theory of [AM signals](./data/REPLACE_Theory_SM_SSB.pdf).
 
 Other tutorials are also available, see for example
 
@@ -36,8 +35,6 @@ Other tutorials are also available, see for example
 - GRC file of AM transmitter and receiver as described in Tutorial 3A.
 - GRC file of AM receiver with AGC as described in Tutorial 3B.
 - Block diagram of AM receiver showing mathematical representation of signals at all points.
-- GRC file of SSB receiver using Weaver\'s method as described in Tutorial 4.
-- block diagram of SSB receiver showing mathematical representation of signals at all points
 
 >There are a number of questions included within the text. Written answers to these questions are not required, but an effort should be made to think about and answer these questions as they are encountered.
 

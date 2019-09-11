@@ -216,4 +216,4 @@ keep the average output at a particular level.
 
 - You can now remove the *Multiply Const* and volume slider. Test the receiver again. Adjust the volume to a comfortable level using the computer's volume control on the first station you hear. Now tune up and down the band and notice that you no longer need to adjust the volume, but the noise level increases for weaker stations. The radio functions the same as a hardware radio.
 
-[**Begin Tutorial 4**](tutorial4.md)
+[**Continue to Lab 2**](../_lab2/introduction.md)

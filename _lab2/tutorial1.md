@@ -1,8 +1,8 @@
 ---
 layout: labitem
-title: Tutorial 4
-permalink: /lab1/tutorial4
-firstHeading: Tutorial 4 - Complex signals and Receiving SSB
+title: Tutorial 1
+permalink: /lab2/tutorial1
+firstHeading: Tutorial 1 - Complex signals and Receiving SSB
 ---
 
 ## Objectives
@@ -21,8 +21,8 @@ This tutorial is a guide to receiving SSB signals. It will also illustrate some 
 
 - Open a new flow graph in GRC. Create the simple flow graph shown. Set the Type in each of the three blocks to Float as you have in the past. Other than that you can leave all of the values at their default settings.
 
-  ![Figure 1.30](./figures/tutorial4_sinewave.png)<br>
-  __*Figure 1.30: Flow graph with simple input and throttled output.*__
+  ![Figure 2.2](./figures/tutorial4_sinewave.png)<br>
+  __*Figure 2.2: Flow graph with simple input and throttled output.*__
 
 - Execute the flow graph. The scope sink should open and display a sinusoidal signal. Convince yourself that this signal has the amplitude and frequency that you expect.
 
@@ -30,8 +30,8 @@ This tutorial is a guide to receiving SSB signals. It will also illustrate some 
 
 - Modify your flow graph as shown below. The *Signal Source* should be set to output a Square wave with a Type of Float. Thus, the first *Scope Sink* and the *Throttle* must also be set to accept Float values.
 
-  ![Figure 1.31](./figures/tutorial4_square.png)<br>
-  __*Figure 1.31: Flow graph with square waveform input and Hilbert filter.*__
+  ![Figure 2.3](./figures/tutorial4_square.png)<br>
+  __*Figure 2.3: Flow graph with square waveform input and Hilbert filter.*__
 
 - The [Hilbert](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s12s06.html) block is found in the *Filters* category. This block outputs both the real input signal and the Hilbert transform of the input signal as a complex signal. Leave the number of taps at its default setting of 64. Since the output of this block is complex, the second *Scope Sink* must be set to accept complex inputs.
 
@@ -39,8 +39,8 @@ This tutorial is a guide to receiving SSB signals. It will also illustrate some 
 
 - As shown in the above figure, the *Signal Source* can be set to output a complex signal and display both the I and Q components. Modify the flow graph as shown below.
 
-  ![Figure 1.32](./figures/tutorial4_square2.png)<br>
-  __*Figure 1.32: Flow graph with a complex square wave input.*__
+  ![Figure 2.4](./figures/tutorial4_square2.png)<br>
+  __*Figure 2.4: Flow graph with a complex square wave input.*__
 
 - Set the *Signal Source* to output a complex waveform. Make sure the *Throttle* and *Scope Sink* are also set to complex.
 
@@ -50,8 +50,8 @@ This tutorial is a guide to receiving SSB signals. It will also illustrate some 
 
 - Create the flow graph shown below. Make sure that all of the blocks are set to Type: Float. This flow graph takes two sinusoids, at frequencies of 1 kHz and 10 kHz and multiplies them together. Using a trigonometric identity we know that the product of two cosines gives two cosines at the sum and difference frequencies of the original signals. In this case we expect outputs at 9 kHz (difference) and 11 kHz (sum).
 
-  ![Figure 1.33](./figures/tutorial4_multiply.png)<br>
-  __*Figure 1.33: Flow graph with two multiplied sinusoidal inputs.*__
+  ![Figure 2.4](./figures/tutorial4_multiply.png)<br>
+  __*Figure 2.4: Flow graph with two multiplied sinusoidal inputs.*__
 
 - Execute the flow graph and confirm this result. Note that the FFT plot only shows the positive frequency spectrum when it is set to Type: Float. We know that for real inputs the negative frequency components are the same as positive frequency components.
 
@@ -68,8 +68,8 @@ This data file was recorded by a USRP set to a center frequency of
 
 - Create a new flow graph as shown below. The *File Source* should be set to the data file that you just downloaded. The *Variable* block which sets the sampling rate (samp_rate) should be set to 256000 as this is the data rate that the received signal was sampled at. The *Throttle* and *FFT Sink* can be left at their default settings.
 
-  ![Figure 1.34](./figures/tutorial4_file_source.png)<br>
-  __*Figure 1.34: Flow graph with a file source input.*__
+  ![Figure 2.5](./figures/tutorial4_file_source.png)<br>
+  __*Figure 2.5: Flow graph with a file source input.*__
 
 - Execute the flow graph. After the FFT Plot window opens, adjust the *Ref Level* so that the amplitude values start at 10 dB and set the *dB/div* to 10 dB/div. You should view a section of the spectrum that is 256 kHz wide (due to the sample rate). Note that there is one signal visible between 40 and 60 kHz.
 
@@ -83,13 +83,13 @@ band. This is done as follows
 
 1. First the signal of interest is shifted down to zero frequency as shown below.
 
-    ![Figure 1.35](./figures/tutorial4_shift1.png)<br>
-    __*Figure 1.35: Signal shifting.*__
+    ![Figure 2.6](./figures/tutorial4_shift1.png)<br>
+    __*Figure 2.6: Signal shifting.*__
 
 2. Next a low pass filter is applied so that the other signals will be filtered out as shown below.
 
-    ![Figure 1.36](./figures/tutorial4_shift2.png)<br>
-    __*Figure 1.36: Signal shifting with a filter.*__
+    ![Figure 2.7](./figures/tutorial4_shift2.png)<br>
+    __*Figure 2.7: Signal shifting with a filter.*__
 
 In GRC, the *Frequency Xlating FIR Filter* performs both of these
 operations.
@@ -99,8 +99,8 @@ operations.
 - Complete the properties window as shown below. The center frequency of 51500 will shift the entire spectrum down by 51500 Hz.
   > Note: The function indicated in the *Taps* parameter generates the taps for a low pass filter with a gain of 1 (in the pass band), a sampling rate equal to samp_rate (256 kHz), a cutoff frequency of 2 kHz and a transition width of 100 Hz.
 
-  ![Figure 1.37](./figures/tutorial4_freq_xlating_properties.png)<br>
-  __*Figure 1.37: Frequency Xlating FIR Filter properties dialog.*__
+  ![Figure 2.8](./figures/tutorial4_freq_xlating_properties.png)<br>
+  __*Figure 2.8: Frequency Xlating FIR Filter properties dialog.*__
 
 - Execute the flow graph. You will see that your signal has now moved down to the origin and is the only signal present.
 
@@ -147,15 +147,15 @@ signal and output its real (re) and imaginary (im) parts separately.
 
 - Modify the flow graph to appear as shown below. The outputs of the [Complex to Float](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s11s03.html) block are both real so the *FFT Sinks* need to be changed to Type: Float.
 
-  ![Figure 1.38](./figures/tutorial4_real_imag_spectrum.png)<br>
-  __*Figure 1.38: Flow graph with a complex input and filtering scheme, but real outputs.*__
+  ![Figure 2.9](./figures/tutorial4_real_imag_spectrum.png)<br>
+  __*Figure 2.9: Flow graph with a complex input and filtering scheme, but real outputs.*__
 
 - Execute the flow graph. You should now observe the spectra of the real and imaginary parts of the signal. Note that the signals extend out to 2KHz, the cutoff frequency of the filter.
 
 - One method of demodulating this SSB voice signal, known as Weaver's method, takes the real and imaginary part of the signal and processes them as shown below. Use the *Signal Source* in GRC to generate the cosine and sine waves needed to implement this demodulator. The *Multiply* and *Add* blocks can be found in the *Math Operators* category.
 
-  ![Figure 1.39](./figures/tutorial4_weaver_demod.png)<br>
-  __*Figure 1.39: Weaver demodulation.*__
+  ![Figure 2.10](./figures/tutorial4_weaver_demod.png)<br>
+  __*Figure 2.10: Weaver demodulation.*__
 
 - Observe the output of the *Add* block using an *FFT sink*. This is the baseband signal that has been extracted from the modulated SSB signal.
 
@@ -173,8 +173,8 @@ signal and output its real (re) and imaginary (im) parts separately.
   - This WAV file was recorded using the I and Q streams for the L and R channels. By setting the block to have two output channels you will be able to use the full I/Q signal.
   - Add a [Float To Complex](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s11s10.html) block to convert from I and Q to a complex signal.
 
-  ![Figure 1.40](./figures/wav_file_properties.png)<br>
-  __*Figure 1.40: WAV File Source properties dialog.*__
+  ![Figure 2.11](./figures/wav_file_properties.png)<br>
+  __*Figure 2.11: WAV File Source properties dialog.*__
 
 - There are two SSB voice signals in this file, both are upper sideband (USB), whereas the first data file was lower sideband (LSB). The Weaver demodulator needs a small modification to work with USB.
   > Hint: Refer to the diagram above illustrating the Weaver Demodulator and now consider using the upper sideband.
@@ -190,4 +190,6 @@ and listen to live Morse code and SSB signals in the frequency range
 propagate over long distances via the ionosphere for some (not all) of
 the time. Other frequencies are 144.0-144.3 MHz and 145.8-146.0 MHz.
 
-[**Continue to Lab 2**](../_lab2/lab2.md)
+---
+
+[**Continue to Tutorial 2**](tutorial2.md)

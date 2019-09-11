@@ -22,6 +22,6 @@ include:
 # this and add the path to the pages in order as they should show up
 header_pages:
   - _lab1/introduction.md
-  - _lab2/lab2.md
+  - _lab2/introduction.md
   - _lab3/lab3.md
   - _lab4/lab4.md
