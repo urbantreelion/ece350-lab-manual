@@ -22,7 +22,7 @@ Another data file will be used that contains several seconds of recorded signals
 ## Tutorial 4 Deliverables
 
 - GRC file of AM receiver with AGC as described below.
-- There are 2 questions spaced throughout the lab. They are clearly indicated as follows:
+- There are 2 questions spaced throughout the lab. They are clearly indicated as the were in the last tutorial.
   <!-- - #TODO -->
   - Each question requires approximately 1 line of writing, and all address concepts, not details. Answer the questions and submit a single page containing the answers to your TA at the end of the lab. This should build upon your answers to the two questions posed in the last tutorial.
 

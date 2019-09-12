@@ -18,9 +18,9 @@ This tutorial is a guide to AM signal waveforms. In this tutorial you will learn
 ## Tutorial 3 Deliverables
 
 - GRC files of AM transmitter and waveform builder. You will be stepped through building them.
-- There are 2 questions scattered throughout the lab. They are clearly indicated as follows:
+- There are 2 questions spaced throughout the tutorial. They are clearly indicated.
   <!-- - #TODO -->
-  - each question requires approximately 1 line of writing, and all address concepts, not details. Answer the questions and submit a single page containing the answers to your TA at the end of the lab.
+  - Each question requires approximately 1 line of writing, and all address concepts, not details. Answer the questions and submit a single page containing the answers to your TA at the end of the lab.
 
 ## Building an AM transmitter
 
