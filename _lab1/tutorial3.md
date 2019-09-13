@@ -20,7 +20,7 @@ This tutorial is a guide to AM signal waveforms. In this tutorial you will learn
 - GRC files of AM transmitter and waveform builder. You will be stepped through building them.
 - There are 2 questions spaced throughout the tutorial. They are clearly indicated.
   <!-- - #TODO -->
-  - Each question requires approximately 1 line of writing, and all address concepts, not details. Answer the questions and submit a single page containing the answers to your TA at the end of the lab.
+  - Each question requires approximately 1 line of writing, and address concepts, not details. Answer the questions and submit a single page containing the answers to your TA at the end of the lab.
 
 ## Building an AM transmitter
 
@@ -128,7 +128,11 @@ Until now, we have only used a sinusoidal message. In this section, we will crea
 
   >A way to regulate the duration a flowgraph runs for is to use the [*Head* block](https://wiki.gnuradio.org/index.php/Head) to limit the number of samples that flow either from the input or into the *File Sink*.  
   
-- Go back to your AM Modulator flowgraph and change the *Signal Source* block with a *File Source* block. Select `square_waveform.dat` as the source file and execute the flowgraph.
+- Go back to your AM Modulator flowgraph and:
+  - change the *Signal Source* block to a *File Source* block
+  - select `square_waveform.dat` as the source file
+  - enable to *File Sink* block, choose a save destination, and name the file `AM_modulated_square.dat`
+  - execute the flowgraph.
 
     ![tutorial3_modulated_square_scope.png](./figures/tutorial3_modulated_square_scope.png)<br>
     __*Modulated carrier and square modulation waveform*__
@@ -146,7 +150,7 @@ Until now, we have only used a sinusoidal message. In this section, we will crea
     ![tutorial3_two_sines_flowgraph.png](./figures/tutorial3_two_sines_flowgraph.png)<br>
     __*Two sines multiplied and saved to a `.dat` file*__
 
-- Use the new `two_sines_waveform.dat` in your AM modulator.
+- Use the new `two_sines_waveform.dat` in your AM modulator, saving the output as `AM_modulated_two_sines.dat`.
 
     ![tutorial3_modulated_two_sines_scope.png](./figures/tutorial3_modulated_two_sines_scope.png)<br>
     __*Modulated carrier and two sines modulation waveform*__
@@ -167,7 +171,7 @@ Until now, we have only used a sinusoidal message. In this section, we will crea
       ![tutorial3_RRC_parameters.png](./figures/tutorial3_RRC_parameters.png)<br>
     __*Root Raised Cosine Filter properties*__
 
-- Save the output as `prbs_rrc_waveform.dat` and run it through the AM modulator.
+- Save the output as `prbs_rrc_waveform.dat` and run it through the AM modulator, saving the modulator output as `AM_modulated_prbs_rrc.dat`.
 
     ![tutorial3_modulated_prbs_rrc_scope.png](./figures/tutorial3_modulated_prbs_rrc_scope.png)<br>
     __*Modulated carrier and PRBC with RRC modulation waveform*__
@@ -184,7 +188,7 @@ Until now, we have only used a sinusoidal message. In this section, we will crea
     ![tutorial3_PRBS_square_flowgraph.png](./figures/tutorial3_PRBS_square_flowgraph.png)<br>
     __*PRBS with a square shape saved to a `.dat` file*__
 
-- Save the waveform to `prbs_square_waveform.dat` and run it through the AM modulator.
+- Save the waveform to `prbs_square_waveform.dat` and run it through the AM modulator. Save the modulated signal as `AM_modulated_prbs_square.dat`.
 
     ![tutorial3_modulated_prbs_square_scope.png](./figures/tutorial3_modulated_prbs_square_scope.png)<br>
     __*Modulated carrier and PRBC with square shape modulation waveform*__
@@ -193,11 +197,27 @@ Until now, we have only used a sinusoidal message. In this section, we will crea
     __*Modulated carrier spectrum for a PRBS with square shape AM signal*__
 
 ---
+
 #### Deliverable Question 2
 
 Why are the peaks of the modulated signal (shown above in red) not all the same value (a theoretical value of 2)?
 
 ---
+
+At this point, you should have:
+
+- two GRC files
+  - `waveform-builder.grc`
+  - `AM_modulator.grc`)
+- 8 data files
+  - `square_waveform.dat`
+  - `AM_modulated_square.dat`
+  - `two_sines_waveform.dat`
+  - `AM_modulated_two_sines.dat`
+  - `prbs_rrc_waveform.dat`
+  - `AM_modulated_prbs_rrc.dat`
+  - `prbs_square_waveform.dat`
+  - `AM_modulated_prbs_square.dat`
 
 ## Deliverables
 
@@ -207,7 +227,7 @@ From this tutorial, keep the following files to submit to your TA after the next
 - `AM_modulator.grc`.
 - The answers to [Question 1](#deliverable-question-1) and [Question 2](#deliverable-question-2.)
 
-**Do not attach the `top_block.py` or `.dat` files.**
+**Do not attach the `top_block.py` or `.dat` files. You will use some of the `.dat` files in the next tutorial though, so don't delete them yet!**
 
 ---
 

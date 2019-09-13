@@ -7,7 +7,7 @@ firstHeading: Tutorial 4 - Receiving AM waveforms
 
 ## Objectives
 
-This tutorial is a guide to building a practical AM receiver for receiving real AM signals. You will learn how to demodulate an AM signal using only real signals. A data file with one AM signal, which will be generated using the flowgraphs in tutorial 3, is be used.
+This tutorial is a guide to building a practical AM receiver for receiving real AM signals. You will learn how to demodulate an AM signal using only real signals. A data file with one AM signal, which will be generated using the flowgraphs in tutorial 3, will be used.
 
 Another data file will be used that contains several seconds of recorded signals from the AM broadcast band. In this section you will learn how to:
 
@@ -22,16 +22,17 @@ Another data file will be used that contains several seconds of recorded signals
 ## Tutorial 4 Deliverables
 
 - GRC file of AM receiver with AGC as described below.
-- There are 2 questions spaced throughout the lab. They are clearly indicated as the were in the last tutorial.
+- There are 2 questions spaced throughout the lab. They are clearly indicated as they were in the last tutorial.
   <!-- - #TODO -->
-  - Each question requires approximately 1 line of writing, and all address concepts, not details. Answer the questions and submit a single page containing the answers to your TA at the end of the lab. This should build upon your answers to the two questions posed in the last tutorial.
+  - Each question requires approximately 1 line of writing and address concepts, not details. Answer the questions and submit a single page containing the answers to your TA at the end of the lab. This should build upon your answers to the two questions posed in the last tutorial.
 
 ---
 
 ## Real signals, basic AM receiver
 
-- Review the [theory of AM receivers using real signals](data/AM_theory_RX.pdf).
-
+<!-- #TODO REMOVE -->
+- Review the [theory of AM receivers using real signals](data/REMOVE_AM_theory_RX.pdf).
+<!-- #TODO REMOVE -->
 - Using [this file](data/AM_PB_RX.grc) as a starting point,
  carry out the steps in the [AM receiver procedures](data/AM_procedures_RX.pdf).
 
