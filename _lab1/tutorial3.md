@@ -19,7 +19,6 @@ This tutorial is a guide to AM signal waveforms. In this tutorial you will learn
 
 - GRC files of AM transmitter and waveform builder. You will be stepped through building them.
 - There are 2 questions spaced throughout the tutorial. They are clearly indicated.
-  <!-- - #TODO -->
   - Each question requires approximately 1 line of writing, and address concepts, not details. Answer the questions and submit a single page containing the answers to your TA at the end of the lab.
 
 ## Building an AM transmitter
@@ -40,11 +39,11 @@ This tutorial is a guide to AM signal waveforms. In this tutorial you will learn
     ![tutorial3_modulator_options.png](./figures/tutorial3_modulator_options.png)<br>
     __*Flowgraph options parameters for submission*__
 
-- You can read the *QT GUI Range* widget parameters right off of the flowgraph, and note that the sample rate is 200 kHz. You cannot however, tell when variables are in use without opening the blocks.
+  - You can read the *QT GUI Range* widget parameters right off of the flowgraph, and note that the sample rate is 200 kHz. You cannot however, tell when variables are in use without opening the blocks.
 
-  - The two blocks using the *QT GUI Range* variables are the *Signal Source* and the *Multiply Const*. Use the following two figures as references.
-  - Set the *Add Const* constant to 1.
-  - You can name and organize the GUI sinks/scopes as you please. Don't forget to set *Config->Control Panel* to True in the GUI sinks to allow interactivity.
+    - The two blocks using the *QT GUI Range* variables are the *Signal Source* and the *Multiply Const*. Use the following two figures as references.
+    - Set the *Add Const* constant to 1.
+    - You can name and organize the GUI sinks/scopes as you please. Don't forget to set *Config->Control Panel* to True in the GUI sinks to allow interactivity.
 
     ![tutorial3_signal_source_properties.png](./figures/tutorial3_signal_source_properties.png)<br>
     __*Signal source properties*__
@@ -96,6 +95,15 @@ Why is the spectrum symmetrical about 0 Hz?
     ![tutorial3_modulated_carrier_fft.png](./figures/tutorial3_modulated_carrier_fft.png)<br>
     __*Modulated carrier spectrum*__
 
+- Enable the *File Sink*, select a save destination and name the output file `AM_modulated_4kHz_sine.dat`.
+  <!-- #TODO fix -->
+    ![tutorial3_file_sink.png](./figures/tutorial3_file_sink.png)<br>
+    __*File Sink properties*__
+
+- Execute the flowgraph and after a few seconds kill it. Check that the `.dat` file now exists. You can now disable the *File Sink* block again.
+
+  >A way to regulate the duration a flowgraph runs for is to use the [*Head* block](https://wiki.gnuradio.org/index.php/Head) to limit the number of samples that flow either from the input or into the *File Sink*.  
+
 ## Building an AM transmitter for general messages
 
 Until now, we have only used a sinusoidal message. In this section, we will create four other waveforms and modulate them using amplitude modulation.
@@ -106,6 +114,7 @@ Until now, we have only used a sinusoidal message. In this section, we will crea
   - Set the sample rate to 200 kHz.
   - Set a *Variable* block to have an ID of _fm_ and a value of 4000.
   - Set the *Signal Source* block to:
+
     - Waveform: Square
     - Frequency: fm
     - Amplitude: 2
@@ -119,16 +128,10 @@ Until now, we have only used a sinusoidal message. In this section, we will crea
     - **Title:** Waveform builder
     - **Author:** V00xxxxxx, V00yyyyyy (where all of your student numbers are included)
 
-- You can save the generated waveform using a *File Sink* block. Choose a destination to save the file at, and name the file `square_waveform.dat`.
+  - You can save the generated waveform by re-enabling the *File Sink* block. Choose a destination to save the file at, and name the file `square_waveform.dat`.
 
-    ![tutorial3_file_sink.png](./figures/tutorial3_file_sink.png)<br>
-    __*File Sink properties*__
-
-- Execute the flowgraph and after a few seconds kill it. Check that the `.dat` file now exists.
-
-  >A way to regulate the duration a flowgraph runs for is to use the [*Head* block](https://wiki.gnuradio.org/index.php/Head) to limit the number of samples that flow either from the input or into the *File Sink*.  
-  
 - Go back to your AM Modulator flowgraph and:
+
   - change the *Signal Source* block to a *File Source* block
   - select `square_waveform.dat` as the source file
   - enable to *File Sink* block, choose a save destination, and name the file `AM_modulated_square.dat`
@@ -208,8 +211,9 @@ At this point, you should have:
 
 - two GRC files
   - `waveform-builder.grc`
-  - `AM_modulator.grc`)
-- 8 data files
+  - `AM_modulator.grc`
+- 9 data files
+  - `AM_modulated_4kHz_sine.dat`
   - `square_waveform.dat`
   - `AM_modulated_square.dat`
   - `two_sines_waveform.dat`

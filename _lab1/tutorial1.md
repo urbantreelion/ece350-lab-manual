@@ -107,8 +107,8 @@ the flowgraph and then execute it.
 - Re-generate and execute the flow graph. Note that there are now fewer points per cycle. How low can you drop the sample rate? Recall that the Nyquist sampling theorem requires that we sample at more than two times the highest frequency. Experiment with this and see how the output changes as you drop below the Nyquist rate.
 
 ## Working with the FFT Sink
-<!-- #TODO -->
-- The FFT Sink acts as a Spectrum Analyzer by doing a short time discrete Fourier transform (STFT). Review the [theory of the Spectrum Analyzer](data/REPLACE_Theory_Spectrum_Analyzer.pdf)
+
+- The FFT Sink acts as a Spectrum Analyzer by doing a short time discrete Fourier transform (STFT). Review the [theory of the Spectrum Analyzer](../_docs/pdriessen_textbook.pdf) (section 1.4).
 
 - Close the scope and change the sample rate back to 32000. Add a *QT GUI Frequency Sink* (under *Instrumentation->QT*) to your window. Change the Type to Float and leave the remaining parameters at their default values.
 
@@ -117,7 +117,7 @@ the flowgraph and then execute it.
 - Explore other graphical sinks (*QT GUI Number Sink*, *QT GUI Waterfall Sink*, and *QT GUI Histogram Sink*) to see how they display the *Signal Source*
   - The number sink is typically used to monitor slowly-changing signals such as the RMS input level. In this example, the sine wave changes too fast for the numbers to keep up.
   - The waterfall sink is used to display amplitude vs. frequency vs. time with amplitude represented as a variation in color. The waterfall is a time frequency diagram with time on the vertical axis. Note that for a single 1 kHz sine wave input, the frequency does not change with time, thus a vertical line is displayed at 1 kHz.
-  - The histo gramsink displays a histogram of the input values, which can be used to monitor the symbol distribution in a digital signal or the distribution of a noise source.
+  - The histogram sink displays a histogram of the input values, which can be used to monitor the symbol distribution in a digital signal or the distribution of a noise source.
 
 ## Working with Audio I/O
 
