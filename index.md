@@ -40,7 +40,7 @@ The deliverables are described at the beginning of each section.
 
 Version | Date | Author | Changelog
 ------- | ---- | ------ | ---------
-**3.1** | ongoing | nsbruce | - Rebuilding lab instructions to reflect GR update from WX to QT.<br> - Restructuring labs 1 and 2.
+**3.1** | ongoing | nsbruce | - Rebuilding lab instructions to smooth the workflow.<br> - Updating all flowgraphs and instructions to reflect GR update from WX to QT.<br> - Restructuring deliverables.
 **3.0** | 5 Jun 2019 | nbruce | - Major rebuild. Site has moved from a UVic local SVN repo to Github.<br> - It used to be compiled using Docbook with Apache Ant and Webhelp, it is now running on Github Pages using Jekyll.<br> - All of the lab components have been turned into markdown documents.
 **2.1** | 1 Jan 2017 | pkremler | - Updated text references to 2016 edition, clarified lab procedures and reformatted for readability.
 **2.0** | 1 Sept 2014 | sharrison |- Updated for 2014 deleting Softrock, retaining 4 labs only.
