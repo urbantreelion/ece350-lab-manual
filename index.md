@@ -17,9 +17,14 @@ This lab manual will regularly refer to the course textbook, available for free 
 
 ### Deliverables
 
-The lab component of this course consists of four laboratories:
+The lab component of this course consists of two introductory GNU Radio tutorials:
 
-- Lab 1. GNU Radio tutorials.
+- Using GNU Radio Companion
+- Variables and Controls
+
+as well as four laboratories:
+
+- Lab 1. AM signals.
 - Lab 2. [USRP](http://en.wikipedia.org/wiki/Universal_Software_Radio_Peripheral) tutorials and FM receiver.
 - Lab 3. Finding frame synchronization on the [FLEX](<http://en.wikipedia.org/wiki/FLEX_(protocol)>) pager network using the USRP and GNU Radio.
 - Lab 4. Pulse shaping and PSK.
@@ -31,7 +36,7 @@ The deliverables are described at the beginning of each section.
 
 > NOTE: You are encouraged to work at your own pace, using the scheduled lab period as a time to get assistance from a TA or the course instructor.
 
-[**Begin lab 1**](_lab1/introduction.md)
+[**Begin introductory tutorials**](_intro/introduction.md)
 
 ---
 

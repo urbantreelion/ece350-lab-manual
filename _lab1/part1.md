@@ -1,13 +1,15 @@
 ---
 layout: labitem
-title: Tutorial 3
-permalink: /lab1/tutorial3
-firstHeading: Tutorial 3 - Understanding and transmitting AM waveforms
+title: Part 1
+permalink: /lab1/AM-transmitters
+firstHeading: Part 1 - Understanding and transmitting AM waveforms
 ---
+
+[**Back to Lab 1 Intro**](introduction.md) | [**Begin Part 2**](part2.md)
 
 ## Objectives
 
-This tutorial is a guide to AM signal waveforms. In this tutorial you will learn:
+This lab is a guide to AM signal waveforms. In this part you will learn:
 
 - Theory and equations of AM signals and the complex mixer
 - How to construct an AM transmitter flowgraph to generate an AM waveform with a sinusoidal message and observe the waveform and spectrum
@@ -15,28 +17,30 @@ This tutorial is a guide to AM signal waveforms. In this tutorial you will learn
 
 ---
 
-## Tutorial 3 Deliverables
+## Part 1 Deliverables
 
 - GRC files of AM transmitter and waveform builder. You will be stepped through building them.
-- There are 2 questions spaced throughout the tutorial. They are clearly indicated.
+- There are 2 questions spaced throughout this part. They are clearly indicated.
   - Each question requires approximately 1 line of writing, and address concepts, not details. Answer the questions and submit a single page containing the answers to your TA at the end of the lab.
+
+---
 
 ## Building an AM transmitter
 
 - Review AM transmitter theory in the [textbook](../_docs/pdriessen_textbook.pdf) (section 2.1).
 
-- If you are unsure of the functionality of any of the blocks in this tutorial, please consult the [Documentation](https://wiki.gnuradio.org/index.php/Category:Block_Docs), or ask your TA.
+- If you are unsure of the functionality of any of the blocks, please consult the [Documentation](https://wiki.gnuradio.org/index.php/Category:Block_Docs), or ask your TA.
 
-- Start GRC as was done in the previous tutorials. If GRC is already open, open the `.grc` files by selecting *File->Open*, or clicking on the Open logo, ![tutorial3_grc-open-icon.png](figures/tutorial3_grc-open-icon.png).
+- Start GRC as was done in the intro tutorials. If GRC is already open, open the `.grc` files by selecting *File->Open*, or clicking on the Open logo, ![part1_grc-open-icon.png](figures/part1_grc-open-icon.png).
 
-- Build the following flowgraph using *Signal Source*, *Throttle*, *Multiply Const*, and *Add Const* blocks. It would be wise to have the different GUI sinks in different window tabs as done in the last tutorial.
+- Build the following flowgraph using *Signal Source*, *Throttle*, *Multiply Const*, and *Add Const* blocks. It would be wise to have the different GUI sinks in different window tabs as done in the second intro tutorial.
 
-    ![tutorial3_AM_TX_basic.png](./figures/tutorial3_AM_TX_basic.png)<br>
+    ![part1_AM_TX_basic.png](./figures/part1_AM_TX_basic.png)<br>
     __*AM modulation flow graph*__
 
   - This flowgraph will be one of your deliverables. Save it as `AM_modulator.grc` and in the *Options* block, set the following parameters as follows.
 
-    ![tutorial3_modulator_options.png](./figures/tutorial3_modulator_options.png)<br>
+    ![part1_modulator_options.png](./figures/part1_modulator_options.png)<br>
     __*Flowgraph options parameters for submission*__
 
   - You can read the *QT GUI Range* widget parameters right off of the flowgraph, and note that the sample rate is 200 kHz. You cannot however, tell when variables are in use without opening the blocks.
@@ -45,23 +49,23 @@ This tutorial is a guide to AM signal waveforms. In this tutorial you will learn
     - Set the *Add Const* constant to 1.
     - You can name and organize the GUI sinks/scopes as you please. Don't forget to set *Config->Control Panel* to True in the GUI sinks to allow interactivity.
 
-    ![tutorial3_signal_source_properties.png](./figures/tutorial3_signal_source_properties.png)<br>
+    ![part1_signal_source_properties.png](./figures/part1_signal_source_properties.png)<br>
     __*Signal source properties*__
 
-    ![tutorial3_mult_const_properties.png](./figures/tutorial3_mult_const_properties.png)<br>
+    ![part1_mult_const_properties.png](./figures/part1_mult_const_properties.png)<br>
     __*Multiple const properties properties*__
 
   >Note that this flowgraph is the graphical form of the modulation waveform, __1+k_a * m(t)__, where __m(t)__ is the *Signal Source* block, 1 is the *Add Const* block, and __k_a__ is the *Multiply Const* block.
 
 - When executed, the three plots should look like the following:
 
-    ![tutorial3_basic_message_scope.png](./figures/tutorial3_basic_message_scope.png)<br>
+    ![part1_basic_message_scope.png](./figures/part1_basic_message_scope.png)<br>
     __*Message in time domain*__
 
-    ![tutorial3_basic_message_fft.png](./figures/tutorial3_basic_message_fft.png)<br>
+    ![part1_basic_message_fft.png](./figures/part1_basic_message_fft.png)<br>
     __*Message in frequency domain*__
 
-    ![tutorial3_basic_modulated_scope.png](./figures/tutorial3_basic_modulated_scope.png)<br>
+    ![part1_basic_modulated_scope.png](./figures/part1_basic_modulated_scope.png)<br>
     __*Modulation signal in time domain*__
 
 ---
@@ -80,7 +84,7 @@ Why is the spectrum symmetrical about 0 Hz?
     - change the number of inputs to two as shown, and connect one to each of the modulation waveform and the modulated carrier.
     - go to the *Config* tab and label the two lines as "Modulation waveform" and "Modulated signal" as appropriate.
 
-    ![tutorial3_AM_TX_carrier.png](./figures/tutorial3_AM_TX_carrier.png)<br>
+    ![part1_AM_TX_carrier.png](./figures/part1_AM_TX_carrier.png)<br>
     __*Flowgraph of AM modulation with a carrier*__
 
   >In GNU Radio Companion, greyed out boxes are "disabled". You can do this by right clicking on a block and selecting "Disable", or just pressing the "d" key on your keyboard. They greyed out File Sink will be used later.
@@ -89,15 +93,15 @@ Why is the spectrum symmetrical about 0 Hz?
 
   >When there are two inputs to a GUI Sink, they are plotted as different colors. You can click on their legend entries to hide and show each one.
 
-    ![tutorial3_modulated_carrier_scope.png](./figures/tutorial3_modulated_carrier_scope.png)<br>
+    ![part1_modulated_carrier_scope.png](./figures/part1_modulated_carrier_scope.png)<br>
     __*Modulated carrier and modulation waveform*__
 
-    ![tutorial3_modulated_carrier_fft.png](./figures/tutorial3_modulated_carrier_fft.png)<br>
+    ![part1_modulated_carrier_fft.png](./figures/part1_modulated_carrier_fft.png)<br>
     __*Modulated carrier spectrum*__
 
 - Enable the *File Sink*, select a save destination and name the output file `AM_modulated_4kHz_sine.dat`.
 
-    ![tutorial3_file_sink.png](./figures/tutorial3_file_sink.png)<br>
+    ![part1_file_sink.png](./figures/part1_file_sink.png)<br>
     __*File Sink properties*__
 
 - Execute the flowgraph and after a few seconds kill it. Check that the `.dat` file now exists. You can now disable the *File Sink* block again.
@@ -122,7 +126,7 @@ Until now, we have only used a sinusoidal message. In this section, we will crea
     - Amplitude: 2
     - Offset: -1
 
-    ![tutorial3_square_signal_to_file.png](./figures/tutorial3_square_signal_to_file.png)<br>
+    ![part1_square_signal_to_file.png](./figures/part1_square_signal_to_file.png)<br>
     __*Square waveform generator*__
 
   - This flowgraph will be your second deliverable. Save it as `waveform_builder.grc`, and in the *Options* block, set the following:
@@ -139,10 +143,10 @@ Until now, we have only used a sinusoidal message. In this section, we will crea
   - enable to *File Sink* block, choose a save destination, and name the file `AM_modulated_square.dat`
   - execute the flowgraph.
 
-    ![tutorial3_modulated_square_scope.png](./figures/tutorial3_modulated_square_scope.png)<br>
+    ![part1_modulated_square_scope.png](./figures/part1_modulated_square_scope.png)<br>
     __*Modulated carrier and square modulation waveform*__
 
-    ![tutorial3_modulated_square_fft.png](./figures/tutorial3_modulated_square_fft.png)<br>
+    ![part1_modulated_square_fft.png](./figures/part1_modulated_square_fft.png)<br>
     __*Modulated carrier spectrum for a square AM signal*__
 
 ### Two sine waves with selectable frequencies
@@ -152,36 +156,36 @@ Until now, we have only used a sinusoidal message. In this section, we will crea
   - Update the *Signal Source* blocks to use the new variables, _f1_ and _f2_.
   - Save the output file as `two_sines_waveform.dat`
 
-    ![tutorial3_two_sines_flowgraph.png](./figures/tutorial3_two_sines_flowgraph.png)<br>
+    ![part1_two_sines_flowgraph.png](./figures/part1_two_sines_flowgraph.png)<br>
     __*Two sines multiplied and saved to a `.dat` file*__
 
 - Use the new `two_sines_waveform.dat` in your AM modulator, saving the output as `AM_modulated_two_sines.dat`.
 
-    ![tutorial3_modulated_two_sines_scope.png](./figures/tutorial3_modulated_two_sines_scope.png)<br>
+    ![part1_modulated_two_sines_scope.png](./figures/part1_modulated_two_sines_scope.png)<br>
     __*Modulated carrier and two sines modulation waveform*__
 
-    ![tutorial3_modulated_two_sines_fft.png](./figures/tutorial3_modulated_two_sines_fft.png)<br>
+    ![part1_modulated_two_sines_fft.png](./figures/part1_modulated_two_sines_fft.png)<br>
     __*Modulated carrier spectrum for a two sines AM signal*__
 
 ### Pseudo Random Binary Sequence (PRBS) with time domain raised cosine pulse shape over 6 symbols
 
 - Once again edit the `waveform-builder.grc` flowgraph to the following. In it, a message signal is created from a sequence of random binary bits which is converted to a sequence of pulses shaped using a raised cosine pulse shaping filter.
 
-    ![tutorial3_PRBS_raise_cos_flowgraph.png](./figures/tutorial3_PRBS_raise_cos_flowgraph.png)<br>
+    ![part1_PRBS_raise_cos_flowgraph.png](./figures/part1_PRBS_raise_cos_flowgraph.png)<br>
     __*PRBS with a root raised cosine shape saved to a `.dat` file*__
 
   - The *Random Source* block generates a sequence of 1000 random bits which is repeated by keeping the _Repeat_ option as "Yes". The output type is "Byte" which is then converted to "Float" using a *Char to Float* block. The sequence of {0,1} bits are converted to {-1,1}, which is symmetric about zero by setting the parameters of the *Multiply Const* and *Add Const* blocks to 2 and -1 respectively.
   - The sequence of {-1,1} is converted to a sequence of pulses using the *Root Raised Cosine Filter* block. The main parameter of a raised cosine filter is it's roll-off factor (alpha), which indirectly specifies the bandwidth of the filter. Ideal raised cosine filters have an infinite number of taps. Practical raised cosine filters are windowed. The window length is controlled here using the _span_in_symbol_duration_ variable. Here, we specify the window length as 6 symbol durations (i.e. the filter spans six symbol durations). Raised cosine filters are used for pulse shaping, where the signal is upsampled. To do this, specify the upsampling factor to match the _upsampling_factor_ variable.
   
-      ![tutorial3_RRC_parameters.png](./figures/tutorial3_RRC_parameters.png)<br>
+      ![part1_RRC_parameters.png](./figures/part1_RRC_parameters.png)<br>
     __*Root Raised Cosine Filter properties*__
 
 - Save the output as `prbs_rrc_waveform.dat` and run it through the AM modulator, saving the modulator output as `AM_modulated_prbs_rrc.dat`.
 
-    ![tutorial3_modulated_prbs_rrc_scope.png](./figures/tutorial3_modulated_prbs_rrc_scope.png)<br>
+    ![part1_modulated_prbs_rrc_scope.png](./figures/part1_modulated_prbs_rrc_scope.png)<br>
     __*Modulated carrier and PRBC with RRC modulation waveform*__
 
-    ![tutorial3_modulated_prbs_rrc_fft.png](./figures/tutorial3_modulated_prbs_rrc_fft.png)<br>
+    ![part1_modulated_prbs_rrc_fft.png](./figures/part1_modulated_prbs_rrc_fft.png)<br>
     __*Modulated carrier spectrum for a PRBS with RRC AM signal*__
 
 ### PRBS with square pulse shape over 6 symbols
@@ -190,15 +194,15 @@ Until now, we have only used a sinusoidal message. In this section, we will crea
 
   > When a block is yellow in GRC it is in "bypass mode" where the samples pass through the block untouched. This can be done by right-clicking on the block and selecting "bypass" or by pressing "b" on your keyboard.
 
-    ![tutorial3_PRBS_square_flowgraph.png](./figures/tutorial3_PRBS_square_flowgraph.png)<br>
+    ![part1_PRBS_square_flowgraph.png](./figures/part1_PRBS_square_flowgraph.png)<br>
     __*PRBS with a square shape saved to a `.dat` file*__
 
 - Save the waveform to `prbs_square_waveform.dat` and run it through the AM modulator. Save the modulated signal as `AM_modulated_prbs_square.dat`.
 
-    ![tutorial3_modulated_prbs_square_scope.png](./figures/tutorial3_modulated_prbs_square_scope.png)<br>
+    ![part1_modulated_prbs_square_scope.png](./figures/part1_modulated_prbs_square_scope.png)<br>
     __*Modulated carrier and PRBC with square shape modulation waveform*__
 
-    ![tutorial3_modulated_prbs_square_fft.png](./figures/tutorial3_modulated_prbs_square_fft.png)<br>
+    ![part1_modulated_prbs_square_fft.png](./figures/part1_modulated_prbs_square_fft.png)<br>
     __*Modulated carrier spectrum for a PRBS with square shape AM signal*__
 
 ---
@@ -227,14 +231,14 @@ At this point, you should have:
 
 ## Deliverables
 
-From this tutorial, keep the following files to submit to your TA after the next (and final) tutorial:
+From this lab part, keep the following files to submit to your TA after the second (and final) part:
 
 - `waveform-builder.grc`
 - `AM_modulator.grc`.
 - The answers to [Question 1](#deliverable-question-1) and [Question 2](#deliverable-question-2.)
 
-**Do not attach the `top_block.py` or `.dat` files. You will use some of the `.dat` files in the next tutorial though, so don't delete them yet!**
+**Do not attach the `top_block.py` or `.dat` files. You will use some of the `.dat` files in the next part though, so don't delete them yet!**
 
 ---
 
-[**Begin Tutorial 4**](tutorial4.md)
+[**Back to Lab 1 Intro**](introduction.md) | [**Begin Part 2**](part2.md)

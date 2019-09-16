@@ -12,15 +12,17 @@ plugins:
   - jekyll-feed
 
 include:
+  - _intro
   - _lab1
-  - _lab2
-  - _lab3
-  - _lab4
+  # - _lab2
+  # - _lab3
+  # - _lab4
   - _docs
 
 # If you want to link only specific pages in your header, uncomment
 # this and add the path to the pages in order as they should show up
 header_pages:
+  - _intro/introduction.md
   - _lab1/introduction.md
   - _lab2/introduction.md
   - _lab3/lab3.md

@@ -1,15 +1,17 @@
 ---
 layout: labitem
-title: Tutorial 4
-permalink: /lab1/tutorial4
-firstHeading: Tutorial 4 - Receiving AM waveforms
+title: Part 2
+permalink: /lab1/AM-receivers
+firstHeading: Part 2 - Receiving AM waveforms
 ---
+
+[**Back to Part 1**](part1.md) | [**Continue to Lab 2**](../_lab2/introduction.md)
 
 ## Objectives
 
-This tutorial is a guide to building a practical AM receiver for receiving real AM signals. The first part builds off of the last tutorial and you will learn how to:
+This part of the lab is a guide to building a practical AM receiver for receiving real AM signals. It all builds off of the last part (AM transmitters) and in it you will learn how to:
 
-- demodulate one of the modulated AM signals from the last tutorial using only real signals.
+- demodulate one of the modulated AM signals from the last part using only real signals.
 
 The second part addresses demodulating a provided data file which contains several seconds of recorded signals from the AM broadcast band. In this section you will learn how to:
 
@@ -19,11 +21,11 @@ The second part addresses demodulating a provided data file which contains sever
 
 ---
 
-## Tutorial 4 Deliverables
+## Part 2 Deliverables
 
 - GRC file of AM receiver with AGC as described below.
-- There is 1 question in this tutorial. It is clearly indicated as they were in the last tutorial.
-  - The question requires approximately 1 line of writing and address concepts, not details. Answer the questions and submit a single page containing the answers to your TA at the end of the lab. This should build upon your answers to the two questions posed in the last tutorial.
+- There is 1 question in this part of the lab. It is clearly indicated as they were in the last part.
+  - The question requires approximately 1 line of writing and address concepts, not details. Answer the questions and submit a single page containing the answers to your TA at the end of the lab. This should build upon your answers to the two questions posed in the last part (AM transmitters).
 
 ---
 
@@ -40,37 +42,37 @@ The second part addresses demodulating a provided data file which contains sever
 
 - Build the following flowgraph in your `AM_demodulator.grc` file.
 
-    ![tutorial4_AM_demod_flowgraph.png](./figures/tutorial4_AM_demod_flowgraph.png)<br>
+    ![part2_AM_demod_flowgraph.png](./figures/part2_AM_demod_flowgraph.png)<br>
     __*AM Demodulation flowgraph*__
 
-  - In the *File Source* block, select the `AM_modulated_4kHz_sine.dat` file that you made in the last tutorial. Make sure that "Repeat" is set to "Yes" so that the data will loop and you will have a continuously playing signal.
+  - In the *File Source* block, select the `AM_modulated_4kHz_sine.dat` file that you made in the last part. Make sure that "Repeat" is set to "Yes" so that the data will loop and you will have a continuously playing signal.
   - Remembering that the frequency of the modulated signal was 4 kHz, set the cutoff frequency of the low pass filter to 5 kHz so that only the sinusoidal message is kept and higher frequency components are discarded. Set the other parameters as below.
 
-    ![tutorial4_low_pass.png](./figures/tutorial4_low_pass.png)<br>
+    ![part2_low_pass.png](./figures/part2_low_pass.png)<br>
     __*Low pass filter parameters*__
 
   - After the low pass filter, the signal is amplified. Use a *QT GUI Range* widget to control the amplification.
 
-    ![tutorial4_amplifier.png](./figures/tutorial4_amplifier.png)<br>
+    ![part2_amplifier.png](./figures/part2_amplifier.png)<br>
     __*Amplifier parameters*__
 
   - The decimation rate of the *Low Pass Filter* block is set to four. To recover the signal frequency, we use a *Rational Resampler* block to restore to original sampling rate.
 
-    ![tutorial4_rational_resampler.png](./figures/tutorial4_rational_resampler.png)<br>
+    ![part2_rational_resampler.png](./figures/part2_rational_resampler.png)<br>
     __*Rational resampler parameters*__
 
 - Run the flowgraph and analyze the output. Is it what you expected? You can also look at the other `.dat` files of modulated signals to demodulate them. Just remember to adjust the low pass filter parameters based on the modulated signal properties.
 
-    ![tutorial4_demodulated_scope.png](./figures/tutorial4_demodulated_scope.png)<br>
+    ![part2_demodulated_scope.png](./figures/part2_demodulated_scope.png)<br>
     __*Demodulated 4 kHz sine message*__
 
-    ![tutorial4_demodulated_spectrum.png](./figures/tutorial4_demodulated_spectrum.png)<br>
+    ![part2_demodulated_spectrum.png](./figures/part2_demodulated_spectrum.png)<br>
     __*Demodulated 4 kHz sine message in the frequency domain*__
 
-    ![tutorial4_demodulated_spectrum_zoomed.png](./figures/tutorial4_demodulated_spectrum_zoomed.png)<br>
+    ![part2_demodulated_spectrum_zoomed.png](./figures/part2_demodulated_spectrum_zoomed.png)<br>
     __*Demodulated 4 kHz sine message in the positive frequency domain*__
 
-## Building a Complex signal receiver with channel selection (tuning)
+## Building a complex signal receiver with channel selection (tuning)
 
 - Review the [theory of AM receivers using complex signals](../_docs/pdriessen_textbook.pdf) (section 3.2).
 
@@ -84,14 +86,14 @@ The second part addresses demodulating a provided data file which contains sever
 
 - Construct the flow graph shown below. Set the sample rate in the variable block to 256000. This is the rate at which the saved data was sampled.
 
-    ![tutorial4_am_data_file.png](./figures/tutorial4_am_data_file.png)<br>
+    ![part2_am_data_file.png](./figures/part2_am_data_file.png)<br>
     __*Flow graph to play a file to an FFT sink.*__
 
   - Double-click on the *File Source* block. Click on the ellipsis (...) next to the *File* entry box. Locate the `am_usrp710.dat` file that you saved in the previous step. The path to your file will appear in the block properties. Set the *Output Type* to *Complex*. The use of complex data to describe and process waveforms in SDR will be discussed in the next lab. Set *Repeat* to *Yes*. This will cause the data to repeat so that you have a continuously playing signal.
 
 - Save and execute the flow graph. You should observe an FFT display similar to the one shown below. You may need to click on *Y Range* and *Ref Level* buttons to scale the output. The *Autoscale* button automates this somewhat.
   
-    ![tutorial4_am_fft.png](./figures/tutorial4_am_fft.png)<br>
+    ![part2_am_fft.png](./figures/part2_am_fft.png)<br>
     __*GUI chooser properties dialog.*__
 
   - Note the following:
@@ -104,7 +106,7 @@ The second part addresses demodulating a provided data file which contains sever
 
 ### Frequency display resolution
 
-In this step we will expand the frequency scale on the FFT display so that you can view the signals with greater resolution. Recall from the previous tutorial that the span of the frequency axis is determined by the sample rate (256 kHz for this file). While we cannot change the original data, we can resample it to either increase or decrease the sample rate. We will decrease the sample rate by using decimation. Modify the flow graph as follows:
+In this step we will expand the frequency scale on the FFT display so that you can view the signals with greater resolution. Recall from the previous lab part on AM transmitters that the span of the frequency axis is determined by the sample rate (256 kHz for this file). While we cannot change the original data, we can resample it to either increase or decrease the sample rate. We will decrease the sample rate by using decimation. Modify the flow graph as follows:
 
 - Add a *Variable* block (under *Variables* category). Set the ID to `resamp_factor` and the Value to 4.
 
@@ -114,7 +116,7 @@ In this step we will expand the frequency scale on the FFT display so that you c
 
 - Your flow graph should now appear as shown below.
 
-    ![tutorial4_fft_decim_graph.png](./figures/tutorial4_fft_decim_graph.png)<br>
+    ![part2_fft_decim_graph.png](./figures/part2_fft_decim_graph.png)<br>
     __*Flow graph with file input and decimated FFT sink output.*__
 
 - Execute the new flow graph. You should now observe a frequency span of only 64 kHz (-32 kHz to +32 kHz).
@@ -128,7 +130,7 @@ What actual frequency range does this correspond to?
 ---
 
 ### Selecting one channel by filtering
-<!-- #TODO can you stop in QT? -->
+
 The bandwidth of an AM broadcast signal is 10 kHz (+/- 5 kHz from the carrier frequency). You may find it useful to click the *Stop* button on the FFT plot to see this more clearly.
 
 >Note: many stations also include additional information outside of the 10 kHz bandwidth.
@@ -137,7 +139,7 @@ In order to select the station at 710 kHz (0 kHz on the FFT display) we need to 
 
 - Insert a *Low Pass Filter* block between the *Rational Resampler* and the *Throttle*. Set the parameters as shown. Note that the "FIR Type" is now "Complex->Complex".
 
-    ![tutorial4_low_pass_dialog.png](./figures/tutorial4_low_pass_dialog.png)<br>
+    ![part2_low_pass_dialog.png](./figures/part2_low_pass_dialog.png)<br>
     __*Low pass filter properties dialog.*__
 
 - Execute the flow graph. You should see that only the station between +/- 5 kHz remains.
@@ -168,7 +170,7 @@ The next step is to listen to this demodulated waveform to confirm that it is in
 
 - Place a *QT GUI Time Sink* at the output of the *Rational Resampler* (in addition to the *Audio Sink*). Change its "Type" to "Float" and set its "Sample Rate" to 48000. The flow graph should be similar to the one shown below.
 
-    ![tutorial4_am_receiver_no_tuning_no_volume.png](./figures/tutorial4_am_receiver_no_tuning_no_volume.png)<br>
+    ![part2_am_receiver_no_tuning_no_volume.png](./figures/part2_am_receiver_no_tuning_no_volume.png)<br>
     __*Flow graph with file source with a "cleaner" audio output.*__
 
 - Execute the flow graph. The *QT GUI Time Sink* should open and display the output waveform. However, you may not yet hear the audio from your speaker or it may be very distorted. This is due to the fact that the values of the samples going in to the *Audio Sink* block are outside the range expected by the *Audio Sink*. The *Audio Sink* requires that the sample values are between -1.0 and 1.0 in order to play them back through the audio hardware.
@@ -179,12 +181,12 @@ The next step is to listen to this demodulated waveform to confirm that it is in
 
 - Add a *QT GUI Range* block. Set the parameters as shown.
 
-    ![tutorial4_am_volume.png](./figures/tutorial4_am_volume.png)<br>
+    ![part2_am_volume.png](./figures/part2_am_volume.png)<br>
     __*GUI slider properties dialog.*__
 
 - Set the constant in the *Multiply Const* block to "volume" so that the slider controls it. The final flow graph is shown.
 
-    ![tutorial4_am_receiver_no_tuning.png](./figures/tutorial4_am_receiver_no_tuning.png)<br>
+    ![part2_am_receiver_no_tuning.png](./figures/part2_am_receiver_no_tuning.png)<br>
     __*Flow graph with a GUI volume control to resample and play audio.*__
 
 - Execute the flow graph. You should now hear the demodulated AM signal. Stop the flowgraph.
@@ -201,7 +203,7 @@ The next step is to listen to this demodulated waveform to confirm that it is in
 
 - In order to receive this signal we need to shift it down to zero frequency so that it will pass through the low pass filter. One way to accomplish this is to multiply it by a sinusoid. Modify the flow graph as shown below. Add a *Signal Source* block and set its parameters to output a cosine at a frequency of -80000. This negative frequency will shift the entire spectrum to the left by 80 kHz. Use a *Multiply* block and move the *QT GUI Frequency Sink* to observe its output. Test this receiver.
 
-    ![tutorial4_am_receiver_fixed_tuning.png](./figures/tutorial4_am_receiver_fixed_tuning.png)<br>
+    ![part2_am_receiver_fixed_tuning.png](./figures/part2_am_receiver_fixed_tuning.png)<br>
     __*Flow graph to play audio and with an FFT sink on the input.*__
 
 - Add another *QT GUI Range* widget so that you can adjust the frequency with a slider. Set the minimum to `-samp_rate/2` and the maximum to `samp_rate/2`. Test your flow graph and demonstrate that it works. You may need to adjust your volume slider for each station. This is because the stations are at varying distances away from the receiver and have different transmitted power. (Remember the link equation?)
@@ -236,15 +238,15 @@ At this point, you should have:
 
 ## Deliverables
 
-From this tutorial, keep the following files to submit to your TA:
+From this part of the lab, keep the following files to submit to your TA:
 
 - `AM_demodulator.grc`
 - `AM_demodulator_complex.grc`.
 - The answer to [Question 3](#deliverable-question-3).
 
-Combine these deliverables with those from the last tutorial and submit them as a package. As your TA where to submit them, and remember to put your name and student number on everything (If you filled out the *Options* block in the `.grc` files correctly, your student numbers will be recorded in them.)
+Combine these deliverables with those from the last part of the lab and submit them as a package. As your TA where to submit them, and remember to put your name and student number on everything (If you filled out the *Options* block in the `.grc` files correctly, your student numbers will be recorded in them.)
 
 **Do not attach the `top_block.py` or `.dat` files.**
 
 ---
-[**Continue to Lab 2**](../_lab2/introduction.md)
+[**Back to Part 1**](part1.md) | [**Continue to Lab 2**](../_lab2/introduction.md)

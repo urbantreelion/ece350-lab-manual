@@ -1,9 +1,10 @@
 ---
 layout: labitem
 title: Tutorial 2
-permalink: /lab1/tutorial2
+permalink: /intro/tutorial2
 firstHeading: Tutorial 2 - Variables and Controls
 ---
+[**Back to Tutorial 1**](tutorial1.md) | [**Continue to Lab 1**](../_lab1/introduction.md)
 
 ## Objectives
 
@@ -75,4 +76,4 @@ In this tutorial you will learn how to:
 
 In this tutorial you have learned how to add GUI controls to your flowgraph and how to use them to control different parameters of the flowgraph. These skills will be useful when creating a tunable AM receiver in the next tutorial. When you feel comfortable with this material, please feel free to move on to Tutorial 3.
 
-[**Begin Tutorial 3**](tutorial3.md)
+[**Back to Tutorial 1**](tutorial1.md) | [**Continue to Lab 1**](../_lab1/introduction.md)

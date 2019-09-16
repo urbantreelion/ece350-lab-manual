@@ -1,7 +1,7 @@
 ---
 layout: labitem
 title: Tutorial 1
-permalink: /lab1/tutorial1
+permalink: /intro/tutorial1
 firstHeading: Tutorial 1 - Using GNU Radio Companion
 ---
 
