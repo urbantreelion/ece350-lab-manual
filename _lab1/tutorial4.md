@@ -27,7 +27,7 @@ The second part addresses demodulating a provided data file which contains sever
 
 ---
 
-## Buliding an AM receiver
+## Building an AM receiver
 
 - Review the [theory of AM receivers using real signals](../_docs/pdriessen_textbook.pdf) (section 3.1).
 
@@ -39,7 +39,7 @@ The second part addresses demodulating a provided data file which contains sever
 - To recover the message from an AM modulated signal, we must first eliminate the effect of the carrier frequency by multiplying the received signal with the carrier waveform and low pass filtering it. This provides the baseband signal **1 + k_a * m(t)**. A DC blocker is then used to obtain **k_a * m(t)**.
 
 - Build the following flowgraph in your `AM_demodulator.grc` file.
-  <!-- #TODO fix for 4k -->
+
     ![tutorial4_AM_demod_flowgraph.png](./figures/tutorial4_AM_demod_flowgraph.png)<br>
     __*AM Demodulation flowgraph*__
 
@@ -60,12 +60,15 @@ The second part addresses demodulating a provided data file which contains sever
     __*Rational resampler parameters*__
 
 - Run the flowgraph and analyze the output. Is it what you expected? You can also look at the other `.dat` files of modulated signals to demodulate them. Just remember to adjust the low pass filter parameters based on the modulated signal properties.
-    <!-- #TODO change both of these -->
+
     ![tutorial4_demodulated_scope.png](./figures/tutorial4_demodulated_scope.png)<br>
     __*Demodulated 4 kHz sine message*__
 
     ![tutorial4_demodulated_spectrum.png](./figures/tutorial4_demodulated_spectrum.png)<br>
     __*Demodulated 4 kHz sine message in the frequency domain*__
+
+    ![tutorial4_demodulated_spectrum_zoomed.png](./figures/tutorial4_demodulated_spectrum_zoomed.png)<br>
+    __*Demodulated 4 kHz sine message in the positive frequency domain*__
 
 ## Building a Complex signal receiver with channel selection (tuning)
 
@@ -80,15 +83,14 @@ The second part addresses demodulating a provided data file which contains sever
   - **Author:** V00xxxxxx, V00yyyyyy (where all of your student numbers are included)
 
 - Construct the flow graph shown below. Set the sample rate in the variable block to 256000. This is the rate at which the saved data was sampled.
-    <!-- #TODO rebuild -->
+
     ![tutorial4_am_data_file.png](./figures/tutorial4_am_data_file.png)<br>
     __*Flow graph to play a file to an FFT sink.*__
 
   - Double-click on the *File Source* block. Click on the ellipsis (...) next to the *File* entry box. Locate the `am_usrp710.dat` file that you saved in the previous step. The path to your file will appear in the block properties. Set the *Output Type* to *Complex*. The use of complex data to describe and process waveforms in SDR will be discussed in the next lab. Set *Repeat* to *Yes*. This will cause the data to repeat so that you have a continuously playing signal.
 
-- Save and execute the flow graph. You should observe an FFT display similar to the one shown below. You may need to click on *Y Range* and *Ref Level* buttons to scale the output.
+- Save and execute the flow graph. You should observe an FFT display similar to the one shown below. You may need to click on *Y Range* and *Ref Level* buttons to scale the output. The *Autoscale* button automates this somewhat.
   
-    <!-- #TODO rebuild -->
     ![tutorial4_am_fft.png](./figures/tutorial4_am_fft.png)<br>
     __*GUI chooser properties dialog.*__
 
@@ -97,6 +99,8 @@ The second part addresses demodulating a provided data file which contains sever
     - This data was recorded with a USRP set to 710 kHz. Thus, the signal you see at the center (indicated as 0 kHz) is actually at 710 kHz. Similarly, the signal at 80 kHz is actually at 710 kHz + 80 kHz = 790 kHz.
     - The display spans a frequency range from just below -120 kHz to just above 120 kHz. This exact span is 256 kHz, which corresponds to the sample rate that the data was recorded at.
     - The peaks that you observe on this display correspond to the carriers for AM broadcast signals. You should also be able to observe the sidebands for the stronger waveforms.
+  
+  > To change the center frequency of the FFT, you can change the "Center Frequency" parameter in the *QT GUI Frequency Sink*.
 
 ### Frequency display resolution
 
@@ -109,7 +113,7 @@ In this step we will expand the frequency scale on the FFT display so that you c
 - Note that the *Throttle* and *QT GUI Frequency Sink* now need their sample rates changed to correspond to this new rate. Change the sample rate in both of these blocks to `samp_rate/resamp_factor`. Now we can change the decimation factor in the *Variable* block and it will be reflected in each of the other blocks automatically.
 
 - Your flow graph should now appear as shown below.
-    <!-- #TODO redo -->
+
     ![tutorial4_fft_decim_graph.png](./figures/tutorial4_fft_decim_graph.png)<br>
     __*Flow graph with file input and decimated FFT sink output.*__
 
@@ -125,12 +129,14 @@ What actual frequency range does this correspond to?
 
 ### Selecting one channel by filtering
 <!-- #TODO can you stop in QT? -->
-The bandwidth of an AM broadcast signal is 10 kHz (+/- 5 kHz from the carrier frequency). You may find it useful to click the *Stop* button on the FFT plot to see this more clearly. Also, note that many stations also include additional information outside of the 10 kHz bandwidth.
+The bandwidth of an AM broadcast signal is 10 kHz (+/- 5 kHz from the carrier frequency). You may find it useful to click the *Stop* button on the FFT plot to see this more clearly.
+
+>Note: many stations also include additional information outside of the 10 kHz bandwidth.
 
 In order to select the station at 710 kHz (0 kHz on the FFT display) we need to insert a filter to eliminate all but the one station that we want to receive. This is often referred to as a channel filter. Since the station at 710 kHz has been moved to 0 kHz (in the USRP) we will use a low pass filter. The station bandwidth is 10 kHz, so we will use a low pass filter that cuts off at 5 kHz.
 
 - Insert a *Low Pass Filter* block between the *Rational Resampler* and the *Throttle*. Set the parameters as shown. Note that the "FIR Type" is now "Complex->Complex".
-    <!-- #TODO redo -->
+
     ![tutorial4_low_pass_dialog.png](./figures/tutorial4_low_pass_dialog.png)<br>
     __*Low pass filter properties dialog.*__
 
@@ -161,7 +167,7 @@ The next step is to listen to this demodulated waveform to confirm that it is in
 - Since the output of the *Complex to Mag* is always positive, there will be a DC offset on the audio signal. The signal going to the audio hardware should not have any DC offset. Place a *DC Blocker* block between the *Complex to Mag* block and the *Rational Resampler* added in the previous step.
 
 - Place a *QT GUI Time Sink* at the output of the *Rational Resampler* (in addition to the *Audio Sink*). Change its "Type" to "Float" and set its "Sample Rate" to 48000. The flow graph should be similar to the one shown below.
-    <!-- #TODO build -->
+
     ![tutorial4_am_receiver_no_tuning_no_volume.png](./figures/tutorial4_am_receiver_no_tuning_no_volume.png)<br>
     __*Flow graph with file source with a "cleaner" audio output.*__
 
@@ -172,12 +178,12 @@ The next step is to listen to this demodulated waveform to confirm that it is in
 - Insert a *Multiply Const* block between the *DC Blocker* and the *Rational Resampler*. Set the "IO Type" of the block to "Float".
 
 - Add a *QT GUI Range* block. Set the parameters as shown.
-    <!-- #TODO redo -->
+
     ![tutorial4_am_volume.png](./figures/tutorial4_am_volume.png)<br>
     __*GUI slider properties dialog.*__
 
 - Set the constant in the *Multiply Const* block to "volume" so that the slider controls it. The final flow graph is shown.
-    <!-- #TODO redo -->
+
     ![tutorial4_am_receiver_no_tuning.png](./figures/tutorial4_am_receiver_no_tuning.png)<br>
     __*Flow graph with a GUI volume control to resample and play audio.*__
 
@@ -189,12 +195,12 @@ The next step is to listen to this demodulated waveform to confirm that it is in
 
 - Review the [theory of tuning to a radio station](../_docs/pdriessen_textbook.pdf) (section 3.2.2).
 
-- Place an *FFT Sink* at the output of the *File Source*, leaving the rest of the flow graph unchanged.
+- Place an *QT GUI Frequency Sink* at the output of the *File Source*, leaving the rest of the flow graph unchanged.
 
 - Execute the flow graph and observe the location of the other stations in the spectrum. Note that there is a fairly strong signal at 80 kHz (what is really 710 + 80 = 790 kHz).
 
 - In order to receive this signal we need to shift it down to zero frequency so that it will pass through the low pass filter. One way to accomplish this is to multiply it by a sinusoid. Modify the flow graph as shown below. Add a *Signal Source* block and set its parameters to output a cosine at a frequency of -80000. This negative frequency will shift the entire spectrum to the left by 80 kHz. Use a *Multiply* block and move the *QT GUI Frequency Sink* to observe its output. Test this receiver.
-    <!-- #TODO redo -->
+
     ![tutorial4_am_receiver_fixed_tuning.png](./figures/tutorial4_am_receiver_fixed_tuning.png)<br>
     __*Flow graph to play audio and with an FFT sink on the input.*__
 

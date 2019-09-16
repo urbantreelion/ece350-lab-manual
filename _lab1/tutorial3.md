@@ -96,11 +96,13 @@ Why is the spectrum symmetrical about 0 Hz?
     __*Modulated carrier spectrum*__
 
 - Enable the *File Sink*, select a save destination and name the output file `AM_modulated_4kHz_sine.dat`.
-  <!-- #TODO fix -->
+
     ![tutorial3_file_sink.png](./figures/tutorial3_file_sink.png)<br>
     __*File Sink properties*__
 
 - Execute the flowgraph and after a few seconds kill it. Check that the `.dat` file now exists. You can now disable the *File Sink* block again.
+
+  >Note: if you execute the flowgraph while the *File Sink* block is enabled, and spend time analyzing the scope and frequency plots, it will be writing to file the entire time. Generally if you want to look at the plots for any duration, you should disable the *File Sink* block.
 
   >A way to regulate the duration a flowgraph runs for is to use the [*Head* block](https://wiki.gnuradio.org/index.php/Head) to limit the number of samples that flow either from the input or into the *File Sink*.  
 
