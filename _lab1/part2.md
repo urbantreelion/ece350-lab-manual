@@ -125,7 +125,7 @@ In this step we will expand the frequency scale on the FFT display so that you c
 
 #### Deliverable Question 3
 
-What actual frequency range does this correspond to?
+What actual pass-band frequency range does this correspond to?
 
 ---
 
