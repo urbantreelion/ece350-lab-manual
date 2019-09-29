@@ -47,7 +47,7 @@ This lab is a guide to AM signal waveforms. In this part you will learn:
 
     - The two blocks using the *QT GUI Range* variables are the *Signal Source* and the *Multiply Const*. Use the following two figures as references.
     - Set the *Add Const* constant to 1.
-    - You can name and organize the GUI sinks/scopes as you please. Don't forget to set *Config->Control Panel* to True in the GUI sinks to allow interactivity.
+    - You can name and organize the GUI sinks/scopes as you please. Don't forget to set *Config->Control Panel* to "Yes" in the GUI sinks to allow interactivity.
 
     ![part1_signal_source_properties.png](./figures/part1_signal_source_properties.png)<br>
     __*Signal source properties*__
