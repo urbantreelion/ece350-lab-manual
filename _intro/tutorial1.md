@@ -46,7 +46,7 @@ Adjust the parameters for this tutorial:
 - Set Run to Autostart, and Realtime Scheduling to Off.
 - Click OK to close the properties dialog.
   
-The other block in the flowgraph is a [variable](http://www.ece.uvic.ca/~ece350/grc_doc/ar01s04s01.html) block that sets the sample rate. Click on this block to see the variable name and value. The variable block will be discussed later in the tutorial.
+The other block in the flowgraph is a [variable](https://wiki.gnuradio.org/index.php/Variable) block that sets the sample rate. Click on this block to see the variable name and value. The variable block will be discussed later in the tutorial.
 
 ## Adding Blocks to the Flowgraph
 
