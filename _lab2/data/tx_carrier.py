@@ -5,7 +5,7 @@
 # Title: TX Carrier
 # Author: ELEC350
 # Description: Lab 1
-# Generated: Fri Oct  4 11:21:01 2019
+# Generated: Fri Oct  4 13:34:07 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -28,6 +28,7 @@ from gnuradio import qtgui
 from gnuradio import uhd
 from gnuradio.eng_option import eng_option
 from gnuradio.filter import firdes
+from gnuradio.qtgui import Range, RangeWidget
 from optparse import OptionParser
 import sip
 import sys
@@ -64,8 +65,9 @@ class tx_carrier(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
-        self.samp_rate = samp_rate = 194.552529e3
+        self.samp_rate = samp_rate = 200e3
         self.q_amplitude = q_amplitude = 0
+        self.gain = gain = 1
         self.fc = fc = 10000
 
         ##################################################
@@ -92,6 +94,9 @@ class tx_carrier(gr.top_block, Qt.QWidget):
         self._q_amplitude_button_group.buttonClicked[int].connect(
         	lambda i: self.set_q_amplitude(self._q_amplitude_options[i]))
         self.top_layout.addWidget(self._q_amplitude_group_box)
+        self._gain_range = Range(0, 100, 1, 1, 200)
+        self._gain_win = RangeWidget(self._gain_range, self.set_gain, "gain", "counter_slider", float)
+        self.top_layout.addWidget(self._gain_win)
         self.uhd_usrp_sink_0 = uhd.usrp_sink(
         	",".join(('', "")),
         	uhd.stream_args(
@@ -101,7 +106,7 @@ class tx_carrier(gr.top_block, Qt.QWidget):
         )
         self.uhd_usrp_sink_0.set_samp_rate(samp_rate)
         self.uhd_usrp_sink_0.set_center_freq(50000000, 0)
-        self.uhd_usrp_sink_0.set_gain(0, 0)
+        self.uhd_usrp_sink_0.set_gain(gain, 0)
         self.qtgui_time_sink_x_0 = qtgui.time_sink_c(
         	1024, #size
         	samp_rate, #samp_rate
@@ -186,6 +191,14 @@ class tx_carrier(gr.top_block, Qt.QWidget):
         self.q_amplitude = q_amplitude
         self._q_amplitude_callback(self.q_amplitude)
         self.analog_sig_source_x_1.set_amplitude(self.q_amplitude)
+
+    def get_gain(self):
+        return self.gain
+
+    def set_gain(self, gain):
+        self.gain = gain
+        self.uhd_usrp_sink_0.set_gain(self.gain, 0)
+
 
     def get_fc(self):
         return self.fc

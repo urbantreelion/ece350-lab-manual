@@ -49,7 +49,7 @@ The small grey box is the USRP software‐defined radio. The USRP digitally down
 
   - The Scope Plot tab should show a circle
   - Magnitude will show a (noisy) DC level
-  - Phase will show a phase ramp wrapping between -π and π
+  - Phase will show a phase ramp wrapping between -π and π (saw-tooth wave) with a period that is the reciprocal of the frequency offset (f_b)
   - Real and Imaginary will show (noisy) sine waves.
 
   > Change the *X Max* parameter and use the *Autoscale* button on some of the plots to get a cleaner display.
@@ -60,6 +60,7 @@ The small grey box is the USRP software‐defined radio. The USRP digitally down
 - Confirm that *f~b~* is as expected.
 
 - The USRP source block has the *clock source* set to use an *external* 10 MHz clock reference frequency, and the same external reference is used for the signal generator. Thus the frequency difference between the USRP source block (local oscillator) and signal generator RF frequency will be observed to be exactly as expected from their respective frequency settings.
+
   - If we change the USRP source block to use an *internal* clock reference, then expect to observe some frequency error between the signal generator and the USRP frequency settings as they are running from independent oscillators.
   - Try changing the USRP clock source to *internal* and repeat the frequency measurement of the I and Q outputs.
 
