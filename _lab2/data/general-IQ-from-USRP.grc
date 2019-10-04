@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<?grc format='1' created='3.7.13'?>
+<?grc format='1' created='3.7.11'?>
 <flow_graph>
   <timestamp>Mon Sep 23 16:31:26 2013</timestamp>
   <block>
@@ -30,7 +30,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(22, 9)</value>
+      <value>(24, 12)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -73,20 +73,12 @@
       <value>True</value>
     </param>
     <param>
-      <key>sizing_mode</key>
-      <value>fixed</value>
-    </param>
-    <param>
       <key>thread_safe_setters</key>
       <value></value>
     </param>
     <param>
       <key>title</key>
       <value>General I/Q Receiver</value>
-    </param>
-    <param>
-      <key>placement</key>
-      <value>(0,0)</value>
     </param>
   </block>
   <block>
@@ -226,7 +218,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(736, 248)</value>
+      <value>(736, 272)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -269,7 +261,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(736, 360)</value>
+      <value>(736, 400)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -355,7 +347,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(736, 312)</value>
+      <value>(736, 352)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -379,7 +371,7 @@
     </param>
   </block>
   <block>
-    <key>qtgui_time_sink_x</key>
+    <key>qtgui_const_sink_x</key>
     <param>
       <key>autoscale</key>
       <value>False</value>
@@ -397,16 +389,8 @@
       <value></value>
     </param>
     <param>
-      <key>ctrlpanel</key>
-      <value>False</value>
-    </param>
-    <param>
       <key>affinity</key>
       <value></value>
-    </param>
-    <param>
-      <key>entags</key>
-      <value>True</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -414,7 +398,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(736, 448)</value>
+      <value>(736, 460)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -430,7 +414,7 @@
     </param>
     <param>
       <key>id</key>
-      <value>qtgui_time_sink_x_0</value>
+      <value>qtgui_const_sink_x_0</value>
     </param>
     <param>
       <key>legend</key>
@@ -450,11 +434,11 @@
     </param>
     <param>
       <key>marker1</key>
-      <value>-1</value>
+      <value>0</value>
     </param>
     <param>
       <key>style1</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>width1</key>
@@ -466,7 +450,7 @@
     </param>
     <param>
       <key>color10</key>
-      <value>"blue"</value>
+      <value>"red"</value>
     </param>
     <param>
       <key>label10</key>
@@ -474,11 +458,11 @@
     </param>
     <param>
       <key>marker10</key>
-      <value>-1</value>
+      <value>0</value>
     </param>
     <param>
       <key>style10</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>width10</key>
@@ -498,11 +482,11 @@
     </param>
     <param>
       <key>marker2</key>
-      <value>-1</value>
+      <value>0</value>
     </param>
     <param>
       <key>style2</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>width2</key>
@@ -514,7 +498,7 @@
     </param>
     <param>
       <key>color3</key>
-      <value>"green"</value>
+      <value>"red"</value>
     </param>
     <param>
       <key>label3</key>
@@ -522,11 +506,11 @@
     </param>
     <param>
       <key>marker3</key>
-      <value>-1</value>
+      <value>0</value>
     </param>
     <param>
       <key>style3</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>width3</key>
@@ -538,7 +522,7 @@
     </param>
     <param>
       <key>color4</key>
-      <value>"black"</value>
+      <value>"red"</value>
     </param>
     <param>
       <key>label4</key>
@@ -546,11 +530,11 @@
     </param>
     <param>
       <key>marker4</key>
-      <value>-1</value>
+      <value>0</value>
     </param>
     <param>
       <key>style4</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>width4</key>
@@ -562,7 +546,7 @@
     </param>
     <param>
       <key>color5</key>
-      <value>"cyan"</value>
+      <value>"red"</value>
     </param>
     <param>
       <key>label5</key>
@@ -570,11 +554,11 @@
     </param>
     <param>
       <key>marker5</key>
-      <value>-1</value>
+      <value>0</value>
     </param>
     <param>
       <key>style5</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>width5</key>
@@ -586,7 +570,7 @@
     </param>
     <param>
       <key>color6</key>
-      <value>"magenta"</value>
+      <value>"red"</value>
     </param>
     <param>
       <key>label6</key>
@@ -594,11 +578,11 @@
     </param>
     <param>
       <key>marker6</key>
-      <value>-1</value>
+      <value>0</value>
     </param>
     <param>
       <key>style6</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>width6</key>
@@ -610,7 +594,7 @@
     </param>
     <param>
       <key>color7</key>
-      <value>"yellow"</value>
+      <value>"red"</value>
     </param>
     <param>
       <key>label7</key>
@@ -618,11 +602,11 @@
     </param>
     <param>
       <key>marker7</key>
-      <value>-1</value>
+      <value>0</value>
     </param>
     <param>
       <key>style7</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>width7</key>
@@ -634,7 +618,7 @@
     </param>
     <param>
       <key>color8</key>
-      <value>"dark red"</value>
+      <value>"red"</value>
     </param>
     <param>
       <key>label8</key>
@@ -642,11 +626,11 @@
     </param>
     <param>
       <key>marker8</key>
-      <value>-1</value>
+      <value>0</value>
     </param>
     <param>
       <key>style8</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>width8</key>
@@ -658,7 +642,7 @@
     </param>
     <param>
       <key>color9</key>
-      <value>"dark green"</value>
+      <value>"red"</value>
     </param>
     <param>
       <key>label9</key>
@@ -666,11 +650,11 @@
     </param>
     <param>
       <key>marker9</key>
-      <value>-1</value>
+      <value>0</value>
     </param>
     <param>
       <key>style9</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>width9</key>
@@ -678,7 +662,7 @@
     </param>
     <param>
       <key>name</key>
-      <value>"Scope Plot"</value>
+      <value>"Constellation"</value>
     </param>
     <param>
       <key>nconnections</key>
@@ -689,19 +673,7 @@
       <value>1024</value>
     </param>
     <param>
-      <key>srate</key>
-      <value>samp_rate</value>
-    </param>
-    <param>
-      <key>stemplot</key>
-      <value>False</value>
-    </param>
-    <param>
       <key>tr_chan</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>tr_delay</key>
       <value>0</value>
     </param>
     <param>
@@ -729,12 +701,12 @@
       <value>0.10</value>
     </param>
     <param>
-      <key>ylabel</key>
-      <value>Amplitude</value>
+      <key>xmax</key>
+      <value>1</value>
     </param>
     <param>
-      <key>yunit</key>
-      <value>""</value>
+      <key>xmin</key>
+      <value>-1</value>
     </param>
     <param>
       <key>ymax</key>
@@ -765,7 +737,7 @@
     </param>
     <param>
       <key>ctrlpanel</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>affinity</key>
@@ -781,7 +753,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(960, 136)</value>
+      <value>(960, 132)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -1060,10 +1032,6 @@
       <value>samp_rate</value>
     </param>
     <param>
-      <key>stemplot</key>
-      <value>False</value>
-    </param>
-    <param>
       <key>tr_chan</key>
       <value>0</value>
     </param>
@@ -1132,7 +1100,7 @@
     </param>
     <param>
       <key>ctrlpanel</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>affinity</key>
@@ -1148,7 +1116,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(960, 224)</value>
+      <value>(960, 244)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -1427,10 +1395,6 @@
       <value>samp_rate</value>
     </param>
     <param>
-      <key>stemplot</key>
-      <value>False</value>
-    </param>
-    <param>
       <key>tr_chan</key>
       <value>0</value>
     </param>
@@ -1499,7 +1463,7 @@
     </param>
     <param>
       <key>ctrlpanel</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>affinity</key>
@@ -1515,7 +1479,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(960, 312)</value>
+      <value>(960, 348)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -1794,10 +1758,6 @@
       <value>samp_rate</value>
     </param>
     <param>
-      <key>stemplot</key>
-      <value>False</value>
-    </param>
-    <param>
       <key>tr_chan</key>
       <value>0</value>
     </param>
@@ -1937,7 +1897,7 @@
     </param>
     <param>
       <key>label0</key>
-      <value>Scope Plot</value>
+      <value>IQ Plane</value>
     </param>
     <param>
       <key>label1</key>
@@ -1989,7 +1949,7 @@
     </param>
     <param>
       <key>label3</key>
-      <value>I and Q</value>
+      <value>IQ Scope Plot</value>
     </param>
     <param>
       <key>label4</key>
@@ -2044,7 +2004,7 @@
     </param>
     <param>
       <key>iq_imbal_enb0</key>
-      <value>True</value>
+      <value>False</value>
     </param>
     <param>
       <key>norm_gain0</key>
@@ -3409,7 +3369,7 @@
   </connection>
   <connection>
     <source_block_id>rational_resampler_xxx_0</source_block_id>
-    <sink_block_id>qtgui_time_sink_x_0</sink_block_id>
+    <sink_block_id>qtgui_const_sink_x_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>

@@ -34,8 +34,7 @@ The small grey box is the USRP software‐defined radio. The USRP digitally down
 
 ## I/Q Receiver
 
-### I/Q Receiver output
-
+### I/Q Receiver outp
 - Review [IQ theory](../_docs/pdriessen_textbook.pdf) (sections 1.2 and 1.3).
 
 - Open the GRC file [general-IQ-from-USRP.grc](data/general-IQ-from-USRP.grc). This flowgraph implements the mathematics on the last page of the IQ theory document.
@@ -46,13 +45,14 @@ The small grey box is the USRP software‐defined radio. The USRP digitally down
 
 - Double‐click the USRP source block to bring up a window with all of the USRP parameters. This general I/Q receiver is set up to receive a signal in a range around 200 MHz at level -40 dBm from the signal generator at the back of the lab.
 
-- Execute the flowgraph. Observe the Output Display window with 5 tabs labelled **Scope Plot, Magnitude, Phase, Real** and **Imaginary**.
+- Execute the flowgraph. Observe the Output Display window with 4 tabs labelled **IQ Plane, Magnitude, Phase** and **IQ Scope Plot**.
+
   - The Scope Plot tab should show a circle
   - Magnitude will show a (noisy) DC level
   - Phase will show a phase ramp wrapping between -π and π
   - Real and Imaginary will show (noisy) sine waves.
 
-- The scope autorange may need to be switched off and the time base adjusted to get good displays.
+  > Change the *X Max* parameter and use the *Autoscale* button on some of the plots to get a cleaner display.
 
 - Determine the frequency *f~b~* of the sine waves using the Phase display as well as the Real and Imaginary displays by placing your mouse cursor over the scope plot to show the time offset at different points on the waveform. This frequency *f~b~* represents the offset between the received RF signal *f~c~* and the USRP local oscillator *f~LO~*, so that
  *f~b~* = *f~c~  - f~LO~*
@@ -65,7 +65,7 @@ The small grey box is the USRP software‐defined radio. The USRP digitally down
 
 ### Dynamic range with IQ signals
 
-- Ask the TA to vary the 200 MHz signal generator level from ‐100 dBm to 0 dBm in 20 dB steps (or do it yourself is there are no other groups working).
+- Ask the TA to vary the 200 MHz signal generator level from ‐100 dBm to 0 dBm in 20 dB steps.
 
 - Observe and describe how the signals look at each signal level, and explain why.
   - The waveform appearance results from clipping in the 2 ADCs (one ADC for I, one ADC for Q).
