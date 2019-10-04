@@ -206,7 +206,9 @@ Recall that the signal is a complex (analytic) signal. One method of demodulatin
   __*Weaver demodulation.*__
 
   - Use the *Signal Source* in GRC to generate the cosine and sine waves needed to implement this demodulator.
-    - Pay special attention to the *Frequency* and *Sample Rate* parameters. They will **need to be changed** to match the figure below and the sampling rate (remember the decimation) at this point in the flow graph, respectively.
+    - Pay special attention to the *Frequency* and *Sample Rate* parameters. They will **need to be changed**.
+      - *Frequency*: See above figure
+      - *Sample Rate*: Remember the decimation factor. What is the sampling rate at this point in the flow graph?
     - The *Multiply* and *Add* blocks can be found in the *Math Operators* category.
 
 - Observe the output of the *Add* block using a *QT GUI Frequency sink*. This is the baseband signal that has been extracted from the modulated SSB signal.
@@ -221,7 +223,7 @@ Recall that the signal is a complex (analytic) signal. One method of demodulatin
   - Find a suitable value by first observing the maximum peak on a *QT GUI Time Sink* and using the reciprocal of this value as the multiplier.
   - Use a *Multiply Const* block with this value between the *Rational Resampler* and the *Audio Sink* blocks.
 
-- Test your SSB receiver; you should hear the voice.
+- Test your SSB receiver; you should hear a voice.
 
 - At this point your functioning flowgraph should look like the following figure.
 

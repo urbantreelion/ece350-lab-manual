@@ -27,7 +27,10 @@ The main function of the USRP motherboard is to act as a [Digital Downconverter 
 
 <!-- #TODO -->
 - 4 GRC files:
-  - an SSB receiver using Weaver\'s method
+  - a resampling SSB receiver using Weaver\'s method
+  - a direct sampling SSB receiver using Weaver\'s method
+  - TBA
+  - TBA
 - A single page with answers to the questions posed throughout the lab.
   - There are several questions which are all carefully labelled **Deliverable Question X**. Each question should take only one to two sentences to answer and address the concepts being explored.
 
@@ -40,7 +43,7 @@ The main function of the USRP motherboard is to act as a [Digital Downconverter 
 <!-- 2. FM flowgraphs
     - GRC files of FM transmitter and receiver showing FM transmitted waveforms, spectra and FM receiver output.
 
-3. USRP with FM
+1. USRP with FM
     - Observations on practical FM receiver operation using live off-air signals
     - bit rate of FSK signal at 142.17 MHz
     - Estimate of URSP receiver dynamic range with FM signals -->
