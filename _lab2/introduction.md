@@ -25,12 +25,9 @@ The main function of the USRP motherboard is to act as a [Digital Downconverter 
 
 ## Deliverables
 
-<!-- #TODO -->
-- 4 GRC files:
+- 2 GRC files:
   - a resampling SSB receiver using Weaver\'s method
   - a direct sampling SSB receiver using Weaver\'s method
-  - TBA
-  - TBA
 - A single page with answers to the questions posed throughout the lab.
   - There are several questions which are all carefully labelled **Deliverable Question X**. Each question should take only one to two sentences to answer and address the concepts being explored.
 
