@@ -1,8 +1,26 @@
 ---
 layout: labitem
-title: Tutorial 2
-permalink: /lab2/tutorial2
-firstHeading: Tutorial 2 - FM, IQ, and using a USRP
+title: Part 2
+permalink: /lab2/IQ-USRP
+firstHeading: Part 2 - IQ and using a USRP
+---
+
+[**Back to Part 1**](part1.md) | [**Continue to Lab 3**](../_lab3/introduction.md)
+
+## Objectives
+
+This part of the lab will guide you through...
+<!-- #TODO finish -->
+
+---
+
+## Part 2 Deliverables
+
+<!-- #TODO update -->
+- GRC file of BLAH
+- There is 1 question in this part of the lab. It is clearly indicated as in the last part.
+  - The question requires approximately 1 line of writing and address concepts, not details. Answer the questions and submit a single page containing the answers to your TA at the end of the lab. This should build upon your answers to the two questions posed in the last part of the lab.
+
 ---
 
 ## Setup

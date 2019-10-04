@@ -21,8 +21,8 @@ This tutorial is a guide to receiving SSB signals. It will also illustrate some 
 <!-- #TODO -->
 
 - Two GRC files of SSB demodulators. You will be stepped through building them.
-- There are 2 questions spaced throughout this part. They are clearly indicated.
-  - Each question requires approximately 1 line of writing, and address concepts, not details. Answer the questions and submit a single page containing the answers to your TA at the end of the lab.
+- There is 1 question in this part. It is clearly indicated.
+  - The question requires approximately 1 line of writing, and addresses a concept, not details. Answer the question and submit a single page containing the answers to your TA at the end of the lab.
 
 ---
 
@@ -30,7 +30,7 @@ This tutorial is a guide to receiving SSB signals. It will also illustrate some 
 
 - Review the [theory of analytic signals and SSB receivers](../_docs/pdriessen_textbook.pdf) (sections 2.3 and 3.4).
 
-### Hilbert Transforms
+<!-- ### Hilbert Transforms
 
 - Open a new flow graph in GRC. Create the simple flow graph shown. Set the *Type* in each of the three blocks to *Float* as you have in the past. Other than that you can leave all of the values at their default settings.
 
@@ -75,7 +75,7 @@ Why does the Hilbert transform of a square wave look this way?
 
 - [Section 2.3.6 of the textbook](../_docs/pdriessen_textbook.pdf) shows how to use the Hilbert transform to demodulate SSB signals.
 
-- You can discard this flowgraph, it is not for submission.
+- You can discard this flowgraph, it is not for submission. -->
 
 ### Complex multiplication
 
@@ -259,7 +259,7 @@ Remember that taking the real part of the complex signal is the same thing as ad
 
 ---
 
-#### Deliverable Question 2
+#### Deliverable Question 1
 
 Why does taking the *real* part of a complex signal result in frequencies being *added* to the spectrum?
 
@@ -328,7 +328,7 @@ From this part of the lab keep the following files to submit to your TA after th
 - `SSB_demodulator.grc`
 - `SSB_complex_demodulator.grc`
 
-- The answers to [Question 1](#deliverable-question-1) and [Question 2](#deliverable-question-2.)
+- The answer to [Question 1](#deliverable-question-1)
 
 **Do not attach the `top_block.py` to your submission.**
 
