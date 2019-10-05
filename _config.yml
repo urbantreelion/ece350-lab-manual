@@ -14,7 +14,7 @@ plugins:
 include:
   - _intro
   - _lab1
-  - _lab2
+  # - _lab2
   # - _lab3
   # - _lab4
   - _docs
