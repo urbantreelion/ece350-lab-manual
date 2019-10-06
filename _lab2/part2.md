@@ -25,8 +25,8 @@ While transmitting with the USRP, you will:
 
 ## Part 2 Deliverables
 <!-- #TODO update -->
-- There is 1 question in this part of the lab. It is clearly indicated as in the last part.
-  - The question requires approximately 1 line of writing and address concepts, not details. Answer the questions and submit a single page containing the answers to your TA at the end of the lab. This should build upon your answers to the two questions posed in the last part of the lab.
+- There are 3 questions in this part of the lab. They are clearly indicated as in the last part.
+  - Each question requires approximately 1 line of writing and addresses concepts, not details. Answer the questions and submit a single page containing the answers to your TA at the end of the lab. This should build upon your answers to the question posed in the last part of the lab.
 
 ---
 
@@ -78,7 +78,7 @@ The small grey box is the USRP software‐defined radio. The USRP digitally down
 - Ask the TA to vary the 200 MHz signal generator level from ‐10 dBm (dB relative to one milliwatt) to 10 dBm in 1 dB steps.
 
 - Observe and describe how the signals look at each signal level, and explain why.
-  - The waveform appearance results from clipping in the 2 ADCs (one ADC for I, one ADC for Q).
+  >The waveform appearance results from clipping in the 2 ADCs (one ADC for I, one ADC for Q).
 
 ---
 
@@ -119,10 +119,7 @@ The GRC flowgraph shows a complex stream getting fed into the USRP. How come whe
 
 ### USRP power levels
 
-- What is the minimum and maximum signal power output from the USRP? The USRP output power level can be set via the *QT GUI Range Widget* seen when running the flowgraph. Measure the power using both the oscilloscope and spectrum analyzer and verify they are the same.
-
-  >Recall from your circuit theory that the output power is relative to the load impedance. On the spectrum analyzer, the input is 50Ω, which matches the expected impedance of a typical antenna. The input to the scope on the other hand is high impedance, effectively open circuit, to prevent damage to the internal circuits. To compare measurement on the scope to that of the spectrum analyzer, the line from the USRP transmitter should be terminated with a 50Ω terminator. Alternatively, some circuit theory can be applied to determine the equivalent power output measured across an open circuit and a 50Ω load.
-  > Equation 1.5 in [the textbook](../_docs/pdriessen_textbook.pdf) shows that with a 50Ω input, **P<sub>dBn</sub> = 20logV + 13**.
+- What is the minimum and maximum signal power output from the USRP? The USRP output power level can be set via the *QT GUI Range Widget* seen when running the flowgraph.
 
 ---
 
@@ -132,11 +129,27 @@ Why is the minimum output power of the USRP greater than 0?
 
 ---
 
+- Measure the power using both the oscilloscope and spectrum analyzer and verify they are the same.
+  - Recall from your circuit theory that the output power is relative to the load impedance.
+  - On the spectrum analyzer, the input is 50 Ω, which matches the expected impedance of a typical antenna. The input to the scope on the other hand is high impedance, effectively open circuit, to prevent damage to the internal circuits.
+  - To compare measurement on the scope to that of the spectrum analyzer, the line from the USRP transmitter *should* be terminated with a 50 Ω terminator.
+    - Alternatively, some circuit theory can be applied to determine the equivalent power output measured across an open circuit and a 50 Ω load.
+
+    > Equation 1.5 in [the textbook](../_docs/pdriessen_textbook.pdf) shows that with a 50 Ω input, **P<sub>dBm</sub> = 20logV + 13**.
+
+---
+
+#### Deliverable Question 5
+
+Show that measuring the power from either the spectrum analyzer or the oscilloscope yields the same result.
+
+---
+
 ## Deliverables
 
 From this part of the lab keep the following files to submit to your TA:
 
-- The answers to [Question 2](#deliverable-question-1), [Question 3](#deliverable-question-3) and [Question 4](#deliverable-question-4)
+- The answers to [Question 2](#deliverable-question-1), [Question 3](#deliverable-question-3), [Question 4](#deliverable-question-4) and  [Question 5](#deliverable-question-5)
 
 Combine these deliverables with those from the last part of the lab and submit them as a package. As your TA where to submit them, and remember to put your name and student number on everything (If you filled out the *Options* block in the `.grc` files correctly, your student numbers will be recorded in them.)
 
