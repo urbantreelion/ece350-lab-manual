@@ -16,6 +16,7 @@ This tutorial is a guide to receiving SSB signals. It will also illustrate some 
 
 ---
 
+<!-- #TODO update all figures -->
 ## Part 1 Deliverables
 
 - Two GRC files of SSB demodulators. You will be stepped through building them.
@@ -95,7 +96,7 @@ The first step in building a receiver is to use a channel filter to pass the sig
        ![tutorial4_shift2.png](./figures/tutorial4_shift2.png)<br>
        __*Signal shifting with a filter*__
 
-When using real signals, this involves all of the highlighted blocks in the diagram below.
+When using real signals, this first shift and low-pass filtering involves all of the highlighted blocks in the diagram below.
 
   ![part1_weaver-real-block-diagram-highlighted-first-half.png](./figures/part1_weaver-real-block-diagram-highlighted-first-half.png)<br>
   __*Signal shifting with a filter in the real domain*__
@@ -108,6 +109,7 @@ This is far simpler when operating in the complex domain, as illustrated by the 
 - In GRC, the *Frequency Xlating FIR Filter* performs both of these operations (the frequency shift down to zero, as well as the low pass filter).
 
   - [Follow this link on the Frequency Xlating FIR Filter block](https://wiki.gnuradio.org/index.php/Frequency_Xlating_FIR_Filter) to review what the block is doing.
+    - The frequency shift of ***s(t)*** down to 0 is done by generating a complex exponential at ***f<sub>0</sub> + f<sub>1</sub>*** and multiplying it by ***s(t)***.
 
   - Add the block between the *File Source* and the *Throttle*.
 

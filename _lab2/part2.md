@@ -35,19 +35,29 @@ While transmitting with the USRP, you will:
 The small grey box is the USRP software‐defined radio. The USRP digitally downconverts the received (Rx) input signal into I/Q format and sends it via Ethernet to the computer. The USRP also digitally upconverts an I/Q signal from the computer to an RF signal at the transmitter (Tx) output. The USRP's Rx input is connected to a VHF (Very High Frequency) antenna on the ELW roof. The Tx output can be connected to the oscilloscope and spectrum analyzer.
 
 - Verify that the USRP at your station is connected as shown below. If it does not, there are BNC connector cables available at the front of the lab.
-
+<!-- #TODO add ref clock -->
   ![part2_usrp-connect.png](./figures/part2_usrp-connect.png)<br>
   __*USRP front panel*__
 
 ## I/Q Receiver
+
+For detailed information on the usage of the USRP, you can find the data sheet and user manual as well as the range of compatible daughterboards at the [Ettus website for the USRP N210](https://www.ettus.com/product/details/UN210-KIT).
+
+Refer to the following block diagram to understand the receive path of the USRP as it is set up in the lab. The USRPs in the lab have the WBX daughtercard installed which feature a programmable attenuator, programmable local oscillator and analog I/Q mixer. The WBX daughterboard is an analog front end for the GNU Radio software. It consists of a local oscillator implemented as a wideband frequency synthesizer, thus allowing the USRP to receive signals in the range from 50 MHz to 2.2 GHz. The WBX Daughterboard performs complex downconversion of a 100 MHz slice of spectrum in the 50-2200 MHz range down to -50 to +50 MHz range for processing by the USRP motherboard.
+
+![USRP.png](./figures/USRP.png)<br>
+__*USRP block diagram.*__
+
+The main function of the USRP motherboard is to act as a [Digital Downconverter (DDC)](http://en.wikipedia.org/wiki/Digital_down_converter). The motherboard implements a digital I/Q mixer, sample rate converter and lowpass filter. The samples are then sent to the host PC over a gigabit ethernet link.
 
 ### I/Q Receiver output
 
 - Review [IQ theory](../_docs/pdriessen_textbook.pdf) (sections 1.2 and 1.3).
 
 - Download and open the GRC file [general-IQ-from-USRP.grc](data/general-IQ-from-USRP.grc). This flowgraph implements the mathematics on the last page of the IQ theory document.
+<!-- #TODO get text section -->
+  - The USRP source does all of the operations in red, green and blue from the figure above. It outputs the complex signal ***I(t) + jQ(t)***.
 
-  - The USRP source does I/Q downconversion on the WBX daughtercard and outputs the complex signals I(t) + jQ(t).
   - This output is connected to 4 blocks that extract the magnitude, phase, real and imaginary parts of the complex signal, as well as a constellation scope.
   - The USRP source is tuned to a fixed frequency of 200 MHz, i.e. the LO frequency synthesizer in the WBX daughtercard is set to 200 MHz.
 
@@ -135,7 +145,7 @@ Why is the minimum output power of the USRP greater than 0?
   - To compare measurement on the scope to that of the spectrum analyzer, the line from the USRP transmitter *should* be terminated with a 50 Ω terminator.
     - Alternatively, some circuit theory can be applied to determine the equivalent power output measured across an open circuit and a 50 Ω load.
 
-    > Equation 1.5 in [the textbook](../_docs/pdriessen_textbook.pdf) shows that with a 50 Ω input, **P<sub>dBm</sub> = 20logV + 13**.
+    > Equation 1.5 in [the textbook](../_docs/pdriessen_textbook.pdf) shows that with a 50 Ω source and load impedance, **P<sub>dBm</sub> = 20logV + 13**.
 
 ---
 
