@@ -119,7 +119,10 @@ This is far simpler when operating in the complex domain, as illustrated by the 
   ![part1_freq_xlating_properties.png](./figures/part1_freq_xlating_properties.png)<br>
   __*Frequency Xlating FIR Filter properties dialog.*__
 
-- Execute the flow graph. You will see that your signal has now moved down to the origin and is the only signal present.
+- Execute the flow graph. You will see that your signal has now moved down to the origin and is the only signal present as in the figure below.
+
+  ![part1_filtered-ssb-spectra.png](./figures/part1_filtered-ssb-spectra.png)<br>\
+  __*Filtered SSB spectra*__
 
 - Add a *Variable* block with:
   - ID: *decim*
@@ -132,7 +135,10 @@ This is far simpler when operating in the complex domain, as illustrated by the 
     - Change the taps to `firdes.low_pass(1,samp_rate/decim, 2000, 100)`
   - This will reduce the sample rate to **256000/4 = 64000 Hz**. Change the sample rate of the *Throttle* and *QT GUI Frequency Sink* to this new rate, using the `decim` variable. **What frequency range to you expect the FFT to display now?**
 
-- Execute the flow graph again to see if you are correct. You should now observe an expanded version of your signal. Select *Autoscale* on the frequency plot so that the peaks of the signal are observed. Notice that after a while, the signal level will be reduced for a few seconds. That occurs when the station stops transmitting.
+- Execute the flow graph again to see if you are correct. You should now observe an expanded version of your signal as in the figure below. Select *Autoscale* on the frequency plot so that the peaks of the signal are observed. Notice that after a while, the signal level will be reduced for a few seconds. That occurs when the station stops transmitting.
+
+  ![part1_decimated-signal-spectrum.png](./figures/part1_decimated-signal-spectrum.png)<br>\
+  __*Filtered and decimated SSB spectra*__
 
 #### Using the firdes module
 
@@ -168,10 +174,15 @@ Once again, this is simpler using complex signals. The highlighted portion of th
 > Note that no addition is necessary, since the complex multiplication dealt with both the I and the Q streams.
 
 - To do this on your flow graph, add a *Multiply* block as well as a *Signal Source* block. Ensure that the *Type* for both is *Complex*.
-  - Remembering that the bandwidth for this signal is 3 kHz and we want to shift it off of 0 Hz. This means a shift of 1.5 kHz is necessary. This is a *Lower* Sideband signal, and so you want to shift the signal down by 1500 kHz. Knowing this, set the *Frequency* parameter of the *Signal Source* block appropriately.
+  - Remembering that the bandwidth for this signal is 3 kHz and we want to shift it off of 0 Hz. This means a shift of 1.5 kHz is necessary. This is a *Lower* Sideband signal (note that the block diagrams above are for *Upper* sideband demodulation), and so you want to shift the signal down by 1500 kHz. Knowing this, set the *Frequency* parameter of the *Signal Source* block appropriately.
   - *Sample Rate*: Remember the decimation factor. What is the sampling rate at this point in the flow graph? Change the *Sample Rate* parameter in the *Signal Source* block.
 
-- Observe the spectrum to ensure that the signal shifted the correct direction. Note that there is only one signal. If this had been done using real signals we would expect sum and difference frequencies as we saw earlier.
+- Before executing the flowgraph, remember to change the *Bandwidth* property of the *QT GUI Frequency Sink* block to match the sampling rate at this point in the flowgraph. The flowgraph should now look like the following image.
+
+  ![part1_flowgraph-after-first-shift.png](./figures/part1_flowgraph-after-first-shift.png)<br>
+  __*Flowgraph after first frequency shift*__
+
+- Observe the spectrum to ensure that the signal shifted the correct direction. You can use your mouse cursor to see that the signal is centered at -1.5 kHz. Note that there is only one signal. If this had been done using real signals we would expect sum and difference frequencies as we saw earlier.
 
 ### Resampling for audio
 
@@ -182,12 +193,12 @@ Once again, this is simpler using complex signals. The highlighted portion of th
 
   - To normalize, every sample must be divided by the maximum value in the transmission. To find that value:
 
-    - add a *QT GUI Time Sink* to the output of the *Rational Resampler*
+    - add a *QT GUI Time Sink* to the output of the *Rational Resampler* (before the *Multiply Const* block)
     - execute the flowgraph, and scale the plot appropriately
     - use your mouse cursor to identify the maximum amplitude of the transmission
     - enter the reciprocal of this value into the *Multiply Const* block
 
-- Add an *Audio Sink* block to the output of the *Multiply Const* block. Notice the red signal path! The *Audio Sink* only accepts floats, and the entire flowgraph to this point is using complex signals. Use a *Complex To Real* block in between the *Multiply Const* and the *Audio Sink* blocks.
+- Add an *Audio Sink* block with your chosen sample rate of 48 kHz to the output of the *Multiply Const* block. **Notice the red signal path!** The *Audio Sink* only accepts floats, and the entire flowgraph to this point is using complex signals. Use a *Complex To Real* block in between the *Multiply Const* and the *Audio Sink* blocks.
 
   > Considering the output of the *Multiply Const* block to be ***m(t)***, the *Complex To Real* block accepts ***m(t)*** as an argument and outputs ***Re{m(t)}***.
 
@@ -198,7 +209,7 @@ Once again, this is simpler using complex signals. The highlighted portion of th
 
 ### Taking the real part of a complex signal
 
-Remember that taking the real part of the complex signal is the same thing as adding the negative frequencies! To illustrate this, add two *QT GUI Frequency Sinks*, one before and one after the *Complex To Real* block. Title them appropriately ("Complex" and "Real") and execute the flowgraph. It should look like the following image.
+Remember that taking the real part of the complex signal is the same thing as adding the negative frequencies! To illustrate this, add two *QT GUI Frequency Sinks*, one before and one after the *Complex To Real* block. Title them appropriately ("Complex (before)" and "Real (after)") and execute the flowgraph. It should look like the following image.
 
   ![part1_real-vs-complex-spectra.png](./figures/part1_real-vs-complex-spectra.png)<br>
   __*SSB complex vs real spectra*__
@@ -210,6 +221,8 @@ Remember that taking the real part of the complex signal is the same thing as ad
 Why does taking the *real* part of a complex signal result in frequencies being *added* to the spectrum?
 
 ---
+
+- Save this flowgraph. It is a deliverable.
 
 ## Single Sideband (SSB) WAV file Weaver demodulator
 
@@ -247,7 +260,7 @@ The last demodulator you made was for LSB signals stored in a DAT file. You will
   - The complex multiply was shifting the centered LSB signal **down** by 1.5 kHz. It now needs to shift the centered USB signal **up** by 1.5 kHz. Implement this.
     > Hint: Refer to [the diagram above](./figures/part1_weaver-real-block-diagram.png) illustrating the Weaver demodulator and now consider using the upper sideband. In the diagram, the first frequency shift is ***f<sub>0</sub> +- B/2***, where LSB is the ***-*** and USB is the ***+***. There is a typo in the figure, and the second frequency shift should read ***+- B/2***, again with the ***-*** for LSB and the ***+*** for USB.
 
-  - One of the center frequencies in this file is 3500 Hz. Adjust the *Frequency Xlating FIR Filter* block to this. Also change the lowpass filter cutoff frequency to 1000 Hz.
+  - One of the center frequencies in this file is -3500 Hz. Adjust the *Frequency Xlating FIR Filter* block to this.
   - Use the *QT GUI Time Sink* block to find the maximum amplitude and adjust the volume controlling *Multiply Const* block as before.
 
 - Your flowgraph should look like the following
@@ -256,13 +269,20 @@ The last demodulator you made was for LSB signals stored in a DAT file. You will
     __*SSB demodulator for 48 kHz WAV file*__
 
 - Execute the flowgraph and listen.
-  - The voice is legible, but a bit noisy and you should hear static. Observe the spectrum and see that the signal is not occupying the entire 3 kHz bandwidth. This means that frequencies outside of the bandwidth are contributing to the audio.
+  - The voice is legible but noisy and you should hear static. Observe the spectrum and see that the signal is not occupying the entire 3 kHz bandwidth. This means that frequencies outside of the bandwidth are contributing to the audio.
   - Add a *QT GUI Range* block and give it the *ID*: `bandwidth`. It should default to 2000, have a minimum of 100, a maximum of 3000 and a step size of 100.
   - Edit the firdes filter in the *Xlating FIR Filter* block such that the cutoff frequency of the LFP uses the `bandwidth` variable.
   - Execute the flowgraph again and adjust the bandwidth "live" while observing the USB signal. **What bandwidth provides the clearest audio?**
 
 - Remembering that the file contains two USB transmissions, find the second one.
   - Add a *QT GUI Range* block to control the center frequency and try to find the other USB transmission captured in the file!
+  - Having either a full bandwidth spectrum or waterfall plot will help with this. You should add the *QT GUI Sink* of your choice to the output of the *Float To Complex* block to avoid any filtering.
+  - Execute the flowgraph, when you see the second signal, notice that it is much weaker. You will need to add a volume adjustment as well.
+
+- The final flowgraph should look like the following figure.
+
+    ![part1_ssb-wav-flowgraph-with-controls.png](./figures/part1_ssb-wav-flowgraph-with-controls.png)<br>
+    __*SSB demodulator for 48 kHz WAV file with controls for tuning*__
 
 - Save this file for submission.
 
@@ -285,7 +305,6 @@ and listen to live Morse code and SSB signals in the frequency range
 propagate over long distances via the ionosphere for some (not all) of
 the time. Other frequencies are 144.0-144.3 MHz and 145.8-146.0 MHz. -->
 
-<!-- #TODO add hilbert version -->
 ---
 
 At this point, you should have:
