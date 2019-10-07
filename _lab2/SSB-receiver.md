@@ -5,7 +5,7 @@ permalink: /lab2/SSB-receiver
 firstHeading: Part 2 - Complex signals and receiving SSB waveforms
 ---
 
-[**Back to Part 1**](USRP-IQ.md) | [**Continue to conclusion**](../_lab3/conclusion.md)
+[**Back to Part 1**](USRP-IQ.md) | [**Continue to conclusion**](../_lab2/conclusion.md)
 
 ## Objectives
 
@@ -325,4 +325,4 @@ From this part of the lab keep the following files to submit to your TA after th
 **Do not attach the `top_block.py` files to your submission.**
 
 ---
-[**Back to Part 1**](USRP-IQ.md) | [**Continue to conclusion**](../_lab3/conclusion.md)
+[**Back to Part 1**](USRP-IQ.md) | [**Continue to conclusion**](../_lab2/conclusion.md)
