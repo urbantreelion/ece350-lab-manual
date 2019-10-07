@@ -25,7 +25,7 @@ While transmitting with the USRP, you will:
 
 ## Part 1 Deliverables
 <!-- #TODO update -->
-- There are 3 questions in this part of the lab. They are clearly indicated.
+- There are several questions in this part of the lab. They are clearly indicated.
   - Each question requires approximately 1 line of writing and addresses concepts, not details. Answer the questions and submit a single page containing the answers to your TA at the end of the lab.
 
 ---
@@ -80,7 +80,8 @@ The main function of the USRP motherboard is to act as a [Digital Downconverter 
 
   *f<sub>b</sub>* = *f<sub>c</sub> - f<sub>LO</sub>*
 
-- Confirm that *f<sub>b</sub>* is as expected (ask your TA for *f<sub>c</sub>*)
+  - Confirm that *f<sub>b</sub>* is as expected (ask your TA for *f<sub>c</sub>*)
+  - To find *f<sub>c</sub>*, ask your TA or go check the signal generator at the back of the lab.
 
 - The USRP source block has the *Clock Source* set to use an *External* 10 MHz clock reference frequency, and the same external reference is used for the signal generator. Thus the frequency difference between the USRP source block (local oscillator) and signal generator RF frequency will be observed to be exactly as expected from their respective frequency settings.
 
@@ -150,11 +151,11 @@ The GRC flowgraph shows a complex stream getting fed into the USRP. How come whe
 
 #### Deliverable Question 3
 
-Why is the minimum output power of the USRP greater than 0?
+Why, when the USRP is active in transmit-mode, is its minimum output power greater than 0?
 
 ---
 
-- Measure the power using both the oscilloscope and spectrum analyzer and verify they are the same.
+<!-- - Measure the power using both the oscilloscope and spectrum analyzer and verify they are the same.
   - Recall from your circuit theory that the output power is relative to the load impedance.
   - On the spectrum analyzer, the input is 50 Ω, which matches the expected impedance of a typical antenna. The input to the scope on the other hand is high impedance, effectively open circuit, to prevent damage to the internal circuits.
   - To compare measurement on the scope to that of the spectrum analyzer, the line from the USRP transmitter *should* be terminated with a 50 Ω terminator.
@@ -168,13 +169,13 @@ Why is the minimum output power of the USRP greater than 0?
 
 Show that measuring the power from either the spectrum analyzer or the oscilloscope yields the same result.
 
----
+--- -->
 
 ## Deliverables
 
 From this part of the lab keep the following files to submit to your TA:
 
-- The answers to [Question 1](#deliverable-question-1), [Question 2](#deliverable-question-2), [Question 3](#deliverable-question-3) and  [Question 4](#deliverable-question-4)
+- The answers to [Question 1](#deliverable-question-1), [Question 2](#deliverable-question-2), [Question 3](#deliverable-question-3)
 
 ---
 
