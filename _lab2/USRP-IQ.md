@@ -52,10 +52,10 @@ The main function of the USRP motherboard is to act as a [Digital Downconverter 
 
 ### I/Q Receiver output
 
-- Review [IQ theory](../_docs/pdriessen_textbook.pdf) (sections 1.2 and 1.3).
+- Review [IQ theory](../_docs/pdriessen_IQ.pdf).
 
-- Download and open the GRC file [general-IQ-from-USRP.grc](data/general-IQ-from-USRP.grc). This flowgraph implements the mathematics on the last page of the IQ theory document.
-<!-- #TODO get text section -->
+- Download and open the GRC file [general-IQ-from-USRP.grc](data/general-IQ-from-USRP.grc).
+
   - The USRP source does all of the operations in red, green and blue from the figure above. It outputs the complex signal ***I(t) + jQ(t)***.
   - This output is connected to 4 blocks that extract the magnitude, phase, real and imaginary parts of the complex signal, as well as a constellation scope.
   - The USRP source is tuned to a fixed frequency of 200 MHz, i.e. the LO frequency synthesizer in the WBX daughtercard is set to 200 MHz.
@@ -85,10 +85,7 @@ The main function of the USRP motherboard is to act as a [Digital Downconverter 
 - The USRP source block has the *Clock Source* set to use an *External* 10 MHz clock reference frequency, and the same external reference is used for the signal generator. Thus the frequency difference between the USRP source block (local oscillator) and signal generator RF frequency will be observed to be exactly as expected from their respective frequency settings.
 
   - If we change the USRP source block to use an *Internal* clock reference, then expect to observe some frequency error between the signal generator and the USRP frequency settings as they are running from independent oscillators.
-  - Try changing the USRP clock source to *Internal* and repeat the frequency measurement of the I and Q outputs. The figure below shows this.
-
-  ![part2_phase-ramp-internal-clk.png](./figures/part2_phase-ramp-internal-clk.png)<br>
-  __*Phase ramp showing frequency offset with an unsynchronized clock source*__
+  - Try changing the USRP clock source to *Internal* and repeat the frequency measurement of the I and Q outputs. You will see the frequency drifting over time.
 
 ### Dynamic range with IQ signals
 
@@ -113,6 +110,8 @@ The main function of the USRP motherboard is to act as a [Digital Downconverter 
 Why do you see the constellation plot of the I/Q plane get squashed from a circle into a square as you increase the power of the received signal?
 
 ---
+
+Look at the plot of the phase now. **Why does the phase ramp become a staircase? How does this relate to the constellation diagram?**
 
 ## IQ Transmitter
 

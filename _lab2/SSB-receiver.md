@@ -121,7 +121,7 @@ This is far simpler when operating in the complex domain, as illustrated by the 
 
 - Execute the flow graph. You will see that your signal has now moved down to the origin and is the only signal present as in the figure below.
 
-  ![part1_filtered-ssb-spectra.png](./figures/part1_filtered-ssb-spectra.png)<br>\
+  ![part1_filtered-ssb-spectra.png](./figures/part1_filtered-ssb-spectra.png)<br>
   __*Filtered SSB spectra*__
 
 - Add a *Variable* block with:
@@ -137,7 +137,7 @@ This is far simpler when operating in the complex domain, as illustrated by the 
 
 - Execute the flow graph again to see if you are correct. You should now observe an expanded version of your signal as in the figure below. Select *Autoscale* on the frequency plot so that the peaks of the signal are observed. Notice that after a while, the signal level will be reduced for a few seconds. That occurs when the station stops transmitting.
 
-  ![part1_decimated-signal-spectrum.png](./figures/part1_decimated-signal-spectrum.png)<br>\
+  ![part1_decimated-signal-spectrum.png](./figures/part1_decimated-signal-spectrum.png)<br>
   __*Filtered and decimated SSB spectra*__
 
 #### Using the firdes module
@@ -274,6 +274,8 @@ The last demodulator you made was for LSB signals stored in a DAT file. You will
   - Edit the firdes filter in the *Xlating FIR Filter* block such that the cutoff frequency of the LFP uses the `bandwidth` variable.
   - Execute the flowgraph again and adjust the bandwidth "live" while observing the USB signal. **What bandwidth provides the clearest audio?**
 
+**Listen to the wpoken words in the transmission: which city is the transmission being made from?**
+
 - Remembering that the file contains two USB transmissions, find the second one.
   - Add a *QT GUI Range* block to control the center frequency and try to find the other USB transmission captured in the file!
   - Having either a full bandwidth spectrum or waterfall plot will help with this. You should add the *QT GUI Sink* of your choice to the output of the *Float To Complex* block to avoid any filtering.
@@ -283,6 +285,10 @@ The last demodulator you made was for LSB signals stored in a DAT file. You will
 
     ![part1_ssb-wav-flowgraph-with-controls.png](./figures/part1_ssb-wav-flowgraph-with-controls.png)<br>
     __*SSB demodulator for 48 kHz WAV file with controls for tuning*__
+
+**As a challenge, identify the two callsigns spoken in the second transmission. Each callsign is two letters followed by one number and another two letters (ie. AB1CD)**
+
+ > From a callsign you can locate the location of the station using [this database](https://www.qrz.com/).
 
 - Save this file for submission.
 
