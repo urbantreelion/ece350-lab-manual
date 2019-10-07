@@ -1,11 +1,11 @@
 ---
 layout: labitem
-title: Part 1
+title: Part 2
 permalink: /lab2/SSB-receiver
-firstHeading: Part 1 - Complex signals and receiving SSB waveforms
+firstHeading: Part 2 - Complex signals and receiving SSB waveforms
 ---
 
-[**Back to Lab 2 Intro**](introduction.md) | [**Begin Part 2**](part1.md)
+[**Back to Part 1**](USRP-IQ.md) | [**Continue to conclusion**](../_lab3/conclusion.md)
 
 ## Objectives
 
@@ -17,7 +17,7 @@ This tutorial is a guide to receiving SSB signals. It will also illustrate some 
 ---
 
 <!-- #TODO update all figures -->
-## Part 1 Deliverables
+## Part 2 Deliverables
 
 - Two GRC files of SSB demodulators. You will be stepped through building them.
 - There is 1 question in this part. It is clearly indicated.
@@ -205,7 +205,7 @@ Remember that taking the real part of the complex signal is the same thing as ad
 
 ---
 
-#### Deliverable Question 1
+#### Deliverable Question 5
 
 Why does taking the *real* part of a complex signal result in frequencies being *added* to the spectrum?
 
@@ -301,9 +301,9 @@ From this part of the lab keep the following files to submit to your TA after th
 - `SSB_DAT_demodulator.grc`
 - `SSB_WAV_demodulator.grc`
 
-- The answer to [Question 1](#deliverable-question-1)
+- The answer to [Question 5](#deliverable-question-5)
 
 **Do not attach the `top_block.py` files to your submission.**
 
 ---
-[**Back to Lab 2 Intro**](introduction.md) | [**Continue to Part 2**](part2.md)
+[**Back to Part 1**](USRP-IQ.md) | [**Continue to conclusion**](../_lab3/conclusion.md)

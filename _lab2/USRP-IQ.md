@@ -1,11 +1,11 @@
 ---
 layout: labitem
-title: Part 2
+title: Part 1
 permalink: /lab2/IQ-USRP
-firstHeading: Part 2 - IQ and using a USRP
+firstHeading: Part 1 - IQ and using a USRP
 ---
 
-[**Back to Part 1**](part1.md) | [**Continue to Lab 3**](../_lab3/introduction.md)
+[**Back to Lab 2 Intro**](introduction.md) | [**Begin Part 2**](SSB-receiver.md)
 
 ## Objectives
 
@@ -23,10 +23,10 @@ While transmitting with the USRP, you will:
 
 ---
 
-## Part 2 Deliverables
+## Part 1 Deliverables
 <!-- #TODO update -->
-- There are 3 questions in this part of the lab. They are clearly indicated as in the last part.
-  - Each question requires approximately 1 line of writing and addresses concepts, not details. Answer the questions and submit a single page containing the answers to your TA at the end of the lab. This should build upon your answers to the question posed in the last part of the lab.
+- There are 3 questions in this part of the lab. They are clearly indicated.
+  - Each question requires approximately 1 line of writing and addresses concepts, not details. Answer the questions and submit a single page containing the answers to your TA at the end of the lab.
 
 ---
 
@@ -92,7 +92,7 @@ The main function of the USRP motherboard is to act as a [Digital Downconverter 
 
 ---
 
-#### Deliverable Question 2
+#### Deliverable Question 1
 
 Why do you see the constellation plot of the I/Q plane get squashed from a circle into a square as you increase the power of the received signal?
 
@@ -121,7 +121,7 @@ In this section, we test the transmit functions of the USRP that we can use late
 
 ---
 
-#### Deliverable Question 3
+#### Deliverable Question 2
 
 The GRC flowgraph shows a complex stream getting fed into the USRP. How come when **Q(t)=0** a real spectrum is shown on the spectrum analyzer?
 
@@ -133,7 +133,7 @@ The GRC flowgraph shows a complex stream getting fed into the USRP. How come whe
 
 ---
 
-#### Deliverable Question 4
+#### Deliverable Question 3
 
 Why is the minimum output power of the USRP greater than 0?
 
@@ -149,7 +149,7 @@ Why is the minimum output power of the USRP greater than 0?
 
 ---
 
-#### Deliverable Question 5
+#### Deliverable Question 4
 
 Show that measuring the power from either the spectrum analyzer or the oscilloscope yields the same result.
 
@@ -159,12 +159,8 @@ Show that measuring the power from either the spectrum analyzer or the oscillosc
 
 From this part of the lab keep the following files to submit to your TA:
 
-- The answers to [Question 2](#deliverable-question-1), [Question 3](#deliverable-question-3), [Question 4](#deliverable-question-4) and  [Question 5](#deliverable-question-5)
-
-Combine these deliverables with those from the last part of the lab and submit them as a package. As your TA where to submit them, and remember to put your name and student number on everything (If you filled out the *Options* block in the `.grc` files correctly, your student numbers will be recorded in them.)
-
-**Do not attach the `top_block.py` files**
+- The answers to [Question 1](#deliverable-question-1), [Question 2](#deliverable-question-2), [Question 3](#deliverable-question-3) and  [Question 4](#deliverable-question-4)
 
 ---
 
-[**Back to Part 1**](Part1.md) | [**Begin Lab 3**](../_lab3/introduction.md)
+[**Back to Lab 2 Intro**](introduction.md) | [**Begin Part 2**](SSB-receiver.md)
