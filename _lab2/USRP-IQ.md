@@ -57,7 +57,6 @@ The main function of the USRP motherboard is to act as a [Digital Downconverter 
 - Download and open the GRC file [general-IQ-from-USRP.grc](data/general-IQ-from-USRP.grc). This flowgraph implements the mathematics on the last page of the IQ theory document.
 <!-- #TODO get text section -->
   - The USRP source does all of the operations in red, green and blue from the figure above. It outputs the complex signal ***I(t) + jQ(t)***.
-
   - This output is connected to 4 blocks that extract the magnitude, phase, real and imaginary parts of the complex signal, as well as a constellation scope.
   - The USRP source is tuned to a fixed frequency of 200 MHz, i.e. the LO frequency synthesizer in the WBX daughtercard is set to 200 MHz.
 
@@ -72,7 +71,12 @@ The main function of the USRP motherboard is to act as a [Digital Downconverter 
 
   > Change the *X Max* parameter and use the *Autoscale* button on some of the plots to get a cleaner display.
 
-- Determine the frequency *f<sub>b</sub>* of the sine waves using the Phase display as well as the Real and Imaginary displays by placing your mouse cursor over the scope plot to show the time offset at different points on the waveform. This frequency *f<sub>b</sub>* represents the offset between the received RF signal *f<sub>c</sub>* and the USRP local oscillator *f<sub>LO</sub>*, so that
+- Determine the frequency *f<sub>b</sub>* of the sine waves using the Phase display as well as the Real and Imaginary displays by placing your mouse cursor over the scope plot to show the time offset at different points on the waveform as in the figure below.
+
+  ![part2_phase-ramp-external-clk.png](./figures/part2_phase-ramp-external-clk.png)<br>
+  __*Phase ramp showing frequency offset*__
+
+- This frequency *f<sub>b</sub>* represents the offset between the received RF signal *f<sub>c</sub>* and the USRP local oscillator *f<sub>LO</sub>*, so that
 
   *f<sub>b</sub>* = *f<sub>c</sub> - f<sub>LO</sub>*
 
@@ -81,14 +85,26 @@ The main function of the USRP motherboard is to act as a [Digital Downconverter 
 - The USRP source block has the *Clock Source* set to use an *External* 10 MHz clock reference frequency, and the same external reference is used for the signal generator. Thus the frequency difference between the USRP source block (local oscillator) and signal generator RF frequency will be observed to be exactly as expected from their respective frequency settings.
 
   - If we change the USRP source block to use an *Internal* clock reference, then expect to observe some frequency error between the signal generator and the USRP frequency settings as they are running from independent oscillators.
-  - Try changing the USRP clock source to *Internal* and repeat the frequency measurement of the I and Q outputs.
+  - Try changing the USRP clock source to *Internal* and repeat the frequency measurement of the I and Q outputs. The figure below shows this.
+
+  ![part2_phase-ramp-internal-clk.png](./figures/part2_phase-ramp-internal-clk.png)<br>
+  __*Phase ramp showing frequency offset with an unsynchronized clock source*__
 
 ### Dynamic range with IQ signals
 
-- Ask the TA to vary the 200 MHz signal generator level from ‐10 dBm (dB relative to one milliwatt) to 10 dBm in 1 dB steps.
+- Ask the TA to vary the 200 MHz signal generator level from ‐10 dBm (dB relative to one milliwatt) to 10 dBm in 1 dB steps. Some of the steps are shown in the figures below.
 
 - Observe and describe how the signals look at each signal level, and explain why.
   >The waveform appearance results from clipping in the 2 ADCs (one ADC for I, one ADC for Q).
+
+  ![part2_constellation-round.png](./figures/part2_constellation-round.png)<br>
+  __*Round constellation plot showing no clipping in the ADCs*__
+
+  ![part2_constellation-squashed.png](./figures/part2_constellation-squashed.png)<br>
+  __*Squashed constellation plot showing some clipping in the ADCs*__
+
+  ![part2_constellation-square.png](./figures/part2_constellation-square.png)<br>
+  __*Square constellation plot showing extreme clipping in the ADCs*__
 
 ---
 
