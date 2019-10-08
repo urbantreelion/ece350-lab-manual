@@ -91,6 +91,7 @@ The main function of the USRP motherboard is to act as a [Digital Downconverter 
   When the two are multiplied, and *f<sub>b</sub> = f<sub>c</sub> - f<sub>LO</sub>* is substituted:
 
     ***I(t) = a(t)cos[2πf<sub>b</sub>t + ϕ(t)]***
+
     ***Q(t) = a(t)sin[2πf<sub>b</sub>t + ϕ(t)]***
 
   This is how you are able to read *f<sub>b</sub> directly off of the phase ramp.
