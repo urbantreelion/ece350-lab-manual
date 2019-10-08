@@ -78,7 +78,22 @@ The main function of the USRP motherboard is to act as a [Digital Downconverter 
 
 - This frequency *f<sub>b</sub>* represents the offset between the received RF signal *f<sub>c</sub>* and the USRP local oscillator *f<sub>LO</sub>*, so that
 
-  *f<sub>b</sub>* = *f<sub>c</sub> - f<sub>LO</sub>*
+  ***f<sub>b</sub> = f<sub>c</sub> - f<sub>LO</sub>***
+
+  The input RF signal is described by:
+
+    ***s(t) = a(t)e<sup>jϕt</sup>e<sup>j2πf<sub>c</sub>t</sup> = a(t)cos[2πf<sub>c</sub>t+ϕ(t)] + ja(t)sin[2πf<sub>c</sub>t+ϕ(t)]***
+
+  The local oscillator is described by:
+
+    ***e<sup>-jπf<sub>LO</sub>t</sup> = cos2πf<sub>LO</sub>t-jsin2πf<sub>LO</sub>t***
+
+  When the two are multiplied, and *f<sub>b</sub> = f<sub>c</sub> - f<sub>LO</sub>* is substituted:
+
+    ***I(t) = a(t)cos[2πf<sub>b</sub>t + ϕ(t)]***
+    ***Q(t) = a(t)sin[2πf<sub>b</sub>t + ϕ(t)]***
+
+  This is how you are able to read *f<sub>b</sub> directly off of the phase ramp.
 
   - Confirm that *f<sub>b</sub>* is as expected (ask your TA for *f<sub>c</sub>*)
   - To find *f<sub>c</sub>*, ask your TA or go check the signal generator at the back of the lab.
