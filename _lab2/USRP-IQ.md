@@ -24,7 +24,7 @@ While transmitting with the USRP, you will:
 ---
 
 ## Part 1 Deliverables
-<!-- #TODO update -->
+
 - There are several questions in this part of the lab. They are clearly indicated.
   - Each question requires approximately 1 line of writing and addresses concepts, not details. Answer the questions and submit a single page containing the answers to your TA at the end of the lab.
 
@@ -35,7 +35,7 @@ While transmitting with the USRP, you will:
 The small grey box is the USRP software‐defined radio. The USRP digitally downconverts the received (Rx) input signal into I/Q format and sends it via Ethernet to the computer. The USRP also digitally upconverts an I/Q signal from the computer to an RF signal at the transmitter (Tx) output. The USRP's Rx input is connected to a VHF (Very High Frequency) antenna on the ELW roof. The Tx output can be connected to the oscilloscope and spectrum analyzer.
 
 - Verify that the USRP at your station is connected as shown below. If it does not, there are BNC connector cables available at the front of the lab.
-<!-- #TODO add ref clock -->
+
   ![part2_usrp-connect.png](./figures/part2_usrp-connect.png)<br>
   __*USRP front panel*__
 
@@ -64,10 +64,10 @@ The main function of the USRP motherboard is to act as a [Digital Downconverter 
 
 - Execute the flowgraph. Observe the Output Display window with 4 tabs labelled **IQ Plane, Magnitude, Phase** and **IQ Scope Plot**.
 
-  - The Scope Plot tab should show a circle
-  - Magnitude will show a (noisy) DC level
-  - Phase will show a phase ramp wrapping between -π and π (saw-tooth wave) with a period that is the reciprocal of the frequency offset (f<sub>b</sub>)
-  - Real and Imaginary will show (noisy) sine waves.
+  - The "IQ Plane" tab should show a circle
+  - The "Magnitude" tab will show a (noisy) DC level
+  - The "Phase" tab will show a phase ramp wrapping between -π and π (saw-tooth wave) with a period that is the reciprocal of the frequency offset (f<sub>b</sub>)
+  - The "IQ Scope Plot" tab will show the real and imaginary (noisy) sine waves.
 
   > Change the *X Max* parameter and use the *Autoscale* button on some of the plots to get a cleaner display.
 
