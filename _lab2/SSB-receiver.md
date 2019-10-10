@@ -98,12 +98,12 @@ The first step in building a receiver is to use a channel filter to pass the sig
 
 When using real signals, this first shift and low-pass filtering involves all of the highlighted blocks in the diagram below.
 
-  ![part1_weaver-real-block-diagram-highlighted-first-half.png](./figures/part1_weaver-real-block-diagram-highlighted-first-half.png)<br>
+  ![part1_weaver-real-block-diagram-mix1.png](./figures/part1_weaver-real-block-diagram-mix1.png)<br>
   __*Signal shifting with a filter in the real domain*__
 
 This is far simpler when operating in the complex domain, as illustrated by the *equivalent circuit* below.
 
-  ![part1_weaver-complex-block-diagram-highlighted-first-half.png](./figures/part1_weaver-complex-block-diagram-highlighted-first-half.png)<br>
+  ![part1_weaver-complex-block-diagram-mix1.png](./figures/part1_weaver-complex-block-diagram-mix1.png)<br>
   __*Signal shifting with a filter in the complex domain*__
 
 - In GRC, the *Frequency Xlating FIR Filter* performs both of these operations (the frequency shift down to zero, as well as the low pass filter).
@@ -163,12 +163,12 @@ This list indicates the minimum number of arguments required for the filter to b
 
 Recall the original block diagram of Weaver's SSB demodulator. The signal has been shifted down to zero, low-pass filtered, and decimated. Now the signal needs to be shifted off of zero. The highlighted portion of the block diagram below shows the real multiplication *as well as* the necessary addition of the I and Q streams.
 
-  ![part1_weaver-real-block-diagram-highlighted-second-half.png](./figures/part1_weaver-real-block-diagram-highlighted-second-half.png)<br>
+  ![part1_weaver-real-block-diagram-mix2.png](./figures/part1_weaver-real-block-diagram-mix2.png)<br>
   __*Second frequency shift in the real domain*__
 
 Once again, this is simpler using complex signals. The highlighted portion of the block diagram below shows this.
 
-  ![part1_weaver-complex-block-diagram-highlighted-second-half.png](./figures/part1_weaver-complex-block-diagram-highlighted-second-half.png)<br>
+  ![part1_weaver-complex-block-diagram-mix2.png](./figures/part1_weaver-complex-block-diagram-mix2.png)<br>
   __*Second frequency shift in the complex domain*__
 
 > Note that no addition is necessary, since the complex multiplication dealt with both the I and the Q streams.
@@ -200,7 +200,13 @@ Once again, this is simpler using complex signals. The highlighted portion of th
 
 - Add an *Audio Sink* block with your chosen sample rate of 48 kHz to the output of the *Multiply Const* block. **Notice the red signal path!** The *Audio Sink* only accepts floats, and the entire flowgraph to this point is using complex signals. Use a *Complex To Real* block in between the *Multiply Const* and the *Audio Sink* blocks.
 
-  > Considering the output of the *Multiply Const* block to be ***m(t)***, the *Complex To Real* block accepts ***m(t)*** as an argument and outputs ***Re{m(t)}***.
+  > Considering the output of the *Multiply Const* block to be ***m(t)***, the *Complex To Real* block accepts ***m(t)*** as an argument and outputs ***Re{m(t)}***. This operation takes place in the highlighted region of the next two block diagram.
+
+  ![part1_weaver-real-block-diagram-sum.png](./figures/part1_weaver-real-block-diagram-sum.png)<br>
+  __*Taking the real part of the signal in the real domain*__
+
+  ![part1_weaver-complex-block-diagram-sum.png](./figures/part1_weaver-complex-block-diagram-sum.png)<br>
+  __*Taking the real part of the signal in the complex domain*__
 
 - Execute the flowgraph to test your SSB receiver. You should now clearly hear a voice. Your flowgraph should look like the following figure.
 
@@ -209,7 +215,7 @@ Once again, this is simpler using complex signals. The highlighted portion of th
 
 ### Taking the real part of a complex signal
 
-Remember that taking the real part of the complex signal is the same thing as adding the negative frequencies! To illustrate this, add two *QT GUI Frequency Sinks*, one before and one after the *Complex To Real* block. Title them appropriately ("Complex (before)" and "Real (after)") and execute the flowgraph. It should look like the following image.
+Remember that taking the real part of the complex signal is the same thing as adding the negative frequencies! The last two block diagrams highlighted this. To check it yourself, add two *QT GUI Frequency Sinks*, one before and one after the *Complex To Real* block. Title them appropriately ("Complex (before)" and "Real (after)") and execute the flowgraph. It should look like the following image.
 
   ![part1_real-vs-complex-spectra.png](./figures/part1_real-vs-complex-spectra.png)<br>
   __*SSB complex vs real spectra*__
