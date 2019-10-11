@@ -104,7 +104,7 @@ Why is the spectrum symmetrical about 0 Hz?
     ![part1_file_sink.png](./figures/part1_file_sink.png)<br>
     __*File Sink properties*__
 
-- Execute the flowgraph and after a few seconds kill it. Check that the `.dat` file now exists. You can now disable the *File Sink* block again.
+- Execute the flowgraph and after a few seconds kill it. Check that the `.dat` file now exists by browsing your file systems file explorer. You can now disable the *File Sink* block again.
 
   >Note: if you execute the flowgraph while the *File Sink* block is enabled, and spend time analyzing the scope and frequency plots, it will be writing to file the entire time. Generally if you want to look at the plots for any duration, you should disable the *File Sink* block.
 
@@ -139,6 +139,7 @@ Until now, we have only used a sinusoidal message. In this section, we will crea
 - Go back to your AM Modulator flowgraph and:
 
   - change the *Signal Source* block to a *File Source* block
+    - Ensure that you change the correct signal source. You are replacing *m(t)* **not** *fc*.
   - select `square_waveform.dat` as the source file
   - enable to *File Sink* block, choose a save destination, and name the file `AM_modulated_square.dat`
   - execute the flowgraph.

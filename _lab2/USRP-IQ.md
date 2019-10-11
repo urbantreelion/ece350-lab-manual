@@ -66,7 +66,7 @@ The main function of the USRP motherboard is to act as a [Digital Downconverter 
 
   - The "IQ Plane" tab should show a circle
   - The "Magnitude" tab will show a (noisy) DC level
-  - The "Phase" tab will show a phase ramp wrapping between -π and π (saw-tooth wave) with a period that is the reciprocal of the frequency offset (f<sub>b</sub>)
+  - The "Phase" tab will show a phase ramp wrapping between -π and π (saw-tooth wave) with a period that is the reciprocal of the frequency offset (*f<sub>b</sub>*)
   - The "IQ Scope Plot" tab will show the real and imaginary (noisy) sine waves.
 
   > Change the *X Max* parameter and use the *Autoscale* button on some of the plots to get a cleaner display.
