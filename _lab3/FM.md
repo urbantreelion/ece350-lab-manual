@@ -1,16 +1,22 @@
+---
+layout: labitem
+title: Part 1
+permalink: /lab3/FM-signals
+firstHeading: Part 1 - FM Signal waveforms
+---
 
-## FM Signal waveforms
+[**Back to Lab 3 Intro**](introduction.md) | [**Begin Part 2**](FLEX-sync.md)
 
-### Objectives
+## Objectives
 
-This tutorial is a guide to FM signal waveforms. In this tutorial you
-will learn:
+This part of the lab is a guide to FM signal waveforms. In this tutorial you
+will:
 
-- Theory and equations of FM signals, power spectrum, bandwidth, FM demodulation
+- learn the theory and equations of FM signals, power spectra, bandwidths, and FM demodulation
 
-- construct an FM transmitter flowgraph to generate an FM waveform with sinusoidal message and square wave message
+- construct an FM transmitter flowgraph to generate an FM waveform with both a sinusoidal message and a square wave message
 
-- construct an FM receiver flowgraph to recover the message from the FM waveform.
+- construct an FM receiver flowgraph to recover the message from the FM waveform
 
 ### FM flowgraphs
 

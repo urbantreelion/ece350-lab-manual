@@ -336,4 +336,4 @@ From this part of the lab keep the following files to submit to your TA after th
 **Do not attach the `top_block.py` files to your submission.**
 
 ---
-[**Back to Part 1**](USRP-IQ.md) | [**Continue to conclusion**](../_lab2/conclusion.md)
+[**Back to Part 1**](USRP-IQ.md) | [**Continue to conclusion**](conclusion.md)

@@ -1,10 +1,11 @@
 ---
 layout: labitem
-title: Lab 2 #Used for header nav
-firstHeading: Lab 2  - Conclusion
-permalink: /lab2/conclusion
+title: Lab 3 #Used for header nav
+firstHeading: Lab 3  - Conclusion
+permalink: /lab3/conclusion
 ---
 
+<!-- #TODO update -->
 [**Back to Part 2**](SSB-receiver.md) | [**Continue to Lab 3**](../_lab3/introduction.md)
 
 In this lab you used a USRP to both transmit and receive complex data streams. You then built an SSB demodulator.
