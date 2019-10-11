@@ -16,7 +16,6 @@ This tutorial is a guide to receiving SSB signals. It will also illustrate some 
 
 ---
 
-<!-- #TODO update all figures -->
 ## Part 2 Deliverables
 
 - Two GRC files of SSB demodulators. You will be stepped through building them.
@@ -222,7 +221,7 @@ Remember that taking the real part of the complex signal is the same thing as ad
 
 ---
 
-#### Deliverable Question 5
+#### Deliverable Question 4
 
 Why does taking the *real* part of a complex signal result in frequencies being *added* to the spectrum?
 
@@ -234,7 +233,7 @@ Why does taking the *real* part of a complex signal result in frequencies being 
 
 The last demodulator you made was for LSB signals stored in a DAT file. You will now demodulate USB signals stored in a WAV file.
 
-- Make a copy of `SSB_DAT_demodulator.grc` and name it `SSB_WAV_demodulator.grc`. You can do this by going ***File -> Duplicate*** then ***File -> Save*** in GRC.
+- Make a copy of `SSB_DAT_demodulator.grc` and name it `SSB_WAV_demodulator.grc`. You can do this by going ***File -> Save As*** in GRC.
   - In the *Options* block change the title to be "SSB WAV Demodulator".
   - This file will be your second deliverable.
 
@@ -332,7 +331,7 @@ From this part of the lab keep the following files to submit to your TA after th
 - `SSB_DAT_demodulator.grc`
 - `SSB_WAV_demodulator.grc`
 
-- The answer to [Question 5](#deliverable-question-5)
+- The answer to [Question 4](#deliverable-question-4)
 
 **Do not attach the `top_block.py` files to your submission.**
 
