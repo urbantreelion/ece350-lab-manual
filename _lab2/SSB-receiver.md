@@ -279,7 +279,7 @@ The last demodulator you made was for LSB signals stored in a DAT file. You will
   - Edit the firdes filter in the *Xlating FIR Filter* block such that the cutoff frequency of the LFP uses the `bandwidth` variable.
   - Execute the flowgraph again and adjust the bandwidth "live" while observing the USB signal. **What bandwidth provides the clearest audio?**
 
-**Listen to the wpoken words in the transmission: which city is the transmission being made from?**
+**Listen to the spoken words in the transmission: which city is the transmission being made from?**
 
 - Remembering that the file contains two USB transmissions, find the second one.
   - Add a *QT GUI Range* block to control the center frequency and try to find the other USB transmission captured in the file!
