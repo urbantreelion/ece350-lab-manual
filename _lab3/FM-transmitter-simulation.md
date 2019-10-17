@@ -36,27 +36,17 @@ You are going to build flowgraphs to transmit FM signals that are simulation-onl
 
     $$m(t) = A_{m}cos\left( 2\pi f_m t\right) $$
 
-  the FM wave can be written as any of:
+  the FM wave can be written as:
   
     $$
     \begin{align*}
         s(t) &= A_{c}cos\left( 2\pi f_c t + \beta sin \left(2\pi f_m t \right) \right) \\
 
-        &= I(t)cos \left( 2\pi f_c t \right) - Q(t)sin \left( 2\pi f_c t \right) \\
+        &= Re \{ A_c e^{j(2\pi f_c t + \beta sin(2\pi f_m t))} \} \\
 
-        &= a(t)cos \left( 2\pi f_c t + \phi (t) \right)
+        &= Re \{ A_c e^{\beta sin(2\pi f_m t))} e^{j(2\pi f_c t} \} \\
     \end{align*}
     $$
-
-  where:
-
-    $$ a(t) = A_c $$
-
-    $$ \phi (t) = \beta sin \left( 2\pi f_m t \right) $$
-
-    $$ I(t) = A_c cos \left( 2\pi f_m t \right) $$
-
-    $$ Q(t) = A_c sin \left( 2\pi f_m t \right) $$
 
 <!-- #TODO what is beta -->
 
@@ -77,27 +67,28 @@ You'll start by transmitting a sinusoidal message. The equations for this are sh
   - For the carrier frequency, range from 0-100 kHz with a default value of 25 kHz.
   - For the beta value, fange from 0-4 with a default value of 4, and a step size of 0.025.
 
-- Construct a flowgraph representation of $$ \phi (t) $$ using a *Signal Source* block and a *Multiply Const* block.
-  - Change the *Output Type* to *Float*.
+- Begin by using a *Signal Source* block and a *Multiply Const* block to create the $$ \beta sin( 2\pi f_m t) $$ term.
+  - In the signal source, change the *Output Type* to *Float*.
   - Use the variables from the *QT GUI Range* widgets for $$ \beta $$ and $$ f_m $$.
   - The flowgraph should now look like the following figure.
 
-    ![fmtx_phi-of-t-grc.png](./figures/fmtx_phi-of-t-grc.png)<br>
-    __*Graphical representation of $$ \phi (t) $$*__
+- This flowgraph will not be used to transmit to any hardware, so a *Throttle* block is needed. Add a *Throttle* after the *Multiply Const* block.
 
-  - **Can you read this flowgraph as equivalent to the equation for $$ \phi (t) $$ ?**
+- In order to turn this signal into a complex exponential, we must take $$ e^{jX} $$ where $$ X $$ is the signal at this point.
+  - Use the [Phase Mod](https://wiki.gnuradio.org/index.php/Phase_Mod) block.
+  - Read the documentation on the block to understand what it is doing.
+  - Notice that we could input the $$ \beta $$ value as the sensitivity instead of using the *Multiply Const* block. If you choose to keep the *Multiply Const* block, set the *Sensitivity* parameter to 1.
 
-- Add a *Throttle* block after the $$ \beta $$ multiplication.
-- In order to take the sine and cosine of $$ \phi (t) $$, split the output of the *Throttle* block into two *Transcendental* blocks.
-  - One of the *Transcendental* blocks should have `cos` set as the function, and the other should have *sin* set as the function.
-  - These two streams represent $$ I(t) $$ and $$ Q(t) $$ from the equations in the [theory section](#theory) above. Notice that $$ A_c $$ is not used and so is equal to 1.
+- The flow graph should now look like the following figure.
 
-- Following the equations in the [theory section](#theory), $$ I(t) $$ and $$ Q(t) $$ are multiplied by $$ cos(2\pi f_c t) $$ and $$ -sin(2\pi f_c t) $$ of the carrier frequency respectively.
-  - Add two *Signal Source* blocks and two *Multiply* blocks.
-  - Ensure that $$ cos(2\pi f_c t) $$ is multiplied with $$ I(t) $$ while $$ -sin(2\pi f_c t) $$ is multiplied with $$ Q(t) $$.
-    - To get the negative value in front of the sine, choose an amplitude of -1 in the appropriate *Signal Source* block.
+    ![fmtx_s-plus-of-t-grc.png](./figures/fmtx_s-plus-of-t-grc.png)<br>
+    __*Graphical representation of $$ e^{j\beta sin(2\pi f_m t)} $$*__
 
-- Use an *Add* block to combine the two streams and obtain $$ s(t)$$.
+- Now construct the second exponential, $$ e^{j2\pi f_c t} $$ and multiply them together to create $$ s^{+}(t) $$.
+  - Use a *Signal Source* block in conjunction with a *Multiply* block and incorporate the QT GUI Range variable for $$ f_c $$.
+
+- Use a *Complex To Real* block to obtain $$ s(t) $$.
+  - Notice that $$ A_c $$ is not used and so is equal to 1.
 
 - Visualize the output of the flowgraph using a:
   - *QT GUI Time Sink* at $$ m(t) $$
@@ -130,14 +121,7 @@ What does $$ \beta $$ control?
 
 ---
 
-- Add a *File Sink* block as well to capture $$ s(t) $$ but leave it disabled for now.
-
-- Your flowgraph should look similar to the following.
-
-  ![fmtx_sine-modulator-grc.png](./figures/fmtx_sine-modulator-grc.png)<br>
-  __*Graphical representation of $$ s(t) $$*__
-
-- Enable the *File Sink* block and save a file called `FM_TX_2kHz_sine.dat`. You will need to execute the flowgraph for a few seconds to build the file.
+- Add a *File Sink* block to capture $$ s(t) $$ and save a file called `FM_TX_2kHz_sine.dat`. You will need to execute the flowgraph for a few seconds to build the file.
 
 ## Building an FM transmitter for an FSK message
 
@@ -147,9 +131,9 @@ The integral of a square waveform is a triangular waveform with the same frequen
 
 - Change the *Signal Source* block to output a triangular waveform of frequency $$ f_m $$.
 
-- With the *File Sink* block disabled, execute the flowgraph and observe the various plots. Adjust the sliders to see how it impacts the transmitted signal.
+- With the *File Sink* block disabled, execute the flowgraph and observe the various plots. Adjust the sliders so that $$ f_m $$ is 5 kHz see how it impacts the transmitted signal.
 
-- The following figures show $$ m(t)$$  and $$ s(t) $$ with default parameters.
+- The following figures show $$ m(t)$$  and $$ s(t) $$ with a message frequency of 5 kHz.
 
   ![fmtx_m-of-t-square-scope.png](./figures/fmtx_m-of-t-square-scope.png)<br>
   __*$$ m(t) $$ with default values in time domain*__
@@ -159,6 +143,8 @@ The integral of a square waveform is a triangular waveform with the same frequen
 
   ![fmtx_s-of-t-square-fft.png](./figures/fmtx_s-of-t-square-fft.png)<br>
   __*$$ s(t) $$ with default values in frequency domain*__
+
+-Set the sliders back to default values.
 
 - Enable the *File Sink* block and save a file called `FM_TX_2kHz_square.dat`. You will need to execute the flowgraph for a few seconds to build the file.
 
