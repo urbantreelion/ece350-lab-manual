@@ -1,11 +1,11 @@
 ---
 layout: labitem
-title: Part 2
+title: Part 4
 permalink: /lab3/FLEX-sync
-firstHeading: Part 2 - FLEX Frame Synchronizer
+firstHeading: Part 4 - FLEX Frame Synchronizer
 ---
 
-[**Back to Lab 3 Intro**](introduction.md) | [**Begin Part 2**](SSB-receiver.md)
+[**Back to Part 3**](FM-receiver-USRP.md) | [**Continue to conclusion**](conclusion.md)
 
 ## Objectives
 
@@ -17,7 +17,7 @@ Review the theory on [Frame Synchronization](../_docs/FrameSync.pdf). Further de
 
 ---
 
-## Part 1 Deliverables
+## Part 4 Deliverables
 
 <!-- #TODO review -->
 - A single .grc file
@@ -36,13 +36,13 @@ Review the theory on [Frame Synchronization](../_docs/FrameSync.pdf). Further de
 
 ## Frame Capture
 
-There is a relatively strong FLEX pager network signal around 929.66 MHz. The FLEX signal is multi-level Frequency-Shift Keying, so an FM demodulator is needed to detect the data.
-
-- Create a flowgraph to receive this signal, starting with the IQ receiver from the previous section with a waterfall added.
+There is a relatively strong FLEX pager network signal around 929.66 MHz. The FLEX signal is multi-level Frequency Shift Keying, so an FM demodulator is needed to detect the data.
+<!-- #TODO or just open the old one -->
+- Create a flowgraph to receive this signal, starting with the FM receiver from the previous section with a *QT GUI Waterfall Sink* added.
 
 - Set the USRP receive gain high (30dB), tune your receiver to this frequency and view the signal on the waterfall display. You may need to use the *Autoscale* function on the waterfall for a better view.
 
-    > Note: If you are not able to find the FLEX signal, there is a [FLEX file source](./data/FLEX_bits.wav) that can be used instead. This file is the demodulated FLEX signal. It can be observed in your flowgraph using a *Scope Sink*, but does not require any further processing from GNU Radio Companion. If using this file, you may skip to [the following section](#bit-and-frame-sync).
+    > Note: If you are not able to find the FLEX signal, there is a [FLEX file source](./data/FLEX_bits.wav) that can be used instead. This file is the *demodulated* FLEX signal. It can be observed in your flowgraph using a *Scope Sink*, but does not require any further processing from GNU Radio Companion. If using this file, you may skip to [the following section](#bit-and-frame-sync).
 
 - What do you observe? With some patience, you should periodically see two strong lines that are 9.6 kHz apart with other weaker lines on either side (harmonics) as shown below. 9.6 kHz is the frequency shift used by the FLEX signal. The signal actually switches rapidly between the two frequencies, although the resolution of the waterfall is not fine enough to show this detail.
 
@@ -61,10 +61,9 @@ There is a relatively strong FLEX pager network signal around 929.66 MHz. The FL
     ![flex_bits.png](./figures/flex_bits.png)<br>
     __*Demodulated FLEX signal*__
 
-- Save the demodulated output to a file in one of the following ways:
+- Save the demodulated output to a WAV file using a *Wav File Sink* at one of the accepted sample rates for WAV files (48 kHz is suggested).
 
-  1. In binary format using a *File Sink* at any sample rate. This file can be read in MATLAB using the [fread](http://www.mathworks.com/help/matlab/ref/fread.html) function or in any other language of your choice.
-  2. In WAV format using a *Wav File Sink* at one of the accepted sample rates for WAV files (48 kHz is suggested). WAV files can be read in MATLAB using the [wavread](http://www.mathworks.com/help/matlab/ref/wavread.html) function or viewed in Audacity.
+  > WAV files can be read in MATLAB using the [wavread](http://www.mathworks.com/help/matlab/ref/wavread.html) function or viewed in Audacity.
 
 ## Bit and Frame Sync
 
@@ -83,9 +82,13 @@ There is a relatively strong FLEX pager network signal around 929.66 MHz. The FL
   2. Either copy/paste in Audacity or create a new array in Matlab to isolate the sync word.
   3. Now the isolated sync word needs to be cross-correlated against the entire bitstream. If you are confident in your ability to do this programatically you can write your own program to do this either in Matlab or the language of your choice. Otherwise, you may use [this Matlab script](data/frame_sync.m).
 
-You should now have a list of times for when each syncword starts. If you were able to create your own file in as described [earlier in this lab](#frame-capture), you can visually determine whether the start times are correct, and adjust your code if they are not.
+- You should now have a list of times for when each syncword starts.
+  - If you were able to create your own WAV file as described earlier, you can visually determine whether the start times are correct.
+    - Adjust your code if they are not.
+  - If you were using the previously generated [WAV file](./data/FLEX_bits.wav), it contains 16 frames. 
+    - The first one starts at 0.7126 seconds and the last one starting at 30.7126 seconds.
 
-If you were using the previously generated [WAV file](./data/FLEX_bits.wav), it contains 16 frames, with the first one starting at 0.7126 seconds and the last one starting at 30.7126 seconds. **How much time is there between frames (sync words)? Is there any pattern?**
+- **How much time is there between frames (sync words)? Is there any pattern?**
 
 ## Decoding text
 

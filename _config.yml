@@ -15,7 +15,7 @@ include:
   - _intro
   - _lab1
   - _lab2
-  # - _lab3
+  - _lab3
   # - _lab4
   - _docs
 
@@ -25,5 +25,5 @@ header_pages:
   - _intro/introduction.md
   - _lab1/introduction.md
   - _lab2/introduction.md
-  - _lab3/lab3.md
-  - _lab4/lab4.md
+  # - _lab3/introduction.md
+  # - _lab4/lab4.md

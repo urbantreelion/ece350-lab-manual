@@ -5,7 +5,7 @@ permalink: /lab2/SSB-receiver
 firstHeading: Part 2 - Complex signals and receiving SSB waveforms
 ---
 
-[**Back to Part 1**](USRP-IQ.md) | [**Continue to conclusion**](../_lab2/conclusion.md)
+[**Back to Part 1**](USRP-IQ.md) | [**Continue to conclusion**](conclusion.md)
 
 ## Objectives
 
