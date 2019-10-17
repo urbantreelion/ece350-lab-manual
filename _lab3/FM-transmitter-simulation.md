@@ -85,10 +85,10 @@ You'll start by transmitting a sinusoidal message. The equations for this are sh
     __*Graphical representation of $$ e^{j\beta sin(2\pi f_m t)} $$*__
 
 - Now construct the second exponential, $$ e^{j2\pi f_c t} $$ and multiply them together to create $$ s^{+}(t) $$.
-  - Use a *Signal Source* block in conjunction with a *Multiply* block and incorporate the QT GUI Range variable for $$ f_c $$.
+  - Use a *Signal Source* block in conjunction with a *Multiply* block and incorporate the *QT GUI Range* variable for $$ f_c $$.
 
 - Use a *Complex To Real* block to obtain $$ s(t) $$.
-  - Notice that $$ A_c $$ is not used and so is equal to 1.
+  > Notice that $$ A_c $$ is not used and so is equal to 1.
 
 - Visualize the output of the flowgraph using a:
   - *QT GUI Time Sink* at $$ m(t) $$
@@ -144,7 +144,7 @@ The integral of a square waveform is a triangular waveform with the same frequen
   ![fmtx_s-of-t-square-fft.png](./figures/fmtx_s-of-t-square-fft.png)<br>
   __*$$ s(t) $$ with default values in frequency domain*__
 
--Set the sliders back to default values.
+- Set the sliders back to default values.
 
 - Enable the *File Sink* block and save a file called `FM_TX_2kHz_square.dat`. You will need to execute the flowgraph for a few seconds to build the file.
 
