@@ -56,7 +56,7 @@ The main function of the USRP motherboard is to act as a [Digital Downconverter 
 
 - Download and open the GRC file [general-IQ-from-USRP.grc](data/general-IQ-from-USRP.grc).
 
-  - The USRP source does all of the operations in red, green and blue from the figure above. It outputs the complex signal ***I(t) + jQ(t)***.
+  - The USRP source does all of the operations in red, green and blue from the figure above. It outputs the complex signal $$ I(t) + jQ(t) $$.
   - This output is connected to 4 blocks that extract the magnitude, phase, real and imaginary parts of the complex signal, as well as a constellation scope.
   - The USRP source is tuned to a fixed frequency of 200 MHz, i.e. the LO frequency synthesizer in the WBX daughtercard is set to 200 MHz.
 
@@ -66,38 +66,43 @@ The main function of the USRP motherboard is to act as a [Digital Downconverter 
 
   - The "IQ Plane" tab should show a circle
   - The "Magnitude" tab will show a (noisy) DC level
-  - The "Phase" tab will show a phase ramp wrapping between -π and π (saw-tooth wave) with a period that is the reciprocal of the frequency offset (*f<sub>b</sub>*)
+  - The "Phase" tab will show a phase ramp wrapping between $$ -\pi $$ and $$ \pi $$ (saw-tooth wave) with a period that is the reciprocal of the frequency offset ( $$ f_b $$)
   - The "IQ Scope Plot" tab will show the real and imaginary (noisy) sine waves.
 
   > Change the *X Max* parameter and use the *Autoscale* button on some of the plots to get a cleaner display.
 
-- Determine the frequency *f<sub>b</sub>* of the sine waves using the Phase display as well as the Real and Imaginary displays by placing your mouse cursor over the scope plot to show the time offset at different points on the waveform as in the figure below.
+- Determine the frequency $$ f_b $$ of the sine waves using the Phase display as well as the Real and Imaginary displays by placing your mouse cursor over the scope plot to show the time offset at different points on the waveform as in the figure below.
 
   ![part2_phase-ramp-external-clk.png](./figures/part2_phase-ramp-external-clk.png)<br>
   __*Phase ramp showing frequency offset*__
 
-- This frequency *f<sub>b</sub>* represents the offset between the received RF signal *f<sub>c</sub>* and the USRP local oscillator *f<sub>LO</sub>*, so that
+- This frequency $$ f_b $$ represents the offset between the received RF signal $$ f_c $$ and the USRP local oscillator $$ f_{LO} $$, so that
 
-  ***f<sub>b</sub> = f<sub>c</sub> - f<sub>LO</sub>***
+  $$ f_b  = f_c  - f_{LO} $$
 
   The input RF signal is described by:
 
-    ***s(t) = a(t)e<sup>jϕt</sup>e<sup>j2πf<sub>c</sub>t</sup> = a(t)cos[2πf<sub>c</sub>t+ϕ(t)] + ja(t)sin[2πf<sub>c</sub>t+ϕ(t)]***
+    $$
+    \begin{align*}
+      s(t) &= a(t) e^{j\phi (t)} e^{j2\pi f_c t} \\
+      &= a(t)cos\left( 2\pi f_c t + \phi (t)\right) + ja(t)sin\left( 2\pi f_c t+ \phi (t) \right)
+    \end{align*}
+    $$
 
   The local oscillator is described by:
 
-    ***e<sup>-jπf<sub>LO</sub>t</sup> = cos2πf<sub>LO</sub>t-jsin2πf<sub>LO</sub>t***
+    $$ e^{-j\pi f_{LO} t}  = cos\left( 2\pi f_{LO} t \right) - jsin\left( 2\pi f_{LO} t \right) $$
 
-  When the two are multiplied, and *f<sub>b</sub> = f<sub>c</sub> - f<sub>LO</sub>* is substituted:
+  When the two are multiplied, and $$ f_b  = f_c  - f_LO $$ is substituted:
 
-    ***I(t) = a(t)cos[2πf<sub>b</sub>t + ϕ(t)]***
+    $$ I(t) = a(t)cos\left( 2\pi f_b t + \phi (t) \right) $$
 
-    ***Q(t) = a(t)sin[2πf<sub>b</sub>t + ϕ(t)]***
+    $$ Q(t) = a(t)sin \left( 2\pi f_b t + \phi (t) \right) $$
 
-  This is how you are able to read *f<sub>b</sub> directly off of the phase ramp.
+  This is how you are able to read $$ f_b $$ directly off of the phase ramp.
 
-  - Confirm that *f<sub>b</sub>* is as expected (ask your TA for *f<sub>c</sub>*)
-  - To find *f<sub>c</sub>*, ask your TA or go check the signal generator at the back of the lab.
+  - Confirm that $$ f_b $$ is as expected (ask your TA for $$ f_c $$)
+  - To find $$ f_c $$, ask your TA or go check the signal generator at the back of the lab.
 
 - The USRP source block has the *Clock Source* set to use an *External* 10 MHz clock reference frequency, and the same external reference is used for the signal generator. Thus the frequency difference between the USRP source block (local oscillator) and signal generator RF frequency will be observed to be exactly as expected from their respective frequency settings.
 
@@ -170,22 +175,6 @@ The GRC flowgraph shows a complex stream getting fed into the USRP. How come whe
 Why, when the USRP is active in transmit-mode, is its minimum output power greater than 0?
 
 ---
-
-<!-- - Measure the power using both the oscilloscope and spectrum analyzer and verify they are the same.
-  - Recall from your circuit theory that the output power is relative to the load impedance.
-  - On the spectrum analyzer, the input is 50 Ω, which matches the expected impedance of a typical antenna. The input to the scope on the other hand is high impedance, effectively open circuit, to prevent damage to the internal circuits.
-  - To compare measurement on the scope to that of the spectrum analyzer, the line from the USRP transmitter *should* be terminated with a 50 Ω terminator.
-    - Alternatively, some circuit theory can be applied to determine the equivalent power output measured across an open circuit and a 50 Ω load.
-
-    > Equation 1.5 in [the textbook](../_docs/pdriessen_textbook.pdf) shows that with a 50 Ω source and load impedance, **P<sub>dBm</sub> = 20logV + 13**.
-
----
-
-#### Deliverable Question 4
-
-Show that measuring the power from either the spectrum analyzer or the oscilloscope yields the same result.
-
---- -->
 
 ## Deliverables
 
