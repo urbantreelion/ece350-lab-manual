@@ -9,8 +9,7 @@ firstHeading: Part 3 - FM receiver with USRP
 
 ## Objectives
 
-This part of the lab is a guide to receiving real FM signal waveforms. You
-will:
+This part of the lab is a guide to receiving real FM signal waveforms. You will:
 <!-- #TODO update -->
 - use a premade receiver to 
 
@@ -27,31 +26,64 @@ will:
 
 ## FM broadcast receiver
 
-In this section, we consider a practical FM receiver that can receive real off-air FM signals using the USRP.
+In this section, we consider a practical FM receiver that can receive real off-air FM signals using the USRP. You will adjust the FM receiver built in the last part of the lab to work with these real signals.
 
-- Open [this GRC flowgraph](data/FM_USRP_receiver.grc).
+- Open the FM receiver flowgraph you completed in the last part of this lab.
 
-- This flowgraph implements an FM receiver. Compare this receiver to the one you made.
+- Change the sampling rate to 500 kHz.
 
-  - What new blocks are added and what is their function?
-  - Which blocks are identical or perform similar functions?
+- Disable the *File Source* stream up to and including the *Float To Complex* block.
+- Enable to *USRP Source* stream.
+  - Ensure that the output of the *Frequency Xlating FIR Filter* replaces the output of the *Float To Complex Block*.
 
-- Execute the flowgraph. The screen shows a spectrum and several sliders. The radio is tuned to 98.1 MHz (an FM station in Seattle), the RF gain is set to 7 and the AF gain is set to 0.3. The radio can be tuned using the sliders.
+- The flowgraph should now look like the following figure.
+
+  ![fmrx_USRP-receiver-grc.png](./figures/fmrx_USRP-receiver-grc.png)<br>
+  __*FM receiver using the USRP Source stream*__
+
+---
+
+#### Deliverable Question 2
+
+Which blocks from the File Sink stream are replaced with the *USRP Source* block? Which blocks are replaced with the *Frequency Xlating FIR Filter* block?
+
+---
+
+#### Deliverable Question 3
+
+What is the transition width of the low pass filter used on the USRP's output?
+
+---
+
+- Execute the flowgraph.
+- Observe the waterfall.
+  - The radio is tuned to 98.1 MHz (an FM station in Seattle), the RF gain is set to 7. The radio can be tuned using the sliders.
 
 - Notice the noise level is around ‐100 dBm and the signal peak level is 20‐40 dB higher than that. Notice the spectrum analyzer covers a bandwidth of 250 kHz corresponding to the half the sampling rate set for the USRP source block in the flowgraph.
 
-## FM data receiver
+- This FM receiver is not particularly useful without an audio output.
+  - Add a *Rational Resampler* block after the *Complex to Arg* block and resample the signal to 48 kHz. Set the *Type* to be *Float->Float (Real Taps)*.
+  - Add a *Multiply Const* block with the *Constant* parameter set to a variable, `af_gain`.
+  - Add a *QT GUI Range* block with the following parameters:
+    - *ID:* af_gain
+    - *Label:* Audio Frequency Gain
+    - *Default Value:* 0.3
+    - *Start:* 0
+    - *Stop:* 10
+    - *Step:* 0.1
+  - Add an *Audio Sink* block with the following parameters:
+    - *Sample Rate*: 48 kHz
+    - *Num Inputs:* 2
+  - Attach the output of the *Multiply Const* block to both of the *Audio Sink* block inputs.
 
-- Modify the FM receiver flowgraph by replacing the FM demodulation block with the "homemade" FM demodulator using the *Delay* and *Complex Conjugate* blocks.
+- The flowgraph should now look like the following figure.
 
-- Use the USRP to tune to the 2-level FSK signal at 142.17 MHz. This signal is the control channel for the [CREST public safety radio system](http://www.crest.ca/).
+  ![fmrx_USRP-receiver-with-audio-grc.png](./figures/fmrx_USRP-receiver-with-audio-grc.png)<br>
+  __*USRP FM receiver with an audio output*__
 
-- Observe the demodulator output using a *QT GUI Time Sink*. The filter bandwidth and decimation rate may require adjustment, since the bandwidth of this CREST signal is about 25 kHz compared to 200 KHz for FM broadcast signals.
+- Execute the flowgraph. Tune to 101.9 MHz (CFUV) which is the radio station run on UVic's campus from the Student Union Building.
 
-- Check the persistence box on the scope and reduce the alpha to minimum. You will observe a so-called [eye diagram](http://en.wikipedia.org/wiki/Eye_pattern) of the data, as shown below. The eye diagram shows the number of milliseconds per bit. Find the bit rate (the number of bits per second).
-
-  ![eye_diagram.png](./figures/eye_diagram.png)<br>
-  __*Eye diagram of the data shown in a GNU Radio Companion scope sink.*__
+- Sing along.
 
 ## Dynamic Range with FM
 
@@ -60,7 +92,10 @@ In this section, we consider a practical FM receiver that can receive real off-a
 - Retune the USRP to the FM broadcast station at 98.1 MHz.
 
 - Increase the RF gain from 7 dB to 20 dB or more.
-  - Notice that the signal level increases and then suddenly both noise and signal jump up and the audio changes to a different program. What is happening is that a strong signal somewhere within the 40 MHz bandwidth of the USRP's receiver is clipping the 14 bit A/D converter in the USRP. The 14 bit A/D converter has a dynamic range of about 84 dB (14 bits times 6 dB per bit), so a signal above about ‐100 dBm + 84 dB = ‐16 dBm will clip the converter. With the RF gain set to around 20 dB, the receiver becomes non‐linear and the audio from the strong signal is cross‐modulating on top of the signal at 98.1 MHz.
+  - Notice that the signal level increases and then suddenly both noise and signal jump up and the audio changes to a different program.
+
+  > What is happening is that a strong signal somewhere within the 40 MHz bandwidth of the USRP's receiver is clipping the 14 bit A/D converter in the USRP. The 14 bit A/D converter has a dynamic range of about 84 dB (14 bits times 6 dB per bit), so a signal above about ‐100 dBm + 84 dB = ‐16 dBm will clip the converter. With the RF gain set to around 20 dB, the receiver becomes non‐linear and the audio from the strong signal is cross‐modulating on top of the signal at 98.1 MHz.
+
   - Cross‐modulation can be shown to occur by modelling the non‐linear receiver as having the output:
 
     $$ y(t) = a_1 s(t) + a_2 s^2 (t) + a_3 s^3 (t) $$
