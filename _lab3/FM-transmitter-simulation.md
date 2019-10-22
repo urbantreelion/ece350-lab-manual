@@ -50,13 +50,45 @@ You are going to build flowgraphs to transmit FM signals that are simulation-onl
 
 ### Exploring the *Phase Mod* block
 
-How do you transmit a *real* signal as *complex* in GNU Radio? Let's explore.
+How do you transmit a *real* signal (we'll call it $$ \phi $$) as *complex* ($$ e^{j\phi} $$) in GNU Radio? Let's explore.
 
 - Open a new GNU Radio Companion flowgraph.
 
-- Add a *Constant Source* block, a *Throttle* block and a *QT GUI Constellation Sink*.
+- Add a *QT GUI Range* block and set its parameters as follows:
+  - *ID:* `input_range`
+  - *Default Value:* 0
+  - *Start:* 0
+  - *Stop:* 2
+  - *Step:* 0.01
 
-- Make all of the blocks of type *real*. Notice that the *QT GUI Constellation Sink* can only be of type *complex*.
+- Add a *Constant Source* block and set it's *Constant* to be `input_range`, the variable from the *QT GUI Range* block. Make sure that the block type is *Float*.
+
+- Add a *Throttle* block of type *Float*
+
+- Add a *QT GUI Constellation Sink* and notice that it can only accept complex numbers!
+
+- Your flowgraph should look like the following figure. The output of the float line is a signal, $$ \phi $$, and we need the input of the IQ plane to be $$ e^{j\phi}.
+
+    ![fmtx_phase-mod-start-grc.png](./figures/fmtx_phase-mod-start-grc.png)<br>
+    __*Flowgraph of a real signal unable to be connected to a complex sink*__
+
+- Add a [Phase Mod](https://wiki.gnuradio.org/index.php/Phase_Mod) block.
+  - Read the documentation on the block to understand what it is doing.
+  - Notice the sensitivity parameter.
+  - Set the *Sensitivity* to be 3.14 ($$ \pi $$)
+
+- The input of the *Phase Mod* block is some GUI controlled number between 0 and 2 (we'll call it $$ x $$). The *Phase Mod* block output is $$ e^{jx\pi} $$.
+  > Notice the $$ j $$ and the way in which the sensitivity parameter is used.
+
+- The flowgraph should now look like the following figure.
+
+    ![fmtx_phase-mod-grc.png](./figures/fmtx_phase-mod-grc.png)<br>
+    __*Flowgraph of a real signal being transmitted as a complex signal*__
+
+- Execute the flowgraph. You should see a small dot hovering around $$ I = 1, Q = 0 $$ which is $$ e^{j\phi} $$ where $$ \phi = 0 $$.
+- As you move the slider from 0 to 2, you are changing $$ \phi $$ from $$ 0 \rightarrow 2\pi $$.
+
+- You may discard this flowgraph, it is not a deliverable. However, remember how the *Phase Mod* block works. You will need to use it later.
 
 ## Building an FM transmitter for a sine message
 
@@ -82,9 +114,8 @@ You'll start by transmitting a sinusoidal message. The equations for this are sh
 
 - This flowgraph will not be used to transmit to any hardware, so a *Throttle* block is needed. Add a *Throttle* after the *Multiply Const* block.
 
-- In order to turn this signal into a complex exponential, we must take $$ e^{jX} $$ where $$ X $$ is the signal at this point.
-  - Use the [Phase Mod](https://wiki.gnuradio.org/index.php/Phase_Mod) block.
-  - Read the documentation on the block to understand what it is doing.
+- In order to turn this signal into a complex exponential, we must take $$ e^{j\phi} $$ where $$ \phi $$ is the signal at this point.
+  - Use the [Phase Mod](https://wiki.gnuradio.org/index.php/Phase_Mod) block as you did [earlier in this lab](#exploring-the-phase-mod-block).
   - Notice that we could input the $$ \beta $$ value as the sensitivity instead of using the *Multiply Const* block. If you choose to keep the *Multiply Const* block, set the *Sensitivity* parameter to 1.
 
 - The flow graph should now look like the following figure.
