@@ -9,6 +9,8 @@ permalink: /lab2/conclusion
 
 In this lab you used a USRP to both transmit and receive complex data streams. You then built an SSB demodulator.
 
+**Please unplug your USRP's power cable before leaving the lab.**
+
 ---
 
 ## Deliverables

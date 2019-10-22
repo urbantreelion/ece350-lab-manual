@@ -48,7 +48,15 @@ You are going to build flowgraphs to transmit FM signals that are simulation-onl
     \end{align*}
     $$
 
-<!-- #TODO what is beta -->
+### Exploring the *Phase Mod* block
+
+How do you transmit a *real* signal as *complex* in GNU Radio? Let's explore.
+
+- Open a new GNU Radio Companion flowgraph.
+
+- Add a *Constant Source* block, a *Throttle* block and a *QT GUI Constellation Sink*.
+
+- Make all of the blocks of type *real*. Notice that the *QT GUI Constellation Sink* can only be of type *complex*.
 
 ## Building an FM transmitter for a sine message
 
