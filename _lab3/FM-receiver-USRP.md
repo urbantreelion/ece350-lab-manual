@@ -5,13 +5,14 @@ permalink: /lab3/FM-receiver-USRP
 firstHeading: Part 3 - FM receiver with USRP
 ---
 
-[**Back to Part 2**](FM-receiver-simulation.md) | [**Begin Part 4**](FLEX-sync.md)
+[**Back to Part 2**](FM-receiver-simulation.md) | [**Continue to conclusion**](conclusion.md)
 
 ## Objectives
 
 This part of the lab is a guide to receiving real FM signal waveforms. You will:
 <!-- #TODO update -->
-- use a premade receiver to 
+- use the receiver you already completed to receive real signals and listen to FM radio
+- learn the theory of cross-modulation
 
 ---
 
@@ -19,8 +20,8 @@ This part of the lab is a guide to receiving real FM signal waveforms. You will:
 <!-- #TODO review -->
 
 <!-- - Two GRC files of SSB demodulators. You will be stepped through building them. -->
-- There is 1 question in this part. It is clearly indicated.
-  - The question requires approximately 1 line of writing, and addresses a concept, not details. Answer the question and submit a single page containing the answers to your TA at the end of the lab.
+- There is 3 questions in this part. They are clearly indicated.
+  - Each question requires approximately 1 line of writing, and addresses a concept, not details. Answer the questions and submit a single page containing the answers to your TA at the end of the lab.
 
 ---
 
@@ -126,4 +127,4 @@ From this lab part, there are the following deliverables:
 
 ---
 
-[**Back to Part 2**](FM-receiver-simulation.md) | [**Begin Part 4**](FLEX-sync.md)
+[**Back to Part 2**](FM-receiver-simulation.md) | [**Continue to conclusion**](conclusion.md)
