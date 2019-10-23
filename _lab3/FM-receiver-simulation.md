@@ -45,7 +45,7 @@ This part of the lab is a guide to receiving FM signal waveforms. Youwill:
 
       &= Re \{ [ I(t) + j Q(t) ] e^{j2\pi f_c t}\} \\
 
-      &= Re \{ s(t) e^{j2\pi f_c t } \}
+      &= Re \{ \tilde{s}(t) e^{j2\pi f_c t } \}
   \end{align*}
   $$
 

@@ -44,7 +44,7 @@ You are going to build flowgraphs to transmit FM signals that are simulation-onl
 
         &= Re \{ A_c e^{j(2\pi f_c t + \beta sin(2\pi f_m t))} \} \\
 
-        &= Re \{ A_c e^{\beta sin(2\pi f_m t)} e^{j2\pi f_c t} \} \\
+        &= Re \{ A_c e^{j\beta sin(2\pi f_m t)} e^{j2\pi f_c t} \} \\
 
         &= Re \{ \tilde{s}(t) e^{j2\pi f_c t} \} \\
 
@@ -170,7 +170,7 @@ What does $$ \beta $$ control?
 
 Up until now the transmitted message has been a sine wave of frequency $$ f_m $$. You will now simulate transmitting a Frequency Shift Keying (FSK) signal by transmitting a square waveform (which is an FSK pattern of `101010...`).
 
-The integral of a square waveform is a triangular waveform with the same frequency as the square waveform. So for frequency modulation, it is enough to replace the sunisoidal source in the flowgraph with a triangular source.
+The integral of a square waveform is a triangular waveform with the same frequency as the square waveform. So for frequency modulation with a square wave, it is enough to replace the sunisoidal source in the flowgraph with a triangular source.
 
 - Change the *Signal Source* block to output a triangular waveform of frequency $$ f_m $$.
 
