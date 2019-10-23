@@ -44,7 +44,7 @@ You are going to build flowgraphs to transmit FM signals that are simulation-onl
 
         &= Re \{ A_c e^{j(2\pi f_c t + \beta sin(2\pi f_m t))} \} \\
 
-        &= Re \{ A_c e^{\beta sin(2\pi f_m t)} e^{j2\pi f_c t} \} \\
+        &= Re \{ A_c e^{j\beta sin(2\pi f_m t)} e^{j2\pi f_c t} \} \\
     \end{align*}
     $$
 
