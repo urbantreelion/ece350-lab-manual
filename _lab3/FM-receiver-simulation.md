@@ -9,7 +9,7 @@ firstHeading: Part 2 - FM receiver simulator
 
 ## Objectives
 
-This part of the lab is a guide to receiving FM signal waveforms. Youwill:
+This part of the lab is a guide to receiving FM signal waveforms. You will:
 
 - learn the theory and equations of FM signals, power spectra, bandwidths, and FM demodulation
 
@@ -20,7 +20,7 @@ This part of the lab is a guide to receiving FM signal waveforms. Youwill:
 ## Part 2 Deliverables
 <!-- #TODO review -->
 
-- One GRC files of an FM demodulators. You will be stepped through building it.
+- One GRC files of an FM receiver. You will be stepped through building it.
 - There is 1 question in this part. It is clearly indicated.
   - The question requires approximately 1 line of writing, and addresses a concept, not details. Answer the question and submit a single page containing the answers to your TA at the end of the lab.
 
@@ -96,7 +96,7 @@ Before you add or change anything, the flowgraph should look like the following 
   ![fmrx_incomplete-grc.png](./figures/fmrx_incomplete-grc.png)<br>
   __*Incomplete flowgraph for receiving FM signals*__
 
-- Open the *File Source* block and point it at `FM_TX_2kHz_sine.dat`.
+- Open the *File Source* block and point it at `FM_TX_5kHz_sine.dat`.
 
 - Execute the flowgraph and check that the output at $$ \tilde{s}(t) $$ is as expected. The spectrum should look like the following figure after the filtering.
 
@@ -125,7 +125,7 @@ Before you add or change anything, the flowgraph should look like the following 
   ![fmrx_m-of-t-sine-fft.png](./figures/fmrx_m-of-t-sine-fft.png)<br>
   __*Demodulated sine message, $$ m(t) $$ in frqeuency domain*__
 
-- Switch the input file to be `FM_TX_2kHz_square.dat`. You should be able to read the `1010...` FSK sequence
+- Switch the input file to be `FM_TX_5kHz_square.dat`. You should be able to read the `1010...` FSK sequence
 
   ![fmrx_m-of-t-square-scope.png](./figures/fmrx_m-of-t-square-scope.png)<br>
   __*Demodulated FSK message, $$ m(t) $$ in time domain*__

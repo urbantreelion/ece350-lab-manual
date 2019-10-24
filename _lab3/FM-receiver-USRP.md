@@ -10,7 +10,7 @@ firstHeading: Part 3 - FM receiver with USRP
 ## Objectives
 
 This part of the lab is a guide to receiving real FM signal waveforms. You will:
-<!-- #TODO update -->
+
 - use the receiver you already completed to receive real signals and listen to FM radio
 - learn the theory of cross-modulation
 
@@ -52,7 +52,7 @@ Which blocks from the File Sink stream are replaced with the *USRP Source* block
 
 #### Deliverable Question 3
 
-What is the transition width of the low pass filter used on the USRP's output?
+What is the transition width of the low pass filter used on the USRP's output? Why is this 
 
 ---
 
@@ -64,14 +64,9 @@ What is the transition width of the low pass filter used on the USRP's output?
 
 - This FM receiver is not particularly useful without an audio output.
   - Add a *Rational Resampler* block after the *Complex to Arg* block and resample the signal to 48 kHz. Set the *Type* to be *Float->Float (Real Taps)*.
+    - **Check for decimation factors along the data stream**. You need to be aware of the sample rate at the input of the *Rational Resampler* block before trying to resample.
   - Add a *Multiply Const* block with the *Constant* parameter set to a variable, `af_gain`.
-  - Add a *QT GUI Range* block with the following parameters:
-    - *ID:* af_gain
-    - *Label:* Audio Frequency Gain
-    - *Default Value:* 0.3
-    - *Start:* 0
-    - *Stop:* 10
-    - *Step:* 0.1
+    - Notice that the variable is set using a *QT GUI Range* block.
   - Add an *Audio Sink* block with the following parameters:
     - *Sample Rate*: 48 kHz
     - *Num Inputs:* 2
