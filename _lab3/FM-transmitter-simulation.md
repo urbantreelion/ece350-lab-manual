@@ -166,7 +166,7 @@ You'll start by transmitting a sinusoidal message. The equations for this are sh
 
 Show that the Bessel peaks have the correct values relative to each other. In other words, confirm that for the chosen vlaue of $$ \beta $$, the carrier wave and first sideband have the correct values relative to eachother as described by the following equation.
 
-$$ \delta P = 20 log\frac{J_1(\beta)}{J_0(\beta)} $$
+$$ \Delta P = 20 log\frac{J_1(\beta)}{J_0(\beta)} $$
 
 ---
 
