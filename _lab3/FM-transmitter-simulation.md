@@ -71,7 +71,7 @@ How do you transmit a *real* signal (we'll call it $$ \phi $$) as *complex* ($$ 
 
 - Add a *QT GUI Constellation Sink* and notice that it can only accept complex numbers!
 
-- Your flowgraph should look like the following figure. The output of the float line is a signal, $$ \phi $$, and we need the input of the IQ plane to be $$ e^{j\phi}.
+- Your flowgraph should look like the following figure. The output of the float line is a signal, $$ \phi $$, and we need the input of the IQ plane to be $$ e^{j\phi} $$.
 
     ![fmtx_phase-mod-start-grc.png](./figures/fmtx_phase-mod-start-grc.png)<br>
     __*Flowgraph of a real signal unable to be connected to a complex sink*__
@@ -82,7 +82,7 @@ How do you transmit a *real* signal (we'll call it $$ \phi $$) as *complex* ($$ 
   - Set the *Sensitivity* to be 3.14 ($$ \pi $$)
 
 - The input of the *Phase Mod* block is some GUI controlled number between 0 and 2 (we'll call it $$ x $$). The *Phase Mod* block output is $$ e^{jx\pi} $$.
-  > Notice the $$ j $$ and the way in which the sensitivity parameter is used.
+  > Notice the $$ j $$ in the above equation, and also notice the way in which the sensitivity parameter is used to multiply with $$ x $$.
 
 - The flowgraph should now look like the following figure.
 
@@ -109,12 +109,11 @@ You'll start by transmitting a sinusoidal message. The equations for this are sh
   - Add a *QT GUI Range* for each of $$ f_m $$, $$ f_c $$ and $$ \beta $$.
   - For the message frequency, range from 0-10 kHz with a default value of 5 kHz.
   - For the carrier frequency, range from 0-100 kHz with a default value of 25 kHz.
-  - For the beta value, fange from 0-4 with a default value of 4, and a step size of 0.025.
+  - For the beta value, range from 0-5 with a default value of 4, and a step size of 0.025.
 
 - Begin by using a *Signal Source* block and a *Multiply Const* block to create the $$ \beta sin( 2\pi f_m t) $$ term.
-  - In the signal source, change the *Output Type* to *Float*.
+  - In the signal source, change the *Output Type* to *Float*, and the *Waveform* to *Sine*.
   - Use the variables from the *QT GUI Range* widgets for $$ \beta $$ and $$ f_m $$.
-  - The flowgraph should now look like the following figure.
 
 - This flowgraph will not be used to transmit to any hardware, so a *Throttle* block is needed. Add a *Throttle* after the *Multiply Const* block.
 
@@ -155,11 +154,14 @@ You'll start by transmitting a sinusoidal message. The equations for this are sh
   ![fmtx_s-of-t-sine-fft.png](./figures/fmtx_s-of-t-sine-fft.png)<br>
   __*$$ s(t) $$ with default values in frequency domain*__
 
-  - Experiment with adjusting the three sliders.
+- Experiment with adjusting the three sliders.
 
-  - Reset $$ f_c $$ to 25 kHz and $$ f_m $$ to 5 kHz.
+- Reset $$ f_c $$ to 25 kHz and $$ f_m $$ to 5 kHz.
 
   - Measure the amplitude of the carrier wave and of the first sideband.
+
+    ![fmtx_s-of-t-sine-fft-zoomed.png](./figures/fmtx_s-of-t-sine-fft-zoomed.png)<br>
+    __*Positive half of spectrum only to more clearly measure Bessel peaks*__
 
 ---
 #### Deliverable Question 1
@@ -167,6 +169,8 @@ You'll start by transmitting a sinusoidal message. The equations for this are sh
 Show that the Bessel peaks have the correct values relative to each other. In other words, confirm that for the chosen vlaue of $$ \beta $$, the carrier wave and first sideband have the correct values relative to eachother as described by the following equation.
 
 $$ \Delta P = 20 log\frac{J_1(\beta)}{J_0(\beta)} $$
+
+You will want to reference a [table of Bessel functions](https://www.statisticshowto.datasciencecentral.com/wp-content/uploads/2017/01/bessel-tables.pdf) or use a Bessel calculator (built into Matlab/Python/most mathematical programming languages).
 
 ---
 
@@ -176,13 +180,13 @@ $$ \Delta P = 20 log\frac{J_1(\beta)}{J_0(\beta)} $$
 
 Up until now the transmitted message has been a sine wave of frequency $$ f_m $$. You will now simulate transmitting a Frequency Shift Keying (FSK) signal by transmitting a square waveform (which is an FSK pattern of `101010...`).
 
-The integral of a square waveform is a triangular waveform with the same frequency as the square waveform. So for frequency modulation with a square wave, we can skip doing the intagral and simply use a triangular waveform.
+The integral of a square waveform is a triangular waveform with the same frequency as the square waveform. So for frequency modulation with a square wave, we can skip doing the integral and simply use a triangular waveform.
 
 - Change the *Signal Source* block to output a triangular waveform of frequency $$ f_m $$.
 
 - With the *File Sink* block disabled, execute the flowgraph and observe the various plots. Adjust the sliders so that $$ f_m $$ is 2 kHz see how it impacts the transmitted signal.
 
-- The following figures show $$ m(t)$$  and $$ s(t) $$ with a message frequency of 5 kHz.
+- The following figures show $$ m(t)$$  and $$ s(t) $$ with a message frequency of 2 kHz.
 
   ![fmtx_m-of-t-square-scope.png](./figures/fmtx_m-of-t-square-scope.png)<br>
   __*$$ m(t) $$ with default values in time domain*__
