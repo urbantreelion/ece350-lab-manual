@@ -19,7 +19,7 @@ In this lab you used a USRP and receive complex data streams. You both modulated
   - an FM transmitter (`FM_transmitter.grc`)
   - an FM receiver (`FM_receiver.grc`)
 - A single page with answers to the questions posed throughout the lab.
-  - There are 2 questions which are all carefully labelled **Deliverable Question X**. Each question should take only one to two sentences to answer and address the concepts being explored.
+  - There are 3 questions which are all carefully labelled **Deliverable Question X**. Each question should take only one to two sentences to answer and address the concepts being explored.
 
 If you are unsure how to submit the deliverables, ask your TA.
 
