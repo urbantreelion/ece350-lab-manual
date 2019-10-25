@@ -59,13 +59,13 @@ How do you transmit a *real* signal (we'll call it $$ \phi $$) as *complex* ($$ 
 - Open a new GNU Radio Companion flowgraph.
 
 - Add a *QT GUI Range* block and set its parameters as follows:
-  - *ID:* `input_range`
+  - *ID:* `phi`
   - *Default Value:* 0
-  - *Start:* 0
-  - *Stop:* 2
+  - *Start:* -3.14
+  - *Stop:* 3.14
   - *Step:* 0.01
 
-- Add a *Constant Source* block and set it's *Constant* to be `input_range`, the variable from the *QT GUI Range* block. Make sure that the block type is *Float*.
+- Add a *Constant Source* block and set it's *Constant* to be `phi`, the variable from the *QT GUI Range* block. Make sure that the block type is *Float*.
 
 - Add a *Throttle* block of type *Float*
 
@@ -78,11 +78,10 @@ How do you transmit a *real* signal (we'll call it $$ \phi $$) as *complex* ($$ 
 
 - Add a [Phase Mod](https://wiki.gnuradio.org/index.php/Phase_Mod) block.
   - Read the documentation on the block to understand what it is doing.
-  - Notice the sensitivity parameter.
-  - Set the *Sensitivity* to be 3.14 ($$ \pi $$)
+  - Notice the sensitivity parameter. Set it to be 1.
 
-- The input of the *Phase Mod* block is some GUI controlled number between 0 and 2 (we'll call it $$ x $$). The *Phase Mod* block output is $$ e^{jx\pi} $$.
-  > Notice the $$ j $$ in the above equation, and also notice the way in which the sensitivity parameter is used to multiply with $$ x $$.
+- The input of the *Phase Mod* block is some GUI controlled number between $$ -\pi $$ and $$ \pi $$. The *Phase Mod* block output is $$ e^{jx\pi} $$ where $$ x $$ is the sensitivity parameter.
+  > Notice the $$ j $$ in the above equation, and also notice the way in which the sensitivity parameter can be used.
 
 - The flowgraph should now look like the following figure.
 
@@ -90,7 +89,7 @@ How do you transmit a *real* signal (we'll call it $$ \phi $$) as *complex* ($$ 
     __*Flowgraph of a real signal being transmitted as a complex signal*__
 
 - Execute the flowgraph. You should see a small dot hovering around $$ I = 1, Q = 0 $$ which is $$ e^{j\phi} $$ where $$ \phi = 0 $$.
-- As you move the slider from 0 to 2, you are changing $$ \phi $$ from $$ 0 \rightarrow 2\pi $$.
+- As you move the slider from $$ -\pi \rightarrow \pi $$, you are changing $$ \phi $$ from $$ -\pi \rightarrow \pi $$.
 
 - You may discard this flowgraph, it is not a deliverable. However, remember how the *Phase Mod* block works. You will need to use it later.
 
@@ -109,7 +108,7 @@ You'll start by transmitting a sinusoidal message. The equations for this are sh
   - Add a *QT GUI Range* for each of $$ f_m $$, $$ f_c $$ and $$ \beta $$.
   - For the message frequency, range from 0-10 kHz with a default value of 5 kHz.
   - For the carrier frequency, range from 0-100 kHz with a default value of 25 kHz.
-  - For the beta value, range from 0-5 with a default value of 4, and a step size of 0.025.
+  - For the beta value, range from 0-10 with a default value of 4, and a step size of 0.025.
 
 - Begin by using a *Signal Source* block and a *Multiply Const* block to create the $$ \beta sin( 2\pi f_m t) $$ term.
   - In the signal source, change the *Output Type* to *Float*, and the *Waveform* to *Sine*.
