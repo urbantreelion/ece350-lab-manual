@@ -118,7 +118,8 @@ You'll start by transmitting a sinusoidal message. The equations for this are sh
 
 - In order to turn this signal into a complex exponential, we must take $$ e^{j\phi} $$ where $$ \phi $$ is the signal at this point.
   - Use the [Phase Mod](https://wiki.gnuradio.org/index.php/Phase_Mod) block as you did [earlier in this lab](#exploring-the-phase-mod-block).
-  - Notice that we could input the $$ \beta $$ value as the sensitivity instead of using the *Multiply Const* block. If you choose to keep the *Multiply Const* block, set the *Sensitivity* parameter to 1.
+  - Notice that we could input the $$ \beta $$ value as the sensitivity instead of using the *Multiply Const* block.
+  - Set the *Sensitivity* parameter to 1.
 
 - The flow graph should now look like the following figure.
 

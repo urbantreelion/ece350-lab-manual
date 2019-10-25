@@ -81,7 +81,7 @@ What is the transition width of the low pass filter used on the USRP's output?
 
 - Review the theory of [dynamic range](data/DynamicRange.pdf). These notes will also be useful for subsequent sections on dynamic range with IQ signals and on noise figure.
 
-- Tune the USRP to an FM broadcast station of your choice (some options are 99.3 MHz, 101.5 MHz and 102.5 MHz)
+- Tune the USRP to the FM broadcast station at 101.5 MHz.
 
 - Increase the RF gain from 7 dB until you hear a second radio station at the same time, or instead of the original station.
 
