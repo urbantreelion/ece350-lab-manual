@@ -109,7 +109,6 @@ From this lab part, there are the following deliverables:
 <!-- - `FM_receiver.grc` -->
 - The answers to [Question 2](#deliverable-question-2) and [Question 3](#deliverable-question-3).
 
-
 ---
 
 [**Back to Part 2**](FM-receiver-simulation.md) | [**Continue to conclusion**](conclusion.md)

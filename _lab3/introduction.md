@@ -1,26 +1,24 @@
 ---
 layout: labitem
 title: Lab 3 #Used for header nav
-firstHeading: Lab 3  - FM and Flex Frame Synchronizer
+firstHeading: Lab 3  - FM signals
 permalink: /lab3/
 ---
 
-<!-- #TODO  -->
-<!-- In this lab you will use the Universal Software Radio Peripherial (USRP) for both receiving and transmitting signals. The USRP is a I/Q receiver with wide bandwidth (100 MHz sampling rate), programmable center frequency, programmable gain and choice of sample rates.
+In this lab you will create an FM modulator and demodulator, and then use the Universal Software Radio Peripherial (USRP) to receive FM signals in real-time.
 
-You will then begin using complex signals to create an SSB demodulator. As you work through it, keep the following questions in mind:
+As you work, consider the following questions:
 
-- How is an SSB signal demodulated into an audio signal?
-- What methods are used to tune to a desired signal? -->
+- What are the differences between an analog transmitter and a software-defined transmitter?
+- What are the differences between an analog receiver and a software-defined transmitter?
 
 ---
 
 ## Deliverables
 
-<!-- #todo -->
 - 2 GRC files:
-  - a resampling SSB receiver using Weaver\'s method
-  - a direct sampling SSB receiver using Weaver\'s method
+  - an FM transmitter
+  - an FM receiver
 - A single page with answers to the questions posed throughout the lab.
   - There are several questions which are all carefully labelled **Deliverable Question X**. Each question should take only one to two sentences to answer and address the concepts being explored.
 
