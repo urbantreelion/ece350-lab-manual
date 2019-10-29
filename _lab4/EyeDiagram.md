@@ -26,11 +26,24 @@ This part of the lab is a guide to measuring bit rates of real FSK signals. In i
 
 ## FM data receiver
 
-- Modify the FM receiver flowgraph by replacing the FM demodulation block with the "homemade" FM demodulator using the *Delay* and *Complex Conjugate* blocks.
+- Open your FM receiver from the last lab. It was titled `FM_receiver.grc`. It should look like the following figure.
 
-- Use the USRP to tune to the 2-level FSK signal at 142.17 MHz. This signal is the control channel for the [CREST public safety radio system](http://www.crest.ca/).
+  ![fmrx_USRP-receiver-with-audio-grc.png](../_lab3/figures/fmrx_USRP-receiver-with-audio-grc.png)<br>
+  __*Previously build FM receiver*__
 
-- Observe the demodulator output using a *QT GUI Time Sink*. The filter bandwidth and decimation rate may require adjustment, since the bandwidth of this CREST signal is about 25 kHz compared to 200 kHz for FM broadcast signals.
+- Execute the flowgraph and tune to the 2-level FSK signal at 142.17 MHz. This signal is the control channel for the [CREST public safety radio system](http://www.crest.ca/).
+
+  ![eye_CREST-waterfall](./figures/eye_CREST-waterfall.png)<br>
+  __*Waterfall of CREST FSK*__
+
+The bandwidth of this signal is about 25 kHz compared to the 200 kHz for FM broadcast signals.
+
+- Edit the *Variable* block which sets the `filter_taps`. Change the cutoff frequency to THIS and the transition width to THIS.
+
+- Edit the *Frequency Xlating FIR Filter* block and set the decimation rate to 4.
+    - Change every block after the filter that uses `samp_rate` to use "`samp_rate`/4" instead.
+
+- Observe the demodulator output using the *QT GUI Time Sink*. The filter bandwidth and decimation rate may require adjustment, since the bandwidth of this CREST signal is about 25 kHz compared to 200 kHz for FM broadcast signals.
 
 - Check the persistence box on the scope and reduce the alpha to minimum. You will observe a so-called [eye diagram](http://en.wikipedia.org/wiki/Eye_pattern) of the data, as shown below. The eye diagram shows the number of milliseconds per bit. Find the bit rate (the number of bits per second).
 
